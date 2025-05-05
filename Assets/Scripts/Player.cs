@@ -6,7 +6,7 @@ public class Player : MonoBehaviour
     public float moveSpeed = 6f;
     public float jumpForce = 8f;
     public float gravity = -20f;
-    public Transform cameraTransform;
+    public Transform cameraTransform; // <-- Referência à câmara
 
     private CharacterController controller;
     private Animator animator;
@@ -19,6 +19,10 @@ public class Player : MonoBehaviour
     {
         controller = GetComponent<CharacterController>();
         animator = GetComponent<Animator>();
+
+        // Se não for atribuída manualmente
+        if (cameraTransform == null)
+            cameraTransform = Camera.main.transform;
     }
 
     void Update()
@@ -29,16 +33,26 @@ public class Player : MonoBehaviour
 
         if (input.magnitude >= 0.1f)
         {
-            float targetAngle = Mathf.Atan2(input.x, input.z) * Mathf.Rad2Deg + cameraTransform.eulerAngles.y;
-            Quaternion rotation = Quaternion.Euler(0f, targetAngle, 0f);
-            Vector3 moveDir = rotation * Vector3.forward;
+            // Movimento relativo à direção da câmara
+            Vector3 camForward = cameraTransform.forward;
+            Vector3 camRight = cameraTransform.right;
 
-            controller.Move(moveDir.normalized * moveSpeed * Time.deltaTime);
-            transform.rotation = Quaternion.Slerp(transform.rotation, rotation, Time.deltaTime * 10f);
+            camForward.y = 0f;
+            camRight.y = 0f;
+            camForward.Normalize();
+            camRight.Normalize();
+
+            Vector3 moveDir = (camForward * input.z + camRight * input.x).normalized;
+
+            controller.Move(moveDir * moveSpeed * Time.deltaTime);
+
+            // Rotaciona o player para a direção do movimento
+            transform.forward = moveDir;
         }
 
         animator.SetFloat("speed", input.magnitude);
 
+        // Jump
         if (controller.isGrounded)
         {
             velocity.y = -2f;
