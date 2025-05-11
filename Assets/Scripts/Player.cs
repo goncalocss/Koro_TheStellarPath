@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 
 [RequireComponent(typeof(CharacterController))]
@@ -6,7 +7,7 @@ public class Player : MonoBehaviour
     public float moveSpeed = 6f;
     public float jumpForce = 8f;
     public float gravity = -20f;
-    public Transform cameraTransform; // <-- Referência à câmara
+    public Transform cameraTransform; // Referência à câmara
 
     private CharacterController controller;
     private Animator animator;
@@ -20,20 +21,19 @@ public class Player : MonoBehaviour
         controller = GetComponent<CharacterController>();
         animator = GetComponent<Animator>();
 
-        // Se não for atribuída manualmente
         if (cameraTransform == null)
             cameraTransform = Camera.main.transform;
     }
 
     void Update()
     {
+        // Movimento
         float h = Input.GetAxis("Horizontal");
         float v = Input.GetAxis("Vertical");
         Vector3 input = new Vector3(h, 0f, v).normalized;
 
         if (input.magnitude >= 0.1f)
         {
-            // Movimento relativo à direção da câmara
             Vector3 camForward = cameraTransform.forward;
             Vector3 camRight = cameraTransform.right;
 
@@ -45,17 +45,16 @@ public class Player : MonoBehaviour
             Vector3 moveDir = (camForward * input.z + camRight * input.x).normalized;
 
             controller.Move(moveDir * moveSpeed * Time.deltaTime);
-
-            // Rotaciona o player para a direção do movimento
             transform.forward = moveDir;
         }
 
         animator.SetFloat("speed", input.magnitude);
 
-        // Jump
+        // Saltos
         if (controller.isGrounded)
         {
             velocity.y = -2f;
+
             if (isJumping || doubleJumpUsed)
             {
                 isJumping = false;
@@ -73,16 +72,42 @@ public class Player : MonoBehaviour
         }
         else
         {
-            if (Input.GetButtonDown("Jump") && !doubleJumpUsed)
+            if (Input.GetButtonDown("Jump") && isJumping && !doubleJumpUsed)
             {
                 velocity.y = jumpForce;
                 doubleJumpUsed = true;
+
+                animator.SetBool("isJumping", false);
                 animator.SetBool("isDoubleJumping", true);
             }
 
             velocity.y += gravity * Time.deltaTime;
         }
 
+        // Aplicar movimento vertical
         controller.Move(velocity * Time.deltaTime);
+
+        // Ataques
+        // Ataque leve (botão esquerdo)
+        if (Input.GetMouseButtonDown(0) && !animator.GetBool("isAttacking") && controller.isGrounded)
+        {
+            animator.SetBool("isAttacking", true);
+            StartCoroutine(ResetBool("isAttacking", 0.6f));
+        }
+
+        // Ataque pesado (botão direito)
+        if (Input.GetMouseButtonDown(1) && !animator.GetBool("isHeavyAttacking") && controller.isGrounded)
+        {
+            Debug.Log("Ataque pesado iniciado"); // teste
+            animator.SetBool("isHeavyAttacking", true);
+            StartCoroutine(ResetBool("isHeavyAttacking", 0.9f));
+        }
+    }
+
+    private IEnumerator ResetBool(string parameterName, float delay)
+    {
+        yield return new WaitForSeconds(delay);
+        animator.SetBool(parameterName, false);
     }
 }
+
