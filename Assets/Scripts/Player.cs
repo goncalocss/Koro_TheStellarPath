@@ -91,6 +91,7 @@ public class Player : MonoBehaviour
         // Ataque leve (botão esquerdo)
         if (Input.GetMouseButtonDown(0) && !animator.GetBool("isAttacking") && controller.isGrounded)
         {
+            Debug.Log("Ataque normal iniciado"); 
             animator.SetBool("isAttacking", true);
             StartCoroutine(ResetBool("isAttacking", 0.6f));
         }
