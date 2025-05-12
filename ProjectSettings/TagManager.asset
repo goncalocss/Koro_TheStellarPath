@@ -5,6 +5,7 @@ TagManager:
   serializedVersion: 3
   tags:
   - Arvore
+  - Inimigo
   layers:
   - Default
   - TransparentFX
