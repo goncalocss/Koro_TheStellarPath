@@ -7,7 +7,10 @@ public class Player : MonoBehaviour
     public float moveSpeed = 6f;
     public float jumpForce = 8f;
     public float gravity = -20f;
-    public Transform cameraTransform; // Referência à câmara
+
+    public Transform cameraTransform;         // Referência à câmara
+    public GameObject[] armasPorNivel;        // Armas já presentes no modelo do jogador
+    public int nivelAtual = 1;                // Nível do jogador (1 = primeira arma)
 
     private CharacterController controller;
     private Animator animator;
@@ -23,6 +26,8 @@ public class Player : MonoBehaviour
 
         if (cameraTransform == null)
             cameraTransform = Camera.main.transform;
+
+        AtivarArmaDoNivel();
     }
 
     void Update()
@@ -88,20 +93,31 @@ public class Player : MonoBehaviour
         controller.Move(velocity * Time.deltaTime);
 
         // Ataques
-        // Ataque leve (botão esquerdo)
         if (Input.GetMouseButtonDown(0) && !animator.GetBool("isAttacking") && controller.isGrounded)
         {
-            Debug.Log("Ataque normal iniciado"); 
             animator.SetBool("isAttacking", true);
             StartCoroutine(ResetBool("isAttacking", 0.6f));
         }
 
-        // Ataque pesado (botão direito)
         if (Input.GetMouseButtonDown(1) && !animator.GetBool("isHeavyAttacking") && controller.isGrounded)
         {
-            Debug.Log("Ataque pesado iniciado"); // teste
             animator.SetBool("isHeavyAttacking", true);
             StartCoroutine(ResetBool("isHeavyAttacking", 0.9f));
+        }
+
+        if (Input.GetKeyDown(KeyCode.LeftShift) && controller.isGrounded)
+        {
+            animator.SetBool("isCapoeira", true);
+            StartCoroutine(ResetBool("isCapoeira", 10.0f)); // ajusta o tempo à duração da animação
+        }
+    }
+
+    private void AtivarArmaDoNivel()
+    {
+        for (int i = 0; i < armasPorNivel.Length; i++)
+        {
+            if (armasPorNivel[i] != null)
+                armasPorNivel[i].SetActive(i == nivelAtual - 1);
         }
     }
 
@@ -110,5 +126,11 @@ public class Player : MonoBehaviour
         yield return new WaitForSeconds(delay);
         animator.SetBool(parameterName, false);
     }
-}
 
+    // ⚡ Chama esta função se quiseres mudar de arma a meio do jogo
+    public void SubirNivel()
+    {
+        nivelAtual = Mathf.Clamp(nivelAtual + 1, 1, armasPorNivel.Length);
+        AtivarArmaDoNivel();
+    }
+}

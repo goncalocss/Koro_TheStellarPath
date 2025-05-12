@@ -19,7 +19,7 @@ public class LizardAI_Test : MonoBehaviour
 
     void Update()
     {
-        if (isDead) return;
+        if (isDead || target == null) return;
 
         float distance = Vector3.Distance(transform.position, target.position);
 
@@ -40,13 +40,11 @@ public class LizardAI_Test : MonoBehaviour
 
     void SetState(string state)
     {
-        // Reset a todos os bools
         animator.SetBool("isIdle", false);
         animator.SetBool("isRunning", false);
         animator.SetBool("inAction", false);
         animator.SetBool("isDefeated", false);
 
-        // Ativar o estado atual
         animator.SetBool(state, true);
     }
 
@@ -58,7 +56,7 @@ public class LizardAI_Test : MonoBehaviour
         transform.LookAt(new Vector3(target.position.x, transform.position.y, target.position.z));
     }
 
-    public void TakeDamage(int damage)
+    public void ReceberDano(int damage)
     {
         if (isDead) return;
 
@@ -72,16 +70,9 @@ public class LizardAI_Test : MonoBehaviour
             Collider col = GetComponent<Collider>();
             if (col) col.enabled = false;
 
-            Destroy(gameObject, 2.5f); // Tempo da animação de morte
-        }
-    }
-
-    // Para testares no Editor (pressiona tecla para causar dano)
-    void OnGUI()
-    {
-        if (GUI.Button(new Rect(10, 10, 120, 30), "Dano ao lagarto"))
-        {
-            TakeDamage(50); // cada clique tira 50 de vida
+            Destroy(gameObject, 2.5f);
+            
+            Debug.Log("FALECEU"); // Tempo da animação de morte
         }
     }
 }
