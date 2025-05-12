@@ -8,9 +8,9 @@ public class Player : MonoBehaviour
     public float jumpForce = 8f;
     public float gravity = -20f;
 
-    public Transform cameraTransform;         // Referência à câmara
-    public GameObject[] armasPorNivel;        // Armas já presentes no modelo do jogador
-    public int nivelAtual = 1;                // Nível do jogador (1 = primeira arma)
+    public Transform cameraTransform;      
+    public GameObject[] armasPorNivel;        
+    public int nivelAtual = 1;               
 
     private CharacterController controller;
     private Animator animator;
@@ -18,6 +18,9 @@ public class Player : MonoBehaviour
     private Vector3 velocity;
     private bool isJumping = false;
     private bool doubleJumpUsed = false;
+    public bool isAttacking = false;
+
+    private int currentAttackTrigger = -1;
 
     void Start()
     {
@@ -32,7 +35,13 @@ public class Player : MonoBehaviour
 
     void Update()
     {
-        // Movimento
+        HandleMovement();
+        HandleJump();
+        HandleAttacks();
+    }
+
+    private void HandleMovement()
+    {
         float h = Input.GetAxis("Horizontal");
         float v = Input.GetAxis("Vertical");
         Vector3 input = new Vector3(h, 0f, v).normalized;
@@ -54,25 +63,25 @@ public class Player : MonoBehaviour
         }
 
         animator.SetFloat("speed", input.magnitude);
+    }
 
-        // Saltos
+    private void HandleJump()
+    {
         if (controller.isGrounded)
         {
-            velocity.y = -2f;
+            velocity.y = -2f; 
 
             if (isJumping || doubleJumpUsed)
             {
                 isJumping = false;
                 doubleJumpUsed = false;
-                animator.SetBool("isJumping", false);
-                animator.SetBool("isDoubleJumping", false);
             }
 
             if (Input.GetButtonDown("Jump"))
             {
                 velocity.y = jumpForce;
                 isJumping = true;
-                animator.SetBool("isJumping", true);
+                animator.SetTrigger("Jump");
             }
         }
         else
@@ -81,34 +90,48 @@ public class Player : MonoBehaviour
             {
                 velocity.y = jumpForce;
                 doubleJumpUsed = true;
-
-                animator.SetBool("isJumping", false);
-                animator.SetBool("isDoubleJumping", true);
+                animator.SetTrigger("DoubleJump");
             }
 
+            // Aplique a gravidade
             velocity.y += gravity * Time.deltaTime;
         }
 
         // Aplicar movimento vertical
         controller.Move(velocity * Time.deltaTime);
+    }
 
-        // Ataques
-        if (Input.GetMouseButtonDown(0) && !animator.GetBool("isAttacking") && controller.isGrounded)
+    private void HandleAttacks()
+    {
+        AnimatorStateInfo stateInfo = animator.GetCurrentAnimatorStateInfo(0);
+
+        if (currentAttackTrigger == -1 && controller.isGrounded)
         {
-            animator.SetBool("isAttacking", true);
-            StartCoroutine(ResetBool("isAttacking", 0.6f));
+            if (Input.GetMouseButtonDown(0) && !stateInfo.IsName("LightAttack") && !stateInfo.IsName("HeavyAttack") && !stateInfo.IsName("Capoeira"))
+            {
+                currentAttackTrigger = 0;
+                animator.SetTrigger("LightAttack");
+                isAttacking = true;
+            }
+
+            if (Input.GetMouseButtonDown(1) && !stateInfo.IsName("LightAttack") && !stateInfo.IsName("HeavyAttack") && !stateInfo.IsName("Capoeira"))
+            {
+                currentAttackTrigger = 1;
+                animator.SetTrigger("HeavyAttack");
+                isAttacking = true;
+            }
+
+            if (Input.GetKeyDown(KeyCode.LeftShift) && !stateInfo.IsName("LightAttack") && !stateInfo.IsName("HeavyAttack") && !stateInfo.IsName("Capoeira"))
+            {
+                animator.SetTrigger("Capoeira");
+                isAttacking = true;
+            }
         }
 
-        if (Input.GetMouseButtonDown(1) && !animator.GetBool("isHeavyAttacking") && controller.isGrounded)
+        if (stateInfo.normalizedTime >= 1.0f && currentAttackTrigger != -1)
         {
-            animator.SetBool("isHeavyAttacking", true);
-            StartCoroutine(ResetBool("isHeavyAttacking", 0.9f));
-        }
-
-        if (Input.GetKeyDown(KeyCode.LeftShift) && controller.isGrounded)
-        {
-            animator.SetBool("isCapoeira", true);
-            StartCoroutine(ResetBool("isCapoeira", 10.0f)); // ajusta o tempo à duração da animação
+            currentAttackTrigger = -1;
+            isAttacking = false;
         }
     }
 
@@ -121,13 +144,6 @@ public class Player : MonoBehaviour
         }
     }
 
-    private IEnumerator ResetBool(string parameterName, float delay)
-    {
-        yield return new WaitForSeconds(delay);
-        animator.SetBool(parameterName, false);
-    }
-
-    // ⚡ Chama esta função se quiseres mudar de arma a meio do jogo
     public void SubirNivel()
     {
         nivelAtual = Mathf.Clamp(nivelAtual + 1, 1, armasPorNivel.Length);
