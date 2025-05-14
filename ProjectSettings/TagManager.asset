@@ -8,6 +8,7 @@ TagManager:
   - Inimigo
   - Box
   - Orb
+  - Ground
   layers:
   - Default
   - TransparentFX

@@ -7,11 +7,12 @@ public class CollectiblesManager : MonoBehaviour
 
     // Distância de interação para o ataque
     public float interactionDistance = 3f;
+    private int orbCount = 0;
 
     private void Update()
     {
         // Chama a função para puxar as orbs se houver um impacto
-        PullOrbs();  
+        PullOrbs();
     }
 
     // Função chamada para destruir a caixa e soltar orbs
@@ -25,6 +26,12 @@ public class CollectiblesManager : MonoBehaviour
             Destroy(other.gameObject);
 
             // Libera orbs (geração aleatória de orbs ao redor)
+            ReleaseOrbs(other.transform.position);
+        }
+        else if (other.CompareTag("Inimigo"))
+        {
+            Debug.Log("Inimigo atingido e orbs dropadas: " + other.gameObject.name);
+            // Verifica a distância entre o jogador e a caixa
             ReleaseOrbs(other.transform.position);
         }
     }
@@ -44,6 +51,8 @@ public class CollectiblesManager : MonoBehaviour
 
             // Adiciona um componente para detectar a colisão com o jogador
             orb.AddComponent<OrbMovement>();
+
+
         }
     }
 
@@ -58,5 +67,19 @@ public class CollectiblesManager : MonoBehaviour
             Vector3 direction = (player.position - orb.transform.position).normalized;
             orb.transform.position = Vector3.MoveTowards(orb.transform.position, player.position, 0.1f); // Ajuste de velocidade
         }
+
+    }
+
+    public int GetOrbCount()
+    {
+        Debug.Log("Contagem de orbs solicitada: " + orbCount);  // Debug para ver o valor quando solicitado
+        return orbCount;
+    }
+
+    // Método para incrementar o número de orbs quando o jogador as coleta
+    public void IncrementOrbCount()
+    {
+        Debug.Log("Incrementando contagem de orbs. Total atual: " + orbCount);
+        orbCount++;
     }
 }
