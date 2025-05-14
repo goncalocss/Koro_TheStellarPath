@@ -42,21 +42,17 @@ public class CollectiblesManager : MonoBehaviour
         int numOrbs = Random.Range(3, 6);
         for (int i = 0; i < numOrbs; i++)
         {
-            // Cria as orbs em posições aleatórias próximas
             Vector3 spawnPosition = position + new Vector3(Random.Range(-2f, 2f), 1, Random.Range(-2f, 2f));
             GameObject orb = Instantiate(orbPrefab, spawnPosition, Quaternion.identity);
 
-            // Define a tag da orb instanciada
-            orb.tag = "Orb";  // Certifique-se de que a tag "Orb" está definida
+            orb.tag = "Orb";
 
-            // Adiciona um componente para detectar a colisão com o jogador
             orb.AddComponent<OrbMovement>();
 
 
         }
     }
 
-    // Função para puxar as orbs ao jogador tipo imã
     private void PullOrbs()
     {
         // Encontra todas as orbs no jogo
@@ -69,7 +65,7 @@ public class CollectiblesManager : MonoBehaviour
         }
 
     }
-
+    /*
     public int GetOrbCount()
     {
         Debug.Log("Contagem de orbs solicitada: " + orbCount);  // Debug para ver o valor quando solicitado
@@ -82,4 +78,5 @@ public class CollectiblesManager : MonoBehaviour
         Debug.Log("Incrementando contagem de orbs. Total atual: " + orbCount);
         orbCount++;
     }
+    */
 }
