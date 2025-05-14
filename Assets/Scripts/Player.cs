@@ -109,6 +109,7 @@ public class Player : MonoBehaviour
         {
             if (Input.GetMouseButtonDown(0) && !stateInfo.IsName("LightAttack") && !stateInfo.IsName("HeavyAttack") && !stateInfo.IsName("Capoeira"))
             {
+                Debug.Log("Light Attack");
                 currentAttackTrigger = 0;
                 animator.SetTrigger("LightAttack");
                 isAttacking = true;
