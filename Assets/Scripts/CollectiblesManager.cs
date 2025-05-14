@@ -31,10 +31,12 @@ public class CollectiblesManager : MonoBehaviour
         else if (other.CompareTag("Inimigo"))
         {
             Debug.Log("Inimigo atingido e orbs dropadas: " + other.gameObject.name);
-            // Verifica a distância entre o jogador e a caixa
-            ReleaseOrbs(other.transform.position);
+
+            // Chama ReleaseOrbs após 2,5 segundos
+            Invoke("DropOrbs", 1.5f);
         }
     }
+
 
     // Função para soltar orbs
     private void ReleaseOrbs(Vector3 position)
@@ -48,8 +50,6 @@ public class CollectiblesManager : MonoBehaviour
             orb.tag = "Orb";
 
             orb.AddComponent<OrbMovement>();
-
-
         }
     }
 
@@ -60,23 +60,24 @@ public class CollectiblesManager : MonoBehaviour
         foreach (var orb in orbs)
         {
             // Puxa as orbs em direção ao player
-            Vector3 direction = (player.position - orb.transform.position).normalized;
-            orb.transform.position = Vector3.MoveTowards(orb.transform.position, player.position, 0.1f); // Ajuste de velocidade
+            if (!orb.GetComponent<OrbMovement>().isCollected)  // Se a orb não foi coletada ainda
+            {
+                Vector3 direction = (player.position - orb.transform.position).normalized;
+                orb.transform.position = Vector3.MoveTowards(orb.transform.position, player.position, 0.1f); // Ajuste de velocidade
+            }
         }
-
-    }
-    /*
-    public int GetOrbCount()
-    {
-        Debug.Log("Contagem de orbs solicitada: " + orbCount);  // Debug para ver o valor quando solicitado
-        return orbCount;
     }
 
     // Método para incrementar o número de orbs quando o jogador as coleta
     public void IncrementOrbCount()
     {
-        Debug.Log("Incrementando contagem de orbs. Total atual: " + orbCount);
         orbCount++;
+        Debug.Log("Contagem de orbs: " + orbCount);  // Debug para ver o valor quando solicitado
     }
-    */
+
+    void DropOrbs()
+    {
+        // Libera as orbs na posição do inimigo
+        ReleaseOrbs(transform.position);
+    }
 }

@@ -39,7 +39,7 @@ public class LizardAI_Test : MonoBehaviour
             SetTrigger("Idle"); // Caso contrário, mantém o inimigo em idle
         }
 
-        
+
     }
 
     // Método para mudar de animação usando Triggers
@@ -53,7 +53,7 @@ public class LizardAI_Test : MonoBehaviour
 
         // Ativa o trigger correspondente ao nome passado
         animator.SetTrigger(triggerName);
-        
+
     }
 
     // Método para fazer o inimigo perseguir o jogador
@@ -72,34 +72,38 @@ public class LizardAI_Test : MonoBehaviour
 
     // Método para o inimigo receber dano (quando a saúde chegar a 0, ele morre)
     public void ReceberDano(int damage)
-{
-    if (isDead) return; // Se já estiver morto, não faz nada
-
-    health -= damage;
-
-    if (health <= 0)
     {
-        isDead = true;
-        SetTrigger("Defeated"); // Ativa a animação de morte
+        if (isDead) return; // Se já estiver morto, não faz nada
 
-        // Desabilitar o Rigidbody para parar os efeitos da física
-        Rigidbody rb = GetComponent<Rigidbody>();
-        if (rb != null)
+        health -= damage;
+
+        if (health <= 0)
         {
-            rb.isKinematic = true; // Desabilita a física (parando movimento)
+            isDead = true;
+            SetTrigger("Defeated"); // Ativa a animação de morte
+
+            // Desabilitar o Rigidbody para parar os efeitos da física
+            Rigidbody rb = GetComponent<Rigidbody>();
+            if (rb != null)
+            {
+                rb.isKinematic = true; // Desabilita a física (parando movimento)
+            }
+
+            // Desabilitar o Collider para que o inimigo não interaja com outros objetos
+            Collider col = GetComponent<Collider>();
+            if (col != null)
+            {
+                col.enabled = false; // Desabilita a colisão
+            }
+
+            Destroy(gameObject, 2.5f); // Destroi o inimigo após 2,5 segundos
+
+            //Metodo de release orbs
+
+
+
+            Debug.Log("O lagarto morreu!");
         }
-
-        // Desabilitar o Collider para que o inimigo não interaja com outros objetos
-        Collider col = GetComponent<Collider>();
-        if (col != null)
-        {
-            col.enabled = false; // Desabilita a colisão
-        }
-
-        Destroy(gameObject, 2.5f); // Destroi o inimigo após 2,5 segundos
-
-        Debug.Log("O lagarto morreu!");
     }
-}
 
 }

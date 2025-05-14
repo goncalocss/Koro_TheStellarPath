@@ -18,6 +18,12 @@ public class WeaponHitbox : MonoBehaviour
                 {
                     inimigo.ReceberDano(damage);
                 }
+
+                CollectiblesManager collectiblesManager = FindObjectOfType<CollectiblesManager>();
+                if (collectiblesManager != null)
+                {
+                    collectiblesManager.HitBox(other);
+                }
             }
         }
 
@@ -29,5 +35,7 @@ public class WeaponHitbox : MonoBehaviour
                 collectiblesManager.HitBox(other);
             }
         }
+
+
     }
 }

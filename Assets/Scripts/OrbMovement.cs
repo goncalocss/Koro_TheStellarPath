@@ -2,14 +2,14 @@ using UnityEngine;
 
 public class OrbMovement : MonoBehaviour
 {
-    public float moveDuration = 1f; 
+    public float moveDuration = 1f;
     public Transform player;
-    private bool isCollected = false;
+    public bool isCollected = false;
 
-    private Vector3 startPosition;  
-    private Vector3 targetPosition; 
-    private float journeyLength;   
-    private float startTime;        
+    private Vector3 startPosition;
+    private Vector3 targetPosition;
+    private float journeyLength;
+    private float startTime;
 
     private void Start()
     {
@@ -44,6 +44,7 @@ public class OrbMovement : MonoBehaviour
             {
                 // Se a orb chegou ao destino, define a posição final exata
                 transform.position = targetPosition;
+                isCollected = true;  // Marque a orb como coletada
             }
         }
     }
@@ -53,7 +54,10 @@ public class OrbMovement : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             Debug.Log("Orb coletada!");
+            GameManager gameManager = FindObjectOfType<GameManager>();  // Acessa o GameManager
+            gameManager.IncrementOrbCount();  // Incrementa a contagem de orbs no GameManager
             Destroy(gameObject);  // Destrói a orb quando coletada
         }
     }
+
 }
