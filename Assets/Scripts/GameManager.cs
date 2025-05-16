@@ -26,7 +26,7 @@ public class GameManager : MonoBehaviour
     // Atualiza o texto da UI com a contagem atual de orbs
     private void UpdateOrbCountText()
     {
-        orbCountText.text = ":" + orbCount;  // Exibe a quantidade de orbs
+        orbCountText.text = "x" + orbCount;  // Exibe a quantidade de orbs
     }
 
     // Pode ser chamada para resetar a contagem se o jogador reiniciar
