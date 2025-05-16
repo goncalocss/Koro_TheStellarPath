@@ -10,6 +10,9 @@ public class LizardAI_Test : MonoBehaviour
     private Animator animator; // Para controlar as animações
     private Rigidbody rb; // Para controlar a física
     private bool isDead = false; // Se o inimigo está morto
+    public GameManager gameManager;
+
+
 
     void Start()
     {
@@ -20,23 +23,35 @@ public class LizardAI_Test : MonoBehaviour
 
     void Update()
     {
-        if (isDead || target == null) return; // Se o inimigo estiver morto ou não tiver alvo, não faz nada
+        // 1. Se o inimigo morreu → animação de morte e para tudo
+        if (isDead)
+        {
+            SetTrigger("Defeated");
+            return;
+        }
 
-        float distance = Vector3.Distance(transform.position, target.position); // Calcula a distância até o alvo
+        // 2. Se não tem player ou o player morreu → parar
+        if (target == null || !gameManager.playerVivo)
+        {
+            SetTrigger("Idle"); // ou outra coisa como "Victory" se quiser
+            return;
+        }
 
-        // Comportamento baseado na distância
+        // 3. Caso normal: comportamento baseado na distância
+        float distance = Vector3.Distance(transform.position, target.position);
+
         if (distance <= attackDistance)
         {
-            SetTrigger("InAction"); // Ativa a animação de ataque se o inimigo estiver perto o suficiente
+            SetTrigger("InAction");
         }
         else if (distance <= chaseDistance)
         {
-            SetTrigger("Running"); // Ativa a animação de corrida se o inimigo estiver perto o suficiente para perseguir
-            ChaseTarget(); // Chama o método para perseguir o jogador
+            SetTrigger("Running");
+            ChaseTarget();
         }
         else
         {
-            SetTrigger("Idle"); // Caso contrário, mantém o inimigo em idle
+            SetTrigger("Idle");
         }
 
 
@@ -59,14 +74,14 @@ public class LizardAI_Test : MonoBehaviour
     // Método para fazer o inimigo perseguir o jogador
     void ChaseTarget()
     {
-        // Calcula a direção do movimento em direção ao jogador
-        Vector3 direction = (target.position - transform.position).normalized;
-        direction.y = 0f; // Impede o inimigo de subir ou descer (mantém a altura constante)
 
-        // Move o inimigo em direção ao jogador com base na velocidade
+        Vector3 direction = (target.position - transform.position).normalized;
+        direction.y = 0f;
+
+
         transform.position = Vector3.MoveTowards(transform.position, target.position, moveSpeed * Time.deltaTime);
 
-        // Atualiza a direção que o inimigo está olhando (rotação)
+
         transform.LookAt(new Vector3(target.position.x, transform.position.y, target.position.z));
     }
 

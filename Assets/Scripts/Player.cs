@@ -1,5 +1,6 @@
 using System.Collections;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 [RequireComponent(typeof(CharacterController))]
 public class Player : MonoBehaviour
@@ -23,11 +24,17 @@ public class Player : MonoBehaviour
 
     private int currentAttackTrigger = -1;
 
+    private bool estaVivo = true;
+
+    private bool jaMorreu = false;
+
     // Inicializar componentes
     void Start()
     {
         controller = GetComponent<CharacterController>();
         animator = GetComponent<Animator>();
+
+
 
         if (cameraTransform == null)
             cameraTransform = Camera.main.transform;
@@ -38,6 +45,8 @@ public class Player : MonoBehaviour
     // Atualizar estado a cada frame
     void Update()
     {
+        if (!estaVivo) return; // ← Bloqueia qualquer execução pós-morte
+
         HandleMovement();
         HandleJump();
         HandleAttacks();
@@ -163,5 +172,61 @@ public class Player : MonoBehaviour
     {
         nivelAtual = Mathf.Clamp(nivelAtual + 1, 1, armasPorNivel.Length);
         AtivarArmaDoNivel();
+    }
+
+    public void Morrer()
+    {
+        if (jaMorreu) return;
+        jaMorreu = true;
+        estaVivo = false;
+
+        Debug.Log("Player morreu!");
+
+        // 1. Toca a animação de morte
+        if (animator != null)
+        {
+            animator.SetTrigger("Died");
+        }
+
+        // 2. Desabilita o CharacterController
+        CharacterController cc = GetComponent<CharacterController>();
+        if (cc != null)
+        {
+            cc.enabled = false;
+        }
+
+        // 3. Desabilita o Rigidbody
+        Rigidbody rb = GetComponent<Rigidbody>();
+        if (rb != null)
+        {
+            rb.isKinematic = true;
+        }
+
+        // 4. Desabilita o Collider
+        Collider col = GetComponent<Collider>();
+        if (col != null)
+        {
+            col.enabled = false;
+        }
+
+        // 5. Desabilita o script de movimento
+        PlayerMovement movimento = GetComponent<PlayerMovement>();
+        if (movimento != null)
+        {
+            movimento.enabled = false;
+        }
+
+        // 6. Esperar fim da animação e mudar de cena
+        StartCoroutine(EsperarEReiniciar());
+
+        Debug.Log("Game Over");
+    }
+
+
+    private IEnumerator EsperarEReiniciar()
+    {
+        yield return new WaitForSeconds(3f); // Espera 2,5 segundos
+        //mudar de cena
+        SceneManager.LoadScene("GameOver");
     }
 }
