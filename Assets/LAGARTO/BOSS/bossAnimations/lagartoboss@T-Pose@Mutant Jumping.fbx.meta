@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 3ecc2e543f1618b4b9efae5cdbfffb4e
+guid: 2f421a10f525da8498cac8df6c71197b
 ModelImporter:
   serializedVersion: 22200
   internalIDToNameTable: []
@@ -34,11 +34,11 @@ ModelImporter:
     extraUserProperties: []
     clipAnimations:
     - serializedVersion: 16
-      name: T-Pose@Mutant Jump Attack
+      name: T-Pose@Mutant Jumping
       takeName: mixamo.com
       internalID: -203655887218126122
       firstFrame: 0
-      lastFrame: 111
+      lastFrame: 114
       wrapMode: 0
       orientationOffsetY: 0
       level: 0

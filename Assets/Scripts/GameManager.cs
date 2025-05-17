@@ -58,6 +58,17 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    public void ReceberDanoBoss()
+    {
+        acertosRecebidos++;
+
+        if (acertosRecebidos == 1)
+        {
+            PerderPontoDeVida();
+            acertosRecebidos = 0;
+        }
+    }
+
     void PerderPontoDeVida()
     {
         if (vidaAtual > 0)

@@ -33,7 +33,13 @@ public class BossAI : MonoBehaviour
 
     void Update()
     {
-        if (isDead || target == null || !gameManager.playerVivo)
+        if (isDead)
+        {
+            SetTrigger("Defeated");
+            return;
+        }
+
+        if (target == null || !gameManager.playerVivo)
         {
             SetTrigger("Idle");
             return;
@@ -106,8 +112,8 @@ public class BossAI : MonoBehaviour
         if (ataqueArea != null)
         {
             ataqueArea.SetActive(true);
+            podeAtacar = true;
             Debug.Log("Área de ataque ativada.");
-            podeAtacar = false;
             Invoke(nameof(DesativarAreaDeAtaque), 0.5f);
         }
     }
@@ -118,7 +124,6 @@ public class BossAI : MonoBehaviour
         {
             ataqueArea.SetActive(false);
             Debug.Log("Área de ataque desativada.");
-            Invoke(nameof(ResetarAtaque), 1f);
         }
     }
 
@@ -136,24 +141,40 @@ public class BossAI : MonoBehaviour
         animator.ResetTrigger("Defeated");
 
         animator.SetTrigger(triggerName);
-        Debug.Log("Animação: " + triggerName);
     }
 
-    private void OnCollisionEnter(Collision collision)
+    private void OnTriggerEnter(Collider other)
     {
-        if (isDead || !podeAtacar) return;
+        if (!podeAtacar || isDead) return;
 
-        if (collision.gameObject.CompareTag("Player"))
+        if (other.gameObject.CompareTag("PlayerHitbox"))
         {
-            Debug.Log("Boss colidiu com o jogador.");
+            Debug.Log("Boss colidiu com a hitbox do jogador (pré-impacto).");
 
-            if (gameManager != null)
-            {
-                Debug.Log("Boss causou dano ao jogador.");
-                gameManager.ReceberDano();
-            }
-
-            AtivarAreaDeAtaque();
+            // Guarda referência para depois aplicar dano
+            StartCoroutine(AplicarDanoComDelay(2f));
+            podeAtacar = false;
         }
     }
+
+    private System.Collections.IEnumerator AplicarDanoComDelay(float delay)
+    {
+        yield return new WaitForSeconds(delay);
+
+        if (isDead) yield break;
+
+        // Verifica se o jogador ainda está vivo e perto
+        float distance = Vector3.Distance(transform.position, target.position);
+        if (distance <= attackDistance && gameManager.playerVivo)
+        {
+            Debug.Log("Boss causou dano ao jogador (no momento certo).");
+            gameManager.ReceberDanoBoss();
+        }
+
+        // Reativa ataque depois do ciclo
+        Invoke(nameof(ResetarAtaque), 0.1f);
+    }
+
+
+
 }

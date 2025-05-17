@@ -25,6 +25,22 @@ public class WeaponHitbox : MonoBehaviour
                     collectiblesManager.HitBox(other);
                 }
             }
+
+            if (other.CompareTag("Boss"))
+            {
+                BossAI boss = other.GetComponent<BossAI>();
+
+                if (boss != null)
+                {
+                    boss.ReceberDano(damage);
+                }
+
+                CollectiblesManager collectiblesManager = FindObjectOfType<CollectiblesManager>();
+                if (collectiblesManager != null)
+                {
+                    collectiblesManager.HitBox(other);
+                }
+            }
         }
 
         if (other.CompareTag("Box"))
@@ -38,4 +54,4 @@ public class WeaponHitbox : MonoBehaviour
 
 
     }
-}
+} 

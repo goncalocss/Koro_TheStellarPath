@@ -9,6 +9,8 @@ TagManager:
   - Box
   - Orb
   - Ground
+  - Boss
+  - PlayerHitbox
   layers:
   - Default
   - TransparentFX
