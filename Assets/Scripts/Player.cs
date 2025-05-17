@@ -142,11 +142,6 @@ public class Player : MonoBehaviour
                 isAttacking = true;
             }
 
-            if (Input.GetKeyDown(KeyCode.LeftShift) && !stateInfo.IsName("LightAttack") && !stateInfo.IsName("HeavyAttack") && !stateInfo.IsName("Capoeira"))
-            {
-                animator.SetTrigger("Capoeira");
-                isAttacking = true;
-            }
         }
 
         // Reajustar após o ataque
