@@ -13,38 +13,43 @@ public class OrbMovement : MonoBehaviour
 
     private void Start()
     {
-        player = GameObject.FindGameObjectWithTag("Player").transform;
+        GameObject playerObject = GameObject.FindGameObjectWithTag("Player");
 
-        // Posições inicial e alvo
-        startPosition = transform.position;
-        targetPosition = new Vector3(player.position.x, player.position.y + 1f, player.position.z);
+        if (playerObject != null)
+        {
+            player = playerObject.transform;
 
-        // Calcula a distância total entre a orb e o jogador
-        journeyLength = Vector3.Distance(startPosition, targetPosition);
+            // Posições inicial e alvo
+            startPosition = transform.position;
+            targetPosition = new Vector3(player.position.x, player.position.y + 1f, player.position.z);
 
-        // Armazena o tempo inicial
-        startTime = Time.time;
+            // Calcula a distância total entre a orb e o jogador
+            journeyLength = Vector3.Distance(startPosition, targetPosition);
+
+            // Armazena o tempo inicial
+            startTime = Time.time;
+        }
+        else
+        {
+            Debug.LogWarning("Player não encontrado pela tag no OrbMovement.");
+        }
     }
 
     private void Update()
     {
-        if (!isCollected)
+        if (!isCollected && player != null)
         {
-            // O tempo que passou desde o início do movimento
             float distanceCovered = (Time.time - startTime) * (journeyLength / moveDuration);
 
-            // Se a orb ainda não chegou ao jogador, mova ela
             if (distanceCovered < journeyLength)
             {
-                // Move a orb de forma linear entre a posição inicial e o alvo
                 float fractionOfJourney = distanceCovered / journeyLength;
                 transform.position = Vector3.Lerp(startPosition, targetPosition, fractionOfJourney);
             }
             else
             {
-                // Se a orb chegou ao destino, define a posição final exata
                 transform.position = targetPosition;
-                isCollected = true;  // Marque a orb como coletada
+                isCollected = true;
             }
         }
     }
@@ -59,5 +64,4 @@ public class OrbMovement : MonoBehaviour
             Destroy(gameObject);  // Destrói a orb quando coletada
         }
     }
-
 }

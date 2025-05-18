@@ -1368,7 +1368,6 @@ MonoBehaviour:
   moveSpeed: 3
   maxHealth: 10
   healthBar: {fileID: 1959503936}
-  gameManager: {fileID: 238190012}
   ataqueArea: {fileID: 1943481777}
 --- !u!1001 &879948838
 PrefabInstance:
@@ -2257,7 +2256,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9d8acde2106c54b79aa219e5bb59c0ad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  orbPrefab: {fileID: 8059094952719321438, guid: cb8b19d128ea34b3fb6bfdf7015d959d, type: 3}
+  orbPrefab: {fileID: 720172721942108117, guid: 72b89e61875a8164082009b77924c2a7, type: 3}
   player: {fileID: 1460855734}
   interactionDistance: 3
 --- !u!136 &1428593480
@@ -2504,7 +2503,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9d8acde2106c54b79aa219e5bb59c0ad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  orbPrefab: {fileID: 8059094952719321438, guid: cb8b19d128ea34b3fb6bfdf7015d959d, type: 3}
+  orbPrefab: {fileID: 720172721942108117, guid: 72b89e61875a8164082009b77924c2a7, type: 3}
   player: {fileID: 1460855734}
   interactionDistance: 3
 --- !u!65 &1510463749
