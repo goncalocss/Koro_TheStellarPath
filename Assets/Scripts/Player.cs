@@ -24,8 +24,7 @@ public class Player : MonoBehaviour
 
     private int currentAttackTrigger = -1;
 
-    private bool estaVivo = true;
-
+    public bool estaVivo = true;
     private bool jaMorreu = false;
 
     // Inicializar componentes
@@ -177,51 +176,63 @@ public class Player : MonoBehaviour
 
         Debug.Log("Player morreu!");
 
-        // 1. Toca a animação de morte
-        if (animator != null)
-        {
-            animator.SetTrigger("Died");
-        }
+        GameManager.Instance.playerVivo = false;
 
-        // 2. Desabilita o CharacterController
-        CharacterController cc = GetComponent<CharacterController>();
-        if (cc != null)
-        {
-            cc.enabled = false;
-        }
+        animator?.SetTrigger("Died");
+        GetComponent<CharacterController>().enabled = false;
+        GetComponent<Rigidbody>().isKinematic = true;
+        GetComponent<Collider>().enabled = false;
 
-        // 3. Desabilita o Rigidbody
-        Rigidbody rb = GetComponent<Rigidbody>();
-        if (rb != null)
-        {
-            rb.isKinematic = true;
-        }
+        var movimento = GetComponent<PlayerMovement>();
+        if (movimento != null) movimento.enabled = false;
 
-        // 4. Desabilita o Collider
-        Collider col = GetComponent<Collider>();
-        if (col != null)
-        {
-            col.enabled = false;
-        }
-
-        // 5. Desabilita o script de movimento
-        PlayerMovement movimento = GetComponent<PlayerMovement>();
-        if (movimento != null)
-        {
-            movimento.enabled = false;
-        }
-
-        // 6. Esperar fim da animação e mudar de cena
         StartCoroutine(EsperarEReiniciar());
-
-        Debug.Log("Game Over");
     }
-
 
     private IEnumerator EsperarEReiniciar()
     {
         yield return new WaitForSeconds(3f); // Espera 2,5 segundos
-        //mudar de cena
-        SceneManager.LoadScene("GameOver");
+                                             //mudar de cena
+        SceneManager.LoadScene("GameOver", LoadSceneMode.Additive);
+
     }
+
+    public void ResetarEstado()
+    {
+        jaMorreu = false;
+        estaVivo = true; // ← Fundamental para reativar Update()
+        velocity = Vector3.zero; // ← Limpa impulso de queda
+
+        if (animator != null)
+        {
+            if (!animator.enabled)
+            {
+                animator.enabled = true;
+                Debug.Log("🎥 Animator reativado no respawn.");
+            }
+
+            // Limpa todos os triggers de animação
+            animator.ResetTrigger("Died");
+            animator.ResetTrigger("Jump");
+            animator.ResetTrigger("DoubleJump");
+            animator.ResetTrigger("LightAttack");
+            animator.ResetTrigger("HeavyAttack");
+
+            // Garante que o estado Idle entra imediatamente
+            animator.Play("Idle", 0, 0f); // ← Nome do estado Idle no Animator
+            Debug.Log("🎬 Triggers limpos e animação Idle forçada.");
+        }
+
+        if (GameManager.Instance != null)
+        {
+            GameManager.Instance.playerVivo = true;
+            Debug.Log("✅ playerVivo = true no GameManager");
+        }
+    }
+
+
+
+
+
+
 }
