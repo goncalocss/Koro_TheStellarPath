@@ -108,6 +108,12 @@ public class GameManager : MonoBehaviour
             Debug.Log("🎯 Inimigo atualizado no OnSceneLoaded.");
         }
 
+        foreach (var boss in FindObjectsOfType<BossAI>())
+        {
+            boss.ReeniciarDetatacaoBoos();
+            Debug.Log("🎯 Boss atualizado no OnSceneLoaded.");
+        }
+
         // Por padrão, o jogador está vivo após carregar cena
         playerVivo = true;
     }
@@ -240,6 +246,13 @@ public class GameManager : MonoBehaviour
         {
             inimigo.ReiniciarDeteccao();
             Debug.Log("🎯 Inimigo atualizado após respawn.");
+        }
+
+        //logica para reset do boos
+        foreach (var boss in FindObjectsOfType<BossAI>())
+        {
+            boss.ReeniciarDetatacaoBoos();
+            Debug.Log("🎯 Boss atualizado após respawn.");
         }
 
         Debug.Log("✅ Respawn concluído com sucesso.");

@@ -9,7 +9,6 @@ public class BossAI : MonoBehaviour
     public int maxHealth = 300;
     private int currentHealth;
     public BossHealthBar healthBar;
-    public GameManager gameManager;
     private Animator animator;
     private Rigidbody rb;
     private bool isDead = false;
@@ -29,6 +28,8 @@ public class BossAI : MonoBehaviour
         }
 
         SetTrigger("Idle");
+
+        target = GameObject.FindWithTag("Player")?.transform;
     }
 
     void Update()
@@ -39,7 +40,7 @@ public class BossAI : MonoBehaviour
             return;
         }
 
-        if (target == null || !gameManager.playerVivo)
+        if (target == null || !GameManager.Instance.playerVivo)
         {
             SetTrigger("Idle");
             return;
@@ -65,6 +66,16 @@ public class BossAI : MonoBehaviour
         else
         {
             SetTrigger("Idle");
+
+            if (healthBar != null && healthBar.gameObject.activeSelf)
+            {
+                healthBar.Hide();
+                Debug.Log("Barra de vida do boss desativada.");
+
+                currentHealth = maxHealth;
+                healthBar.SetMaxHealth(maxHealth);
+                Debug.Log("Barra de vida do boss reiniciada.");
+            }
         }
     }
 
@@ -165,14 +176,29 @@ public class BossAI : MonoBehaviour
 
         // Verifica se o jogador ainda está vivo e perto
         float distance = Vector3.Distance(transform.position, target.position);
-        if (distance <= attackDistance && gameManager.playerVivo)
+        if (distance <= attackDistance && GameManager.Instance.playerVivo)
         {
             Debug.Log("Boss causou dano ao jogador (no momento certo).");
-            gameManager.ReceberDanoBoss();
+            GameManager.Instance.ReceberDanoBoss();
         }
 
         // Reativa ataque depois do ciclo
         Invoke(nameof(ResetarAtaque), 0.1f);
+    }
+
+    public void ReeniciarDetatacaoBoos()
+    {
+        Transform novoAlvo = GameObject.FindWithTag("PlayerHitbox")?.transform;
+
+        if (novoAlvo != null)
+        {
+            target = novoAlvo;
+            Debug.Log("Novo alvo definido para o boss.");
+        }
+        else
+        {
+            Debug.LogWarning("Novo alvo não encontrado.");
+        }
     }
 
 
