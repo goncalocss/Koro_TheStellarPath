@@ -122,7 +122,6 @@ public class GameManager : MonoBehaviour
 
 
         playerVivo = true;
-        RemoverCaixasDestruidas();
     }
 
     public void IncrementOrbCount()
