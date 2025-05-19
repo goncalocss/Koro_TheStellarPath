@@ -89,7 +89,7 @@ public class CollectiblesManager : MonoBehaviour
     {
         Debug.Log("🍌 Banana está a ser instanciada!");
 
-        int numBananas = 1;
+        int numBananas = 5;
         for (int i = 0; i < numBananas; i++)
         {
             Vector3 spawnPosition = position + new Vector3(Random.Range(-1f, 1f), 1, Random.Range(-1f, 1f));

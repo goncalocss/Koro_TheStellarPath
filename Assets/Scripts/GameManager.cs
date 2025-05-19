@@ -13,10 +13,14 @@ public class GameManager : MonoBehaviour
 
     public List<Image> pontosDeVida;
     private int vidaAtual = 3;
+
+    //variavel para guardar a vida maxima para ser atualizada conforme checkpoints ou aumentos de vida
+    // private int vidaMaxima = 3;
     private int acertosRecebidos = 0;
 
     private int bananaCount = 0;
     private const int bananasPorVidaExtra = 5;
+
 
 
     [Header("Referência ao Player")]
@@ -68,10 +72,12 @@ public class GameManager : MonoBehaviour
             if (player != null)
             {
                 player.transform.position = data.playerPosition;
-                DefinirVidaAtual(data.playerHealth);
+                
                 DefinirNumeroOrbs(data.orbs);
                 DefinirBananaCount(data.bananaCount);
                 AplicarVidaMaxima(data.vidaMaxima);
+                DefinirVidaAtual(data.playerHealth);
+                AtualizarVidaVisual();
 
 
                 Debug.Log("✅ Jogador reposicionado com dados do save.");
@@ -326,6 +332,8 @@ public class GameManager : MonoBehaviour
 
         acertosRecebidos = 0;
 
+        vidaAtual = pontosDeVida.Count;
+
         for (int i = 0; i < pontosDeVida.Count; i++)
         {
             if (pontosDeVida[i] != null)
@@ -368,7 +376,7 @@ public class GameManager : MonoBehaviour
     public void ColetarBanana()
     {
         bananaCount++;
-        Debug.Log("🍌 Banana apanhada! Total: " + bananaCount);
+        Debug.Log("🍌 Banana apanhada: " + bananaCount);
 
         if (bananaCount % bananasPorVidaExtra == 0)
         {
@@ -377,25 +385,36 @@ public class GameManager : MonoBehaviour
     }
 
 
+
     void AumentarVidaMaxima()
     {
-        if (pontosDeVida == null || pontosDeVida.Count == 0)
+        if (pontosDeVida == null)
         {
-            Debug.LogWarning("⚠️ Lista de pontos de vida vazia ao tentar aumentar vida máxima!");
+            Debug.LogWarning("⚠️ Lista de pontos de vida não está pronta.");
             return;
         }
 
-        // Cria um novo ícone visual (baseado no último ponto de vida como referência)
-        Image referencia = pontosDeVida[0]; // ou outro qualquer da lista
+        if (pontosDeVida.Count >= 6)
+        {
+            Debug.Log("🔒 Limite de 6 vidas atingido.");
+            return;
+        }
+
+        // Cria novo coração
+        Image referencia = pontosDeVida[0];
         Image novo = Instantiate(referencia, referencia.transform.parent);
-        novo.enabled = true;
-        novo.gameObject.SetActive(true);
-
         pontosDeVida.Add(novo);
-        vidaAtual++;
 
-        Debug.Log($"🆙 Vida máxima aumentada! Nova vida atual/máxima: {vidaAtual}/{pontosDeVida.Count}");
+        // Aumenta vida atual
+        vidaAtual = Mathf.Clamp(vidaAtual + 1, 0, pontosDeVida.Count);
+
+        AtualizarVidaVisual();
+
+        Debug.Log($"🆙 Nova vida: {vidaAtual}/{pontosDeVida.Count}");
     }
+
+
+
 
     public void DefinirBananaCount(int novasBananas)
     {
@@ -409,28 +428,42 @@ public class GameManager : MonoBehaviour
 
     public void AplicarVidaMaxima(int novaVidaMaxima)
     {
-        if (pontosDeVida == null || pontosDeVida.Count == 0)
-        {
-            Debug.LogWarning("⚠️ Tentativa de aplicar vida máxima sem pontosDeVida carregados.");
-            return;
-        }
+        novaVidaMaxima = Mathf.Clamp(novaVidaMaxima, 1, 6);
 
-        int diferenca = novaVidaMaxima - pontosDeVida.Count;
+        int coracoesFaltam = novaVidaMaxima - pontosDeVida.Count;
 
-        if (diferenca > 0)
+        if (coracoesFaltam > 0)
         {
             Image referencia = pontosDeVida[0];
-            for (int i = 0; i < diferenca; i++)
+            for (int i = 0; i < coracoesFaltam; i++)
             {
                 Image novo = Instantiate(referencia, referencia.transform.parent);
-                novo.enabled = true;
-                novo.gameObject.SetActive(true);
                 pontosDeVida.Add(novo);
             }
-
-            Debug.Log($"🧩 {diferenca} pontos de vida adicionados para restaurar vida máxima.");
         }
+
+        AtualizarVidaVisual();
     }
+
+
+    private void AtualizarVidaVisual()
+    {
+        if (pontosDeVida == null) return;
+
+        for (int i = 0; i < pontosDeVida.Count; i++)
+        {
+            bool ativo = i < vidaAtual;
+
+            pontosDeVida[i].enabled = ativo;
+            pontosDeVida[i].gameObject.SetActive(true); // sempre ativo no layout
+        }
+
+        Debug.Log($"🔄 Vida atualizada visualmente: {vidaAtual}/{pontosDeVida.Count}");
+    }
+
+
+
+
 
 
 
