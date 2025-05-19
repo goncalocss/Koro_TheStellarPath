@@ -1313,6 +1313,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Bonfire (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 5032778733468845926, guid: 5a7ba3a00e9cb2c4e9f5286f922c7297, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

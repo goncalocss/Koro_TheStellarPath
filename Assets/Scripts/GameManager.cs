@@ -196,7 +196,14 @@ public class GameManager : MonoBehaviour
         if (pontosDeVida == null || pontosDeVida.Count == 0) return;
 
         acertosRecebidos = 0;
-        vidaAtual++;
+        if (vidaAtual == 0)
+        {
+            vidaAtual = 3;
+        }
+        else
+        {
+            vidaAtual++;
+        }
         AtualizarVidaVisual();
     }
 
