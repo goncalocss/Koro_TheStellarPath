@@ -42,6 +42,7 @@ public class CollectiblesManager : MonoBehaviour
 
             bananaDropPosition = other.transform.position; // armazena a posição
             Invoke("DropBanana", 1.5f);
+            Destroy(gameObject, 3f);
             //Tratar da questão de animação do baú para dropar a banana, ou seja posso desativar o mesh renderer ou o collider
            
         }
@@ -89,7 +90,7 @@ public class CollectiblesManager : MonoBehaviour
     {
         Debug.Log("🍌 Banana está a ser instanciada!");
 
-        int numBananas = 5;
+        int numBananas = 1;
         for (int i = 0; i < numBananas; i++)
         {
             Vector3 spawnPosition = position + new Vector3(Random.Range(-1f, 1f), 1, Random.Range(-1f, 1f));

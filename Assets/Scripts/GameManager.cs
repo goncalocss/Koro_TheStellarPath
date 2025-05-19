@@ -18,7 +18,10 @@ public class GameManager : MonoBehaviour
     private int acertosRecebidos = 0;
 
     private int bananaCount = 0;
-    private const int bananasPorVidaExtra = 5;
+    private const int bananasPorVidaExtra = 1;
+
+    
+
 
     [Header("Referência ao Player")]
     public Player player;
@@ -193,7 +196,7 @@ public class GameManager : MonoBehaviour
         if (pontosDeVida == null || pontosDeVida.Count == 0) return;
 
         acertosRecebidos = 0;
-        vidaAtual = pontosDeVida.Count;
+        vidaAtual++;
         AtualizarVidaVisual();
     }
 
@@ -215,26 +218,37 @@ public class GameManager : MonoBehaviour
     public void ColetarBanana()
     {
         bananaCount++;
-        int vidasDadas = pontosDeVida.Count - 3;
-        int vidasPossiveis = Mathf.Clamp(bananaCount / bananasPorVidaExtra, 0, 3);
+        Debug.Log($"🍌 Banana coletada! Total: {bananaCount}");
 
-        if (vidasPossiveis > vidasDadas && pontosDeVida.Count < 6)
+        if (bananaCount % bananasPorVidaExtra == 0)
         {
-            AumentarVidaMaxima();
+            if (vidaAtual < pontosDeVida.Count)
+            {
+                vidaAtual++;
+                AtualizarVidaVisual();
+                Debug.Log($"❤️ Vida recuperada com bananas! Vida atual: {vidaAtual}/{pontosDeVida.Count}");
+            }
+            else
+            {
+                Debug.Log("🧍 Vida já está cheia — nada a recuperar.");
+            }
         }
     }
 
-    void AumentarVidaMaxima()
-    {
-        if (pontosDeVida == null || pontosDeVida.Count >= 6) return;
 
-        Image referencia = pontosDeVida[0];
-        Image novo = Instantiate(referencia, referencia.transform.parent);
-        pontosDeVida.Add(novo);
 
-        vidaAtual = Mathf.Clamp(vidaAtual + 1, 0, pontosDeVida.Count);
-        AtualizarVidaVisual();
-    }
+    // void AumentarVidaMaxima()
+    // {
+    //     if (pontosDeVida == null || pontosDeVida.Count >= 6) return;
+
+    //     Image referencia = pontosDeVida[0];
+    //     Image novo = Instantiate(referencia, referencia.transform.parent);
+    //     pontosDeVida.Add(novo);
+
+    //     vidaAtual = Mathf.Clamp(vidaAtual + 1, 0, pontosDeVida.Count);
+    //     AtualizarVidaVisual();
+    //     Debug.Log("Vida máxima aumentada!");
+    // }
 
     public void AplicarVidaMaxima(int novaVidaMaxima)
     {
@@ -249,10 +263,12 @@ public class GameManager : MonoBehaviour
                 Image novo = Instantiate(referencia, referencia.transform.parent);
                 pontosDeVida.Add(novo);
             }
+            Debug.Log($"⚙️ Aplicada vida máxima estrutural: {novaVidaMaxima}");
         }
 
         AtualizarVidaVisual();
     }
+
 
     private void AtualizarVidaVisual()
     {

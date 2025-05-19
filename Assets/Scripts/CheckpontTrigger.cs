@@ -24,13 +24,6 @@ public class CheckpointTrigger : MonoBehaviour
             GameManager.Instance.DefinirCheckpoint(transform.position);
             Debug.Log("✅ Checkpoint ativado em posição: " + transform.position);
 
-            // ✅ Cura uma vez, se a vida estiver incompleta
-            if (!vidaCurada && GameManager.Instance.ObterVidaAtual() < GameManager.Instance.ObterVidaMaxima())
-            {
-                GameManager.Instance.ReporVida();
-                vidaCurada = true;
-                Debug.Log("❤️ Vida restaurada ao ativar o checkpoint.");
-            }
         }
 
 
