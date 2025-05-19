@@ -52,6 +52,15 @@ public class WeaponHitbox : MonoBehaviour
             }
         }
 
+        if (other.CompareTag("Bau"))
+        {
+            CollectiblesManager collectiblesManager = FindObjectOfType<CollectiblesManager>();
+            if (collectiblesManager != null)
+            {
+                collectiblesManager.HitBox(other);
+            }
+        }
+
 
     }
 } 

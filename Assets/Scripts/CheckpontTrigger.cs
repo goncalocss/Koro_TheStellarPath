@@ -41,6 +41,8 @@ public class CheckpointTrigger : MonoBehaviour
         data.currentScene = SceneManager.GetActiveScene().name;
         data.checkpointPosition = transform.position; // Adiciona a posição do checkpoint
         data.orbs = GameManager.Instance.ObterOrbs(); // Adiciona o número de orbs
+        data.vidaMaxima = GameManager.Instance.ObterVidaMaxima(); // Adiciona a vida máxima
+        data.bananaCount = GameManager.Instance.ObterBananaCount(); // Adiciona o número de bananas
 
         SaveSystem.SaveGame(data);
 

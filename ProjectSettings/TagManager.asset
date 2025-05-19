@@ -12,6 +12,8 @@ TagManager:
   - Boss
   - PlayerHitbox
   - PontosDeVida
+  - Banana
+  - Bau
   layers:
   - Default
   - TransparentFX

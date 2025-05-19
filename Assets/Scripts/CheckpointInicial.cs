@@ -19,6 +19,8 @@ public class CheckpointInicial : MonoBehaviour
                 data.currentScene = SceneManager.GetActiveScene().name;
                 data.checkpointPosition = transform.position;
                 data.orbs = GameManager.Instance.ObterOrbs();
+                data.vidaMaxima = GameManager.Instance.ObterVidaMaxima();
+                data.bananaCount = GameManager.Instance.ObterBananaCount();
 
                 SaveSystem.SaveGame(data);
 

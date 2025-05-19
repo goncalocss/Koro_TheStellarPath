@@ -8,4 +8,6 @@ public class SaveData
     public string currentScene;
     public Vector3 checkpointPosition; // Adiciona a posição do checkpoint
     public int orbs; // Adiciona o número de orbs
+    public int vidaMaxima;
+    public int bananaCount;
 }
