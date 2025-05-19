@@ -55,7 +55,29 @@ public class GameManager : MonoBehaviour
         {
             player = FindObjectOfType<Player>();
         }
+
+        // ✅ Carregar dados de save se existirem
+        if (TempSaveData.Instance != null && TempSaveData.Instance.saveData != null)
+        {
+            SaveData data = TempSaveData.Instance.saveData;
+
+            if (player != null)
+            {
+                player.transform.position = data.playerPosition;
+                DefinirVidaAtual(data.playerHealth);
+                DefinirNumeroOrbs(data.orbs);
+
+                Debug.Log("✅ Jogador reposicionado com dados do save.");
+            }
+
+            Destroy(TempSaveData.Instance.gameObject); // limpa após usar
+        }
+        else
+        {
+            Debug.Log("ℹ️ Nenhum TempSaveData encontrado — provavelmente novo jogo.");
+        }
     }
+
 
     private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
@@ -128,6 +150,11 @@ public class GameManager : MonoBehaviour
     {
         if (orbCountText != null)
             orbCountText.text = "x" + orbCount;
+    }
+
+    public int ObterOrbs()
+    {
+        return orbCount;
     }
 
     public void ResetOrbCount()
@@ -294,5 +321,16 @@ public class GameManager : MonoBehaviour
     {
         return pontosDeVida.Count;
     }
+
+    public void DefinirVidaAtual(int novaVida)
+    {
+        vidaAtual = novaVida;
+    }
+
+    public void DefinirNumeroOrbs (int novoNumero)
+    {
+        orbCount = novoNumero;
+    }
+
 
 }

@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class CheckpointTrigger : MonoBehaviour
 {
@@ -32,5 +33,17 @@ public class CheckpointTrigger : MonoBehaviour
                 Debug.Log("❤️ Vida restaurada ao ativar o checkpoint.");
             }
         }
+
+
+        SaveData data = new SaveData();
+            data.playerPosition = transform.position;
+            data.playerHealth = GameManager.Instance.ObterVidaAtual();
+            data.currentScene = SceneManager.GetActiveScene().name;
+            data.checkpointPosition = transform.position; // Adiciona a posição do checkpoint
+            data.orbs = GameManager.Instance.ObterOrbs(); // Adiciona o número de orbs
+
+            SaveSystem.SaveGame(data);
+
+            Debug.Log("💾 Progresso gravado ao ativar o checkpoint.");
     }
 }
