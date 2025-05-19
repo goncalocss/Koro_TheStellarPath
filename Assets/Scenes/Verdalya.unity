@@ -619,6 +619,19 @@ MonoBehaviour:
   bananaPrefab: {fileID: 3940760709425202201, guid: a0809b8090e968a4298ff2614e507b52, type: 3}
   player: {fileID: 1460855734}
   interactionDistance: 3
+--- !u!114 &306303403
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 306303400}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: db3eaeda8b139bd4b93c1f592aebf09e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  idUnico: caixa_2
 --- !u!1 &464450335 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: c82046012dce4e949a9348271941790a, type: 3}
@@ -894,7 +907,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: fa1481f29a9a6ea42b7c5eb2247e9d36, type: 3}
       propertyPath: m_Name
-      value: Bau
+      value: caixa_2
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: fa1481f29a9a6ea42b7c5eb2247e9d36, type: 3}
       propertyPath: m_TagString
@@ -910,6 +923,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: fa1481f29a9a6ea42b7c5eb2247e9d36, type: 3}
       insertIndex: -1
       addedObject: {fileID: 306303401}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: fa1481f29a9a6ea42b7c5eb2247e9d36, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 306303403}
   m_SourcePrefab: {fileID: 100100000, guid: fa1481f29a9a6ea42b7c5eb2247e9d36, type: 3}
 --- !u!1001 &673433774
 PrefabInstance:
@@ -2635,6 +2651,19 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.020352801, y: 0.020329803, z: 0.020290432}
   m_Center: {x: -0.000004529953, y: 0, z: -0.00000047590575}
+--- !u!114 &1510463750
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1510463744}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: db3eaeda8b139bd4b93c1f592aebf09e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  idUnico: caixa_1
 --- !u!1 &1522330507
 GameObject:
   m_ObjectHideFlags: 3
@@ -3151,7 +3180,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: fa1481f29a9a6ea42b7c5eb2247e9d36, type: 3}
       propertyPath: m_Name
-      value: CaixaMadeira
+      value: caixa_1
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: fa1481f29a9a6ea42b7c5eb2247e9d36, type: 3}
       propertyPath: m_TagString
@@ -3167,6 +3196,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: fa1481f29a9a6ea42b7c5eb2247e9d36, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1510463749}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: fa1481f29a9a6ea42b7c5eb2247e9d36, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1510463750}
   m_SourcePrefab: {fileID: 100100000, guid: fa1481f29a9a6ea42b7c5eb2247e9d36, type: 3}
 --- !u!1 &1838462392
 GameObject:

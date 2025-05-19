@@ -20,7 +20,10 @@ public class GameManager : MonoBehaviour
     private int bananaCount = 0;
     private const int bananasPorVidaExtra = 1;
 
-    
+    private List<string> caixasDestruidas = new List<string>();
+
+
+
 
 
     [Header("Referência ao Player")]
@@ -62,6 +65,7 @@ public class GameManager : MonoBehaviour
         if (TempSaveData.Instance != null && TempSaveData.Instance.saveData != null)
         {
             SaveData data = TempSaveData.Instance.saveData;
+
             player.transform.position = data.playerPosition;
             ultimoCheckpoint = data.checkpointPosition;
             temCheckpoint = true;
@@ -70,6 +74,16 @@ public class GameManager : MonoBehaviour
             AplicarVidaMaxima(data.vidaMaxima);
             DefinirVidaAtual(data.playerHealth);
             AtualizarVidaVisual();
+
+            if (data.caixasDestruidas != null)
+            {
+                CarregarCaixasDestruidas(data.caixasDestruidas);
+                Debug.Log($"Caixas destruídas carregadas: {string.Join(", ", caixasDestruidas)}");
+
+                // 💥 CHAMADA ESSENCIAL
+                RemoverCaixasDestruidas();
+            }
+
             Destroy(TempSaveData.Instance.gameObject);
         }
     }
@@ -105,7 +119,10 @@ public class GameManager : MonoBehaviour
             AtualizarVidaVisual();
         }
 
+
+
         playerVivo = true;
+        RemoverCaixasDestruidas();
     }
 
     public void IncrementOrbCount()
@@ -243,20 +260,6 @@ public class GameManager : MonoBehaviour
     }
 
 
-
-    // void AumentarVidaMaxima()
-    // {
-    //     if (pontosDeVida == null || pontosDeVida.Count >= 6) return;
-
-    //     Image referencia = pontosDeVida[0];
-    //     Image novo = Instantiate(referencia, referencia.transform.parent);
-    //     pontosDeVida.Add(novo);
-
-    //     vidaAtual = Mathf.Clamp(vidaAtual + 1, 0, pontosDeVida.Count);
-    //     AtualizarVidaVisual();
-    //     Debug.Log("Vida máxima aumentada!");
-    // }
-
     public void AplicarVidaMaxima(int novaVidaMaxima)
     {
         novaVidaMaxima = Mathf.Clamp(novaVidaMaxima, 1, 6);
@@ -288,4 +291,45 @@ public class GameManager : MonoBehaviour
             pontosDeVida[i].gameObject.SetActive(true);
         }
     }
+    public void RegistarCaixaDestruida(string id)
+    {
+        if (!caixasDestruidas.Contains(id))
+        {
+            caixasDestruidas.Add(id);
+            Debug.Log($"✅ Caixa/Baú destruído registado: {id}");
+        }
+    }
+    public bool CaixaJaFoiDestruida(string id)
+    {
+        return caixasDestruidas.Contains(id);
+    }
+    public List<string> ObterCaixasDestruidas()
+    {
+        return new List<string>(caixasDestruidas);
+    }
+    public void CarregarCaixasDestruidas(List<string> ids)
+    {
+        caixasDestruidas = new List<string>(ids);
+    }
+
+    private void RemoverCaixasDestruidas()
+    {
+        Debug.Log($"🔍 Entrou em RemoverCaixasDestruidas()");
+
+        var all = FindObjectsOfType<IdentificadorPersistente>();
+        Debug.Log($"🔎 A verificar {all.Length} objetos com ID.");
+
+        foreach (var obj in all)
+        {
+            Debug.Log($"📦 Encontrado: {obj.name} | ID = {obj.idUnico}");
+
+            if ((obj.CompareTag("Box") || obj.CompareTag("Bau")) && CaixaJaFoiDestruida(obj.idUnico))
+            {
+                Debug.Log($"🧹 A destruir: {obj.idUnico}");
+                Destroy(obj.gameObject);
+            }
+        }
+    }
+
+
 }

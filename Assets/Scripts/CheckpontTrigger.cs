@@ -5,7 +5,6 @@ public class CheckpointTrigger : MonoBehaviour
 {
     public GameObject fogo; // Referência ao GameObject do fogo (Particle System, etc.)
     private bool ativado = false;
-    private bool vidaCurada = false;
 
     private void OnTriggerEnter(Collider other)
     {
@@ -35,6 +34,7 @@ public class CheckpointTrigger : MonoBehaviour
         data.orbs = GameManager.Instance.ObterOrbs(); // Adiciona o número de orbs
         data.vidaMaxima = GameManager.Instance.ObterVidaMaxima(); // Adiciona a vida máxima
         data.bananaCount = GameManager.Instance.ObterBananaCount(); // Adiciona o número de bananas
+        data.caixasDestruidas = GameManager.Instance.ObterCaixasDestruidas(); // Adiciona as caixas destruídas
 
         SaveSystem.SaveGame(data);
 

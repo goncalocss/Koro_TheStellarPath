@@ -21,6 +21,7 @@ public class CheckpointInicial : MonoBehaviour
                 data.orbs = GameManager.Instance.ObterOrbs();
                 data.vidaMaxima = GameManager.Instance.ObterVidaMaxima();
                 data.bananaCount = GameManager.Instance.ObterBananaCount();
+                data.caixasDestruidas = GameManager.Instance.ObterCaixasDestruidas();
 
                 SaveSystem.SaveGame(data);
 

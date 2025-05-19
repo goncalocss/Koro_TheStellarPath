@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 [System.Serializable]
@@ -10,4 +11,7 @@ public class SaveData
     public int orbs; // Adiciona o número de orbs
     public int vidaMaxima;
     public int bananaCount;
+
+    //apenas Para caixas destruidas
+    public List<string> caixasDestruidas = new List<string>();
 }

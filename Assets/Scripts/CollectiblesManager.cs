@@ -20,31 +20,54 @@ public class CollectiblesManager : MonoBehaviour
 
     public void HitBox(Collider other)
     {
-        Debug.Log("HitBox chamado para: " + other.gameObject.name);
+        Debug.Log("🔸 HitBox chamado para: " + other.gameObject.name);
+
+        // Tenta obter o identificador (se existir)
+        IdentificadorPersistente identificador = other.GetComponent<IdentificadorPersistente>();
+        string id = identificador != null ? identificador.idUnico : null;
 
         if (other.CompareTag("Box"))
         {
-            Destroy(other.gameObject);
+            if (!string.IsNullOrEmpty(id))
+            {
+                GameManager.Instance.RegistarCaixaDestruida(id);
+                Debug.Log($"📦 Caixa destruída com ID: {id}");
+            }
+
             ReleaseOrbs(other.transform.position);
+            Destroy(other.gameObject);
         }
         else if (other.CompareTag("Inimigo"))
         {
-            Debug.Log("Inimigo atingido e orbs dropadas: " + other.gameObject.name);
-            Invoke("DropOrbs", 1.5f);
+            Debug.Log("💥 Inimigo atingido e orbs dropadas: " + other.gameObject.name);
+            Invoke("DropOrbs", 1.5f); // drop genérico, se quiseres mudar para posição, adapta
         }
         else if (other.CompareTag("Bau"))
         {
-            if (bausAtivados.Contains(other.gameObject)) return;
+            if (!string.IsNullOrEmpty(id) && GameManager.Instance.CaixaJaFoiDestruida(id))
+            {
+                Debug.Log($"⚠️ Baú {id} já foi ativado anteriormente. Ignorado.");
+                return;
+            }
 
+            if (!string.IsNullOrEmpty(id))
+            {
+                GameManager.Instance.RegistarCaixaDestruida(id);
+            }
+
+            if (bausAtivados.Contains(other.gameObject)) return;
             bausAtivados.Add(other.gameObject);
 
-            Debug.Log("📦 Baú atingido: " + other.gameObject.name);
+            Debug.Log("📤 Baú ativado e banana preparada para drop: " + other.gameObject.name);
 
-            bananaDropPosition = other.transform.position; // armazena a posição
+            bananaDropPosition = other.transform.position;
             Invoke("DropBanana", 1.5f);
+
+            // ❗️Aqui destróis o script (this), mas não o baú — se quiseres esconder o baú:
+            // other.GetComponent<MeshRenderer>().enabled = false;
+            // other.GetComponent<Collider>().enabled = false;
+
             Destroy(gameObject, 3f);
-            //Tratar da questão de animação do baú para dropar a banana, ou seja posso desativar o mesh renderer ou o collider
-           
         }
     }
 

@@ -3,64 +3,58 @@ using UnityEngine;
 public class WeaponHitbox : MonoBehaviour
 {
     public int damage = 1;
+    private Player player;
+    private CollectiblesManager collectiblesManager;
+
+    // Tags válidas para objetos interativos (sem dano)
+    private readonly string[] objetosInterativos = { "Box", "Bau" };
+
+    void Start()
+    {
+        player = FindObjectOfType<Player>();
+        collectiblesManager = FindObjectOfType<CollectiblesManager>();
+    }
 
     private void OnTriggerEnter(Collider other)
     {
-        Player player = FindObjectOfType<Player>();
+        if (player == null || !player.isAttacking) return;
 
-        if (player != null && player.isAttacking)
+        // 🎯 Lógica para inimigos normais
+        if (other.CompareTag("Inimigo"))
         {
-            if (other.CompareTag("Inimigo"))
+            if (other.TryGetComponent(out LizardAI_Test inimigo))
             {
-                LizardAI_Test inimigo = other.GetComponent<LizardAI_Test>();
-
-                if (inimigo != null)
-                {
-                    inimigo.ReceberDano(damage);
-                }
-
-                CollectiblesManager collectiblesManager = FindObjectOfType<CollectiblesManager>();
-                if (collectiblesManager != null)
-                {
-                    collectiblesManager.HitBox(other);
-                }
+                inimigo.ReceberDano(damage);
             }
 
-            if (other.CompareTag("Boss"))
-            {
-                BossAI boss = other.GetComponent<BossAI>();
-
-                if (boss != null)
-                {
-                    boss.ReceberDano(damage);
-                }
-
-                CollectiblesManager collectiblesManager = FindObjectOfType<CollectiblesManager>();
-                if (collectiblesManager != null)
-                {
-                    collectiblesManager.HitBox(other);
-                }
-            }
+            TentarAcionarColetavel(other);
+            return;
         }
 
-        if (other.CompareTag("Box"))
+        // 🧠 Lógica para bosses
+        if (other.CompareTag("Boss"))
         {
-            CollectiblesManager collectiblesManager = FindObjectOfType<CollectiblesManager>();
-            if (collectiblesManager != null)
+            if (other.TryGetComponent(out BossAI boss))
             {
-                collectiblesManager.HitBox(other);
+                boss.ReceberDano(damage);
             }
+
+            TentarAcionarColetavel(other);
+            return;
         }
 
-        if (other.CompareTag("Bau"))
+        // 📦 Outros objetos interativos (caixas, baús, etc.)
+        if (System.Array.Exists(objetosInterativos, tag => other.CompareTag(tag)))
         {
-            CollectiblesManager collectiblesManager = FindObjectOfType<CollectiblesManager>();
-            if (collectiblesManager != null)
-            {
-                collectiblesManager.HitBox(other);
-            }
+            TentarAcionarColetavel(other);
         }
-
-
     }
-} 
+
+    private void TentarAcionarColetavel(Collider other)
+    {
+        if (collectiblesManager != null)
+        {
+            collectiblesManager.HitBox(other);
+        }
+    }
+}
