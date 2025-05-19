@@ -36,14 +36,14 @@ public class CheckpointTrigger : MonoBehaviour
 
 
         SaveData data = new SaveData();
-            data.playerPosition = transform.position;
-            data.playerHealth = GameManager.Instance.ObterVidaAtual();
-            data.currentScene = SceneManager.GetActiveScene().name;
-            data.checkpointPosition = transform.position; // Adiciona a posição do checkpoint
-            data.orbs = GameManager.Instance.ObterOrbs(); // Adiciona o número de orbs
+        data.playerPosition = transform.position;
+        data.playerHealth = GameManager.Instance.ObterVidaAtual();
+        data.currentScene = SceneManager.GetActiveScene().name;
+        data.checkpointPosition = transform.position; // Adiciona a posição do checkpoint
+        data.orbs = GameManager.Instance.ObterOrbs(); // Adiciona o número de orbs
 
-            SaveSystem.SaveGame(data);
+        SaveSystem.SaveGame(data);
 
-            Debug.Log("💾 Progresso gravado ao ativar o checkpoint.");
+        Debug.Log("💾 Progresso gravado ao ativar o checkpoint.");
     }
 }

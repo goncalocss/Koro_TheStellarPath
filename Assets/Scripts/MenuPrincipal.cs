@@ -5,6 +5,7 @@ using UnityEngine.SceneManagement;
 public class MenuPrincipal : MonoBehaviour
 {
     public Button continuarButton; // Liga isto no Inspector!
+    
 
     private void Start()
     {
@@ -42,6 +43,6 @@ public class MenuPrincipal : MonoBehaviour
     public void NovoJogo()
     {
         SaveSystem.DeleteSave(); // Limpa saves antigos se houver
-        SceneManager.LoadScene("NomeDaTuaPrimeiraCena"); // Troca isto pelo nome real da cena inicial
+        SceneManager.LoadScene("Verdalya"); // Troca isto pelo nome real da cena inicial
     }
 }

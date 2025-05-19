@@ -99,6 +99,7 @@ public class Player : MonoBehaviour
 
             if (Input.GetButtonDown("Jump"))
             {
+                Debug.Log("Salto executado!");
                 velocity.y = jumpForce;
                 isJumping = true;
                 animator.SetTrigger("Jump");
@@ -106,12 +107,12 @@ public class Player : MonoBehaviour
         }
         else
         {
-            if (Input.GetButtonDown("Jump") && isJumping && !doubleJumpUsed)
-            {
-                velocity.y = jumpForce;
-                doubleJumpUsed = true;
-                animator.SetTrigger("DoubleJump");
-            }
+            // if (Input.GetButtonDown("Jump") && isJumping && !doubleJumpUsed)
+            // {
+            //     velocity.y = jumpForce;
+            //     doubleJumpUsed = true;
+            //     animator.SetTrigger("DoubleJump");
+            // }
 
             velocity.y += gravity * Time.deltaTime;
         }
