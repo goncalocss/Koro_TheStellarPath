@@ -327,9 +327,10 @@ public class GameManager : MonoBehaviour
         vidaAtual = novaVida;
     }
 
-    public void DefinirNumeroOrbs (int novoNumero)
+    public void DefinirNumeroOrbs(int novoNumero)
     {
         orbCount = novoNumero;
+        UpdateOrbCountText();
     }
 
 
