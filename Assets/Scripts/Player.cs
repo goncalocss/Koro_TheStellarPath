@@ -12,8 +12,6 @@ public class Player : MonoBehaviour
     public float rotationSpeed = 700f;  // Para melhorar a rotação
 
     public Transform cameraTransform;
-    public GameObject[] armasPorNivel;
-    public int nivelAtual = 1;
 
     private CharacterController controller;
     private Animator animator;
@@ -38,7 +36,6 @@ public class Player : MonoBehaviour
         if (cameraTransform == null)
             cameraTransform = Camera.main.transform;
 
-        AtivarArmaDoNivel();
     }
 
     // Atualizar estado a cada frame
@@ -107,13 +104,6 @@ public class Player : MonoBehaviour
         }
         else
         {
-            // if (Input.GetButtonDown("Jump") && isJumping && !doubleJumpUsed)
-            // {
-            //     velocity.y = jumpForce;
-            //     doubleJumpUsed = true;
-            //     animator.SetTrigger("DoubleJump");
-            // }
-
             velocity.y += gravity * Time.deltaTime;
         }
 
@@ -150,23 +140,6 @@ public class Player : MonoBehaviour
             currentAttackTrigger = -1;
             isAttacking = false;
         }
-    }
-
-    // Ativar a arma do nível atual
-    private void AtivarArmaDoNivel()
-    {
-        for (int i = 0; i < armasPorNivel.Length; i++)
-        {
-            if (armasPorNivel[i] != null)
-                armasPorNivel[i].SetActive(i == nivelAtual - 1);
-        }
-    }
-
-    // Subir de nível e ativar nova arma
-    public void SubirNivel()
-    {
-        nivelAtual = Mathf.Clamp(nivelAtual + 1, 1, armasPorNivel.Length);
-        AtivarArmaDoNivel();
     }
 
     public void Morrer()

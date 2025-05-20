@@ -11,6 +11,7 @@ public class SaveData
     public int orbs; // Adiciona o número de orbs
     public int vidaMaxima;
     public int bananaCount;
+    public int nivelArma;
 
     //apenas Para caixas destruidas
     public List<string> caixasDestruidas = new List<string>();

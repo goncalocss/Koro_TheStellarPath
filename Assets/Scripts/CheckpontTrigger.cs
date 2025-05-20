@@ -6,6 +6,8 @@ public class CheckpointTrigger : MonoBehaviour
     public GameObject fogo; // Referência ao GameObject do fogo (Particle System, etc.)
     private bool ativado = false;
 
+    public Transform pontoDeRespawn; // arrastar no Inspector
+
     private void OnTriggerEnter(Collider other)
     {
         if (ativado) return;
@@ -16,28 +18,31 @@ public class CheckpointTrigger : MonoBehaviour
 
             if (fogo != null)
             {
-                fogo.SetActive(true); // Acende o fogo visualmente
+                fogo.SetActive(true);
                 Debug.Log("🔥 Fogo aceso no checkpoint: " + gameObject.name);
             }
 
-            GameManager.Instance.DefinirCheckpoint(transform.position);
-            Debug.Log("✅ Checkpoint ativado em posição: " + transform.position);
+            Vector3 offset = new Vector3(2f, 0f, 0f); // ← deslocamento desejado
+            Vector3 posicaoCheckpoint = transform.position + offset;
 
+            GameManager.Instance.DefinirCheckpoint(posicaoCheckpoint);
+            Debug.Log("✅ Checkpoint ativado em posição: " + posicaoCheckpoint);
+
+            SaveData data = new SaveData();
+            data.playerPosition = other.transform.position;
+            data.playerHealth = GameManager.Instance.ObterVidaAtual();
+            data.currentScene = SceneManager.GetActiveScene().name;
+            data.checkpointPosition = posicaoCheckpoint; // ← mesma posição deslocada
+            data.orbs = GameManager.Instance.ObterOrbs();
+            data.vidaMaxima = GameManager.Instance.ObterVidaMaxima();
+            data.bananaCount = GameManager.Instance.ObterBananaCount();
+            data.caixasDestruidas = GameManager.Instance.ObterCaixasDestruidas();
+            data.nivelArma = GameManager.Instance.sistemaArmas.ObterNivelAtual();
+
+            SaveSystem.SaveGame(data);
+
+            Debug.Log("💾 Progresso gravado ao ativar o checkpoint.");
         }
-
-
-        SaveData data = new SaveData();
-        data.playerPosition = transform.position;
-        data.playerHealth = GameManager.Instance.ObterVidaAtual();
-        data.currentScene = SceneManager.GetActiveScene().name;
-        data.checkpointPosition = transform.position; // Adiciona a posição do checkpoint
-        data.orbs = GameManager.Instance.ObterOrbs(); // Adiciona o número de orbs
-        data.vidaMaxima = GameManager.Instance.ObterVidaMaxima(); // Adiciona a vida máxima
-        data.bananaCount = GameManager.Instance.ObterBananaCount(); // Adiciona o número de bananas
-        data.caixasDestruidas = GameManager.Instance.ObterCaixasDestruidas(); // Adiciona as caixas destruídas
-
-        SaveSystem.SaveGame(data);
-
-        Debug.Log("💾 Progresso gravado ao ativar o checkpoint.");
     }
+
 }

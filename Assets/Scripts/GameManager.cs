@@ -22,6 +22,9 @@ public class GameManager : MonoBehaviour
 
     private List<string> caixasDestruidas = new List<string>();
 
+    [Header("Sistema de Armas")]
+    public SistemaArmas sistemaArmas;
+
 
 
 
@@ -73,6 +76,12 @@ public class GameManager : MonoBehaviour
             DefinirBananaCount(data.bananaCount);
             AplicarVidaMaxima(data.vidaMaxima);
             DefinirVidaAtual(data.playerHealth);
+
+            if (sistemaArmas != null)
+            {
+                sistemaArmas.DefinirNivel(data.nivelArma);
+                Debug.Log($"🔫 Nível da arma carregado: {data.nivelArma}");
+            }
             AtualizarVidaVisual();
 
             if (data.caixasDestruidas != null)
@@ -233,10 +242,19 @@ public class GameManager : MonoBehaviour
         UpdateOrbCountText();
     }
 
+    public void DiminuirOrbs(int quantidade)
+    {
+        orbCount -= quantidade;
+        if (orbCount < 0) orbCount = 0;
+        UpdateOrbCountText();
+    }
+
     public int ObterOrbs() => orbCount;
 
     public void DefinirBananaCount(int novasBananas) { bananaCount = novasBananas; }
     public int ObterBananaCount() => bananaCount;
+
+    
 
     public void ColetarBanana()
     {

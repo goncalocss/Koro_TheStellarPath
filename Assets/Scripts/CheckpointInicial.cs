@@ -22,6 +22,7 @@ public class CheckpointInicial : MonoBehaviour
                 data.vidaMaxima = GameManager.Instance.ObterVidaMaxima();
                 data.bananaCount = GameManager.Instance.ObterBananaCount();
                 data.caixasDestruidas = GameManager.Instance.ObterCaixasDestruidas();
+                data.nivelArma = GameManager.Instance.sistemaArmas.ObterNivelAtual();
 
                 SaveSystem.SaveGame(data);
 
