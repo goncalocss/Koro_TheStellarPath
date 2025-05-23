@@ -25,6 +25,11 @@ public class GameManager : MonoBehaviour
     [Header("Sistema de Armas")]
     public SistemaArmas sistemaArmas;
 
+    //PAUSAR JOGO
+    private bool jogoPausado = false;
+    private Vector3 posicaoAntesDaPausa;
+
+
 
 
 
@@ -51,6 +56,26 @@ public class GameManager : MonoBehaviour
 
         SceneManager.sceneLoaded += OnSceneLoaded;
     }
+
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Escape) && !jogoPausado)
+        {
+            PausarJogo();
+        }
+    }
+
+    private void PausarJogo()
+    {
+        if (player == null) return;
+
+        jogoPausado = true;
+        posicaoAntesDaPausa = player.transform.position;
+
+        Time.timeScale = 0f; // PAUSA TODAS AS ATUALIZAÇÕES DEPENDENTES DO TEMPO
+        SceneManager.LoadScene("MenuPausa", LoadSceneMode.Additive);
+    }
+
 
     private void OnDestroy()
     {
@@ -212,8 +237,13 @@ public class GameManager : MonoBehaviour
         if (player.TryGetComponent(out Collider col)) col.enabled = true;
         if (player.TryGetComponent(out PlayerMovement move)) move.enabled = true;
 
-        ReporVida();
+        if (!jogoPausado)
+        {
+            ReporVida();
+        }
         playerVivo = true;
+        jogoPausado = false; // Limpa o estado de pausa
+
     }
 
     public void ReporVida()
@@ -254,7 +284,7 @@ public class GameManager : MonoBehaviour
     public void DefinirBananaCount(int novasBananas) { bananaCount = novasBananas; }
     public int ObterBananaCount() => bananaCount;
 
-    
+
 
     public void ColetarBanana()
     {
@@ -347,6 +377,8 @@ public class GameManager : MonoBehaviour
             }
         }
     }
+
+
 
 
 }

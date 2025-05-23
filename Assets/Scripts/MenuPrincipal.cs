@@ -4,15 +4,13 @@ using UnityEngine.SceneManagement;
 
 public class MenuPrincipal : MonoBehaviour
 {
-    public Button continuarButton; // Liga isto no Inspector!
+    public Button continuarButton; 
 
 
     private void Start()
     {
-        // Oculta o botão "Continuar" se não houver save
         continuarButton.gameObject.SetActive(SaveSystem.SaveExists());
     }
-
     public void ContinuarJogo()
     {
         Debug.Log("🔁 ContinuarJogo() chamado.");
@@ -24,7 +22,7 @@ public class MenuPrincipal : MonoBehaviour
             TempSaveData tsd = temp.AddComponent<TempSaveData>();
             tsd.saveData = data;
 
-            SceneManager.LoadScene(data.currentScene); // ← depois disto, OnSceneLoaded vai correr
+            SceneManager.LoadScene(data.currentScene); 
         }
     }
 
@@ -32,7 +30,7 @@ public class MenuPrincipal : MonoBehaviour
 
     public void NovoJogo()
     {
-        SaveSystem.DeleteSave(); // Limpa saves antigos se houver
-        SceneManager.LoadScene("Verdalya"); // Troca isto pelo nome real da cena inicial
+        SaveSystem.DeleteSave(); 
+        SceneManager.LoadScene("Verdalya"); 
     }
 }
