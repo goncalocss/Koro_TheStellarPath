@@ -6,6 +6,8 @@ public class GameOverUI : MonoBehaviour
     [Header("Nome da cena inicial (definir no Inspector)")]
     public string nomeCenaInicial;
 
+    // falta aqui o botão de pausar jogo(esc) não funcionar quando o game over estiver ativo
+
     public void VoltarAoCheckpoint()
     {
         SceneManager.UnloadSceneAsync("GameOver");
