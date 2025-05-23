@@ -54,6 +54,13 @@ public class GameManager : MonoBehaviour
             return;
         }
 
+        if (sistemaArmas == null)
+        {
+            sistemaArmas = FindObjectOfType<SistemaArmas>();
+            if (sistemaArmas == null)
+                Debug.LogWarning("⚠️ SistemaArmas não encontrado no GameManager.");
+        }
+
         SceneManager.sceneLoaded += OnSceneLoaded;
     }
 
@@ -63,7 +70,14 @@ public class GameManager : MonoBehaviour
         {
             PausarJogo();
         }
+        if (Input.GetKeyDown(KeyCode.M) && !jogoPausado)
+        {
+            AbrirMenuMelhorias();
+        }
+
     }
+
+
 
     private void PausarJogo()
     {
@@ -74,6 +88,17 @@ public class GameManager : MonoBehaviour
 
         Time.timeScale = 0f; // PAUSA TODAS AS ATUALIZAÇÕES DEPENDENTES DO TEMPO
         SceneManager.LoadScene("MenuPausa", LoadSceneMode.Additive);
+    }
+
+    private void AbrirMenuMelhorias()
+    {
+        if (player == null) return;
+
+        jogoPausado = true;
+        posicaoAntesDaPausa = player.transform.position;
+
+        Time.timeScale = 0f; // PAUSA TODAS AS ATUALIZAÇÕES DEPENDENTES DO TEMPO
+        SceneManager.LoadScene("MenuMelhorias", LoadSceneMode.Additive);
     }
 
 

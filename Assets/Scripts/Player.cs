@@ -5,17 +5,18 @@ using UnityEngine.SceneManagement;
 [RequireComponent(typeof(CharacterController))]
 public class Player : MonoBehaviour
 {
-    // Definir valores de movimento e física
+    [Header("Movimento e Física")]
     public float moveSpeed = 6f;
     public float jumpForce = 8f;
     public float gravity = -20f;
-    public float rotationSpeed = 700f;  // Para melhorar a rotação
+    public float rotationSpeed = 700f;
 
     public Transform cameraTransform;
 
     private CharacterController controller;
     private Animator animator;
     private Vector3 velocity;
+
     private bool isJumping = false;
     private bool doubleJumpUsed = false;
     public bool isAttacking = false;
@@ -25,44 +26,57 @@ public class Player : MonoBehaviour
     public bool estaVivo = true;
     private bool jaMorreu = false;
 
-    // Inicializar componentes
-    void Start()
+    private void Awake()
     {
         controller = GetComponent<CharacterController>();
         animator = GetComponent<Animator>();
 
-
-
         if (cameraTransform == null)
             cameraTransform = Camera.main.transform;
-
     }
 
-    // Atualizar estado a cada frame
-    void Update()
+    private void OnEnable()
     {
-        if (!estaVivo) return; // ← Bloqueia qualquer execução pós-morte
-
-        HandleMovement();
-        HandleJump();
-        HandleAttacks();
+        StartCoroutine(InputLoop());
     }
 
-    // Lidar com movimento e rotação
+    private void OnDisable()
+    {
+        StopAllCoroutines();
+    }
+
+    // Loop de input otimizado rodando em coroutine para evitar Update pesado
+    private IEnumerator InputLoop()
+    {
+        while (true)
+        {
+            if (estaVivo)
+            {
+                HandleMovement();
+                HandleJump();
+                HandleAttacks();
+            }
+            else
+            {
+                yield return null; // pausa execução quando morto
+            }
+
+            yield return null; // espera próximo frame
+        }
+    }
+
     private void HandleMovement()
     {
-        if (isAttacking) return;  // Bloquear movimento enquanto atacando
+        if (isAttacking) return;
 
-        float h = Input.GetAxis("Horizontal");
-        float v = Input.GetAxis("Vertical");
+        float h = Input.GetAxisRaw("Horizontal");
+        float v = Input.GetAxisRaw("Vertical");
         Vector3 input = new Vector3(h, 0f, v).normalized;
 
-        // Movimento só é realizado se houver input
         if (input.magnitude >= 0.1f)
         {
             Vector3 camForward = cameraTransform.forward;
             Vector3 camRight = cameraTransform.right;
-
             camForward.y = 0f;
             camRight.y = 0f;
             camForward.Normalize();
@@ -72,7 +86,6 @@ public class Player : MonoBehaviour
 
             controller.Move(moveDir * moveSpeed * Time.deltaTime);
 
-            // Rotacionar o personagem para o movimento de direção
             float angle = Mathf.Atan2(input.x, input.z) * Mathf.Rad2Deg + cameraTransform.eulerAngles.y;
             Quaternion targetRotation = Quaternion.Euler(0, angle, 0);
             transform.rotation = Quaternion.RotateTowards(transform.rotation, targetRotation, rotationSpeed * Time.deltaTime);
@@ -81,7 +94,6 @@ public class Player : MonoBehaviour
         animator.SetFloat("speed", input.magnitude);
     }
 
-    // Lidar com saltos e gravidade
     private void HandleJump()
     {
         if (controller.isGrounded)
@@ -96,7 +108,6 @@ public class Player : MonoBehaviour
 
             if (Input.GetButtonDown("Jump"))
             {
-                Debug.Log("Salto executado!");
                 velocity.y = jumpForce;
                 isJumping = true;
                 animator.SetTrigger("Jump");
@@ -110,31 +121,28 @@ public class Player : MonoBehaviour
         controller.Move(velocity * Time.deltaTime);
     }
 
-    // Lidar com ataques
     private void HandleAttacks()
     {
         AnimatorStateInfo stateInfo = animator.GetCurrentAnimatorStateInfo(0);
 
-        // Evitar que o jogador ataque enquanto está atacando ou em animações de ataque
+        bool inAttackAnim = stateInfo.IsName("LightAttack") || stateInfo.IsName("HeavyAttack") || stateInfo.IsName("Capoeira");
+
         if (currentAttackTrigger == -1 && controller.isGrounded)
         {
-            if (Input.GetMouseButtonDown(0) && !stateInfo.IsName("LightAttack") && !stateInfo.IsName("HeavyAttack") && !stateInfo.IsName("Capoeira"))
+            if (Input.GetMouseButtonDown(0) && !inAttackAnim)
             {
                 currentAttackTrigger = 0;
                 animator.SetTrigger("LightAttack");
                 isAttacking = true;
             }
-
-            if (Input.GetMouseButtonDown(1) && !stateInfo.IsName("LightAttack") && !stateInfo.IsName("HeavyAttack") && !stateInfo.IsName("Capoeira"))
+            else if (Input.GetMouseButtonDown(1) && !inAttackAnim)
             {
                 currentAttackTrigger = 1;
                 animator.SetTrigger("HeavyAttack");
                 isAttacking = true;
             }
-
         }
 
-        // Reajustar após o ataque
         if (stateInfo.normalizedTime >= 1.0f && currentAttackTrigger != -1)
         {
             currentAttackTrigger = -1;
@@ -145,6 +153,7 @@ public class Player : MonoBehaviour
     public void Morrer()
     {
         if (jaMorreu) return;
+
         jaMorreu = true;
         estaVivo = false;
 
@@ -153,11 +162,15 @@ public class Player : MonoBehaviour
         GameManager.Instance.playerVivo = false;
 
         animator?.SetTrigger("Died");
-        GetComponent<CharacterController>().enabled = false;
-        GetComponent<Rigidbody>().isKinematic = true;
-        GetComponent<Collider>().enabled = false;
+        controller.enabled = false;
 
-        var movimento = GetComponent<PlayerMovement>();
+        Rigidbody rb = GetComponent<Rigidbody>();
+        if (rb != null) rb.isKinematic = true;
+
+        Collider col = GetComponent<Collider>();
+        if (col != null) col.enabled = false;
+
+        PlayerMovement movimento = GetComponent<PlayerMovement>();
         if (movimento != null) movimento.enabled = false;
 
         StartCoroutine(EsperarEReiniciar());
@@ -165,17 +178,16 @@ public class Player : MonoBehaviour
 
     private IEnumerator EsperarEReiniciar()
     {
-        yield return new WaitForSeconds(3f); // Espera 2,5 segundos
-                                             //mudar de cena
-        SceneManager.LoadScene("GameOver", LoadSceneMode.Additive);
+        yield return new WaitForSeconds(3f);
 
+        SceneManager.LoadScene("GameOver", LoadSceneMode.Additive);
     }
 
     public void ResetarEstado()
     {
         jaMorreu = false;
-        estaVivo = true; // ← Fundamental para reativar Update()
-        velocity = Vector3.zero; // ← Limpa impulso de queda
+        estaVivo = true;
+        velocity = Vector3.zero;
 
         if (animator != null)
         {
@@ -185,28 +197,17 @@ public class Player : MonoBehaviour
                 Debug.Log("🎥 Animator reativado no respawn.");
             }
 
-            // Limpa todos os triggers de animação
             animator.ResetTrigger("Died");
             animator.ResetTrigger("Jump");
             animator.ResetTrigger("DoubleJump");
             animator.ResetTrigger("LightAttack");
             animator.ResetTrigger("HeavyAttack");
 
-            // Garante que o estado Idle entra imediatamente
-            animator.Play("Idle", 0, 0f); // ← Nome do estado Idle no Animator
+            animator.Play("Idle", 0, 0f);
             Debug.Log("🎬 Triggers limpos e animação Idle forçada.");
         }
 
-        if (GameManager.Instance != null)
-        {
-            GameManager.Instance.playerVivo = true;
-            Debug.Log("✅ playerVivo = true no GameManager");
-        }
+        GameManager.Instance.playerVivo = true;
+        Debug.Log("✅ playerVivo = true no GameManager");
     }
-
-
-
-
-
-
 }
