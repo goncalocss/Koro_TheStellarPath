@@ -19,12 +19,13 @@ public class MenuPrincipal : MonoBehaviour
 
     private void Start()
     {
+        Debug.Log("📂 OnEnable(): a verificar save...");
         continuarButton.gameObject.SetActive(SaveSystem.SaveExists());
-        Debug.Log("🎬 MenuPrincipal iniciado.");
     }
 
     public void ContinuarJogo()
     {
+        
         Debug.Log("🔁 ContinuarJogo() chamado.");
 
         SaveData data = SaveSystem.LoadGame();
@@ -90,17 +91,6 @@ public class MenuPrincipal : MonoBehaviour
         {
             timeout -= Time.deltaTime;
             yield return null;
-        }
-
-        if (videoPlayer.isPlaying)
-        {
-            Debug.Log("▶️ Vídeo começou a tocar.");
-            fadePanel.gameObject.SetActive(false);
-            Debug.Log("🕶️ Painel de fade desativado.");
-        }
-        else
-        {
-            Debug.LogWarning("⚠️ O vídeo não começou corretamente.");
         }
 
         // Esperar o vídeo terminar

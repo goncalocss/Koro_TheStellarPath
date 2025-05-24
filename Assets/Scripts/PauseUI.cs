@@ -3,8 +3,8 @@ using UnityEngine.SceneManagement;
 
 public class PauseUI : MonoBehaviour
 {
-
     public string nomeCenaInicial;
+
     public void VoltarAoCheckpoint()
     {
         SceneManager.UnloadSceneAsync("MenuPausa");
@@ -12,11 +12,18 @@ public class PauseUI : MonoBehaviour
         Time.timeScale = 1f; // DESPAUSA O JOGO
     }
 
-    // Update is called once per frame
     public void MainMenu()
     {
         if (!string.IsNullOrEmpty(nomeCenaInicial))
         {
+            Time.timeScale = 1f; // ✅ Garante que o tempo é restaurado
+
+            // ✅ Destrói GameManager para que seja recriado corretamente no menu
+            if (GameManager.Instance != null)
+            {
+                Destroy(GameManager.Instance.gameObject);
+            }
+
             SceneManager.LoadScene(nomeCenaInicial);
         }
         else

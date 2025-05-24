@@ -3,14 +3,34 @@ using UnityEngine.SceneManagement;
 
 public class CheckpointInicial : MonoBehaviour
 {
-    void Start()
+    private bool checkpointDefinido = false;
+
+    private void Start()
     {
+        // ✅ Só define se não estamos a carregar de um save existente
+        if (TempSaveData.Instance == null)
+        {
+            TentarDefinirCheckpoint();
+        }
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.CompareTag("Player"))
+        {
+            TentarDefinirCheckpoint();
+        }
+    }
+
+    private void TentarDefinirCheckpoint()
+    {
+        if (checkpointDefinido) return; // evita duplicações
+
         if (GameManager.Instance != null)
         {
             GameManager.Instance.DefinirCheckpoint(transform.position);
-            Debug.Log("📍 Checkpoint inicial definido automaticamente.");
+            Debug.Log("📍 Checkpoint inicial definido.");
 
-            // ⚠️ Só guarda se ainda não existir save
             if (!SaveSystem.SaveExists())
             {
                 SaveData data = new SaveData();
@@ -26,8 +46,10 @@ public class CheckpointInicial : MonoBehaviour
 
                 SaveSystem.SaveGame(data);
 
-                Debug.Log("💾 Save inicial criado no checkpoint inicial.");
+                Debug.Log("💾 Save criado ao passar no checkpoint inicial.");
             }
+
+            checkpointDefinido = true;
         }
         else
         {
