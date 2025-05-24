@@ -1,4 +1,5 @@
 using UnityEngine;
+using System.Collections;
 using System.Collections.Generic;
 
 public class CollectiblesManager : MonoBehaviour
@@ -7,9 +8,7 @@ public class CollectiblesManager : MonoBehaviour
     public GameObject orbPrefab;
     public GameObject bananaPrefab;
     public Transform player;
-
     private readonly HashSet<GameObject> bausAtivados = new();
-    private Vector3 bananaDropPosition;
 
     public void HitBox(Collider other)
     {
@@ -39,8 +38,7 @@ public class CollectiblesManager : MonoBehaviour
                 if (bausAtivados.Contains(other.gameObject)) return;
                 bausAtivados.Add(other.gameObject);
 
-                bananaDropPosition = other.transform.position;
-                Invoke(nameof(DropBananaAtStoredPosition), 1.5f);
+                StartCoroutine(DropBananaAfterDelay(other.transform.position, 0f));
                 break;
         }
     }
@@ -67,10 +65,13 @@ public class CollectiblesManager : MonoBehaviour
         DropOrbsAt(transform.position);
     }
 
-    private void DropBananaAtStoredPosition()
+    private IEnumerator DropBananaAfterDelay(Vector3 position, float delay)
     {
-        Vector3 spawnPos = bananaDropPosition + new Vector3(Random.Range(-1f, 1f), 0, Random.Range(-1f, 1f));
-        GameObject banana = Instantiate(bananaPrefab, spawnPos, Quaternion.identity);
+        yield return new WaitForSeconds(delay);
+
+        float alturaExtra = 0.5f;
+        
+        GameObject banana = Instantiate(bananaPrefab, position, Quaternion.identity);
 
         if (!banana.TryGetComponent(out CollectiblesMovement cm))
             cm = banana.AddComponent<CollectiblesMovement>();
