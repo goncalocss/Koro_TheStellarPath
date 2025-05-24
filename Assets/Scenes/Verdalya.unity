@@ -1095,7 +1095,6 @@ MonoBehaviour:
   orbPrefab: {fileID: 720172721942108117, guid: 72b89e61875a8164082009b77924c2a7, type: 3}
   bananaPrefab: {fileID: 3940760709425202201, guid: a0809b8090e968a4298ff2614e507b52, type: 3}
   player: {fileID: 1460855734}
-  interactionDistance: 3
 --- !u!114 &306303403
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1254,7 +1253,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 332a984d41baa9443a7e7a0a58d9f143, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 10.3
+      value: 10.72
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 332a984d41baa9443a7e7a0a58d9f143, type: 3}
       propertyPath: m_LocalPosition.z
@@ -3198,22 +3197,6 @@ MonoBehaviour:
   attackDistance: 0.8
   moveSpeed: 2
   health: 1
---- !u!114 &1428593477
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1428593470}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9d8acde2106c54b79aa219e5bb59c0ad, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  orbPrefab: {fileID: 720172721942108117, guid: 72b89e61875a8164082009b77924c2a7, type: 3}
-  bananaPrefab: {fileID: 0}
-  player: {fileID: 1460855734}
-  interactionDistance: 3
 --- !u!136 &1428593480
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -3319,9 +3302,6 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 037cd1ad438294a45b5912e622461e2a, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1428593476}
-    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 037cd1ad438294a45b5912e622461e2a, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1428593477}
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 037cd1ad438294a45b5912e622461e2a, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1428593480}
@@ -3456,7 +3436,6 @@ MonoBehaviour:
   orbPrefab: {fileID: 720172721942108117, guid: 72b89e61875a8164082009b77924c2a7, type: 3}
   bananaPrefab: {fileID: 3940760709425202201, guid: a0809b8090e968a4298ff2614e507b52, type: 3}
   player: {fileID: 1460855734}
-  interactionDistance: 3
 --- !u!65 &1510463749
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -3901,7 +3880,7 @@ MonoBehaviour:
     m_VelocityFilterStrength: 4
     m_Bias: 0
   m_RecenterToTargetHeading:
-    m_enabled: 1
+    m_enabled: 0
     m_WaitTime: 0.5
     m_RecenteringTime: 0.5
     m_LegacyHeadingDefinition: -1
@@ -4545,7 +4524,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1943481779}
-  - component: {fileID: 1943481778}
+  - component: {fileID: 1943481780}
   m_Layer: 0
   m_Name: AtaqueArea
   m_TagString: Untagged
@@ -4553,7 +4532,22 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 0
---- !u!65 &1943481778
+--- !u!4 &1943481779
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1943481777}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 873662226}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &1943481780
 BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -4572,23 +4566,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 5.2873535, y: 0.38235855, z: 4.7681885}
-  m_Center: {x: -0.2701416, y: 0.09025955, z: -0.057495117}
---- !u!4 &1943481779
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1943481777}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 873662226}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_Size: {x: 15, y: 1, z: 15}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &1959503932
 GameObject:
   m_ObjectHideFlags: 0

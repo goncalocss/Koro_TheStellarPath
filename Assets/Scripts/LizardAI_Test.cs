@@ -1,4 +1,5 @@
 using UnityEngine;
+using System.Collections;
 
 public class LizardAI_Test : MonoBehaviour
 {
@@ -10,65 +11,96 @@ public class LizardAI_Test : MonoBehaviour
 
     private Animator animator;
     private Rigidbody rb;
+    private Collider col;
     private bool isDead = false;
+    private string currentState = "";
 
-    void Start()
+    private Coroutine chaseRoutine;
+
+    private void Start()
     {
         animator = GetComponent<Animator>();
         rb = GetComponent<Rigidbody>();
-        SetTrigger("Idle");
+        col = GetComponent<Collider>();
 
         target = GameObject.FindWithTag("Player")?.transform;
+
+        ChangeState("Idle");
+        StartCoroutine(StateControlLoop());
     }
 
-    void Update()
+    private IEnumerator StateControlLoop()
     {
-        if (isDead)
+        while (!isDead)
         {
-            SetTrigger("Defeated");
-            return;
+            if (GameManager.Instance == null || !GameManager.Instance.playerVivo || target == null)
+            {
+                ChangeState("Idle");
+                StopChase();
+            }
+            else
+            {
+                float distance = Vector3.Distance(transform.position, target.position);
+
+                if (distance <= attackDistance)
+                {
+                    ChangeState("InAction");
+                    StopChase();
+                }
+                else if (distance <= chaseDistance)
+                {
+                    ChangeState("Running");
+                    StartChase();
+                }
+                else
+                {
+                    ChangeState("Idle");
+                    StopChase();
+                }
+            }
+
+            yield return new WaitForSeconds(0.2f);
         }
 
-        // ← Aqui usamos diretamente GameManager.Instance em vez da variável
-        if (target == null || GameManager.Instance == null || !GameManager.Instance.playerVivo)
-        {
-            SetTrigger("Idle");
-            return;
-        }
+        ChangeState("Defeated");
+    }
 
-        float distance = Vector3.Distance(transform.position, target.position);
+    private void StartChase()
+    {
+        if (chaseRoutine == null)
+            chaseRoutine = StartCoroutine(ChaseLoop());
+    }
 
-        if (distance <= attackDistance)
+    private void StopChase()
+    {
+        if (chaseRoutine != null)
         {
-            SetTrigger("InAction");
-        }
-        else if (distance <= chaseDistance)
-        {
-            SetTrigger("Running");
-            ChaseTarget();
-        }
-        else
-        {
-            SetTrigger("Idle");
+            StopCoroutine(chaseRoutine);
+            chaseRoutine = null;
         }
     }
 
-    void SetTrigger(string triggerName)
+    private IEnumerator ChaseLoop()
     {
-        animator.ResetTrigger("Idle");
-        animator.ResetTrigger("Running");
-        animator.ResetTrigger("InAction");
-        animator.ResetTrigger("Defeated");
-        animator.SetTrigger(triggerName);
+        while (!isDead && target != null)
+        {
+            Vector3 targetPosition = new Vector3(target.position.x, transform.position.y, target.position.z);
+            Vector3 direction = (targetPosition - transform.position).normalized;
+
+            rb.MovePosition(transform.position + direction * moveSpeed * Time.deltaTime);
+            transform.LookAt(targetPosition);
+
+            yield return null; // move a cada frame
+        }
     }
 
-    void ChaseTarget()
+    private void ChangeState(string newState)
     {
-        Vector3 direction = (target.position - transform.position).normalized;
-        direction.y = 0f;
+        if (newState == currentState) return;
 
-        transform.position = Vector3.MoveTowards(transform.position, target.position, moveSpeed * Time.deltaTime);
-        transform.LookAt(new Vector3(target.position.x, transform.position.y, target.position.z));
+        animator.ResetTrigger(currentState);
+        currentState = newState;
+        animator.SetTrigger(currentState);
     }
 
     public void ReceberDano(int damage)
@@ -80,16 +112,16 @@ public class LizardAI_Test : MonoBehaviour
         if (health <= 0)
         {
             isDead = true;
-            SetTrigger("Defeated");
+            StopChase();
+            ChangeState("Defeated");
 
-            Rigidbody rb = GetComponent<Rigidbody>();
             if (rb != null) rb.isKinematic = true;
-
-            Collider col = GetComponent<Collider>();
             if (col != null) col.enabled = false;
 
             Destroy(gameObject, 2.5f);
-            Debug.Log("O lagarto morreu!");
+#if UNITY_EDITOR
+            Debug.Log("🦎 O lagarto morreu!");
+#endif
         }
     }
 
@@ -99,8 +131,10 @@ public class LizardAI_Test : MonoBehaviour
 
         if (novoAlvo != null)
         {
-            this.target = novoAlvo;
+            target = novoAlvo;
+#if UNITY_EDITOR
             Debug.Log("🎯 Alvo do inimigo atualizado após respawn.");
+#endif
         }
     }
 }

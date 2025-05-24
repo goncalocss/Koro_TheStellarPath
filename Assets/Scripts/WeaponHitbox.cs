@@ -6,13 +6,12 @@ public class WeaponHitbox : MonoBehaviour
     private Player player;
     private CollectiblesManager collectiblesManager;
 
-    // Tags válidas para objetos interativos (sem dano)
     private readonly string[] objetosInterativos = { "Box", "Bau" };
 
     void Start()
     {
-        player = FindObjectOfType<Player>();
-        collectiblesManager = FindObjectOfType<CollectiblesManager>();
+        player = FindAnyObjectByType<Player>();
+        collectiblesManager = FindAnyObjectByType<CollectiblesManager>();
     }
 
     private void OnTriggerEnter(Collider other)

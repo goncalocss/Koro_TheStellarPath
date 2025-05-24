@@ -1,4 +1,5 @@
 using UnityEngine;
+using System.Collections;
 
 public class BossAI : MonoBehaviour
 {
@@ -8,10 +9,12 @@ public class BossAI : MonoBehaviour
     public float moveSpeed = 3f;
     public int maxHealth = 300;
     private int currentHealth;
+
     public BossHealthBar healthBar;
     private Animator animator;
     private Rigidbody rb;
     private bool isDead = false;
+    private string currentState = "";
 
     public GameObject ataqueArea;
     private bool podeAtacar = true;
@@ -30,57 +33,61 @@ public class BossAI : MonoBehaviour
         SetTrigger("Idle");
 
         target = GameObject.FindWithTag("Player")?.transform;
+
+        StartCoroutine(BehaviorLoop());
     }
 
-    void Update()
+    private IEnumerator BehaviorLoop()
     {
-        if (isDead)
+        while (!isDead)
         {
-            SetTrigger("Defeated");
-            return;
-        }
-
-        if (target == null || !GameManager.Instance.playerVivo)
-        {
-            SetTrigger("Idle");
-            return;
-        }
-
-        float distance = Vector3.Distance(transform.position, target.position);
-
-        if (distance <= attackDistance)
-        {
-            SetTrigger("InAction");
-        }
-        else if (distance <= chaseDistance)
-        {
-            SetTrigger("Running");
-            ChaseTarget();
-
-            if (healthBar != null && !healthBar.gameObject.activeSelf)
+            if (target == null || !GameManager.Instance.playerVivo)
             {
-                healthBar.Show();
-                Debug.Log("Barra de vida do boss ativada.");
+                ChangeState("Idle");
+                yield return new WaitForSeconds(0.5f);
+                continue;
             }
-        }
-        else
-        {
-            SetTrigger("Idle");
 
-            if (healthBar != null && healthBar.gameObject.activeSelf)
+            float distance = Vector3.Distance(transform.position, target.position);
+
+            if (distance <= attackDistance)
             {
-                healthBar.Hide();
-                Debug.Log("Barra de vida do boss desativada.");
-
-                currentHealth = maxHealth;
-                healthBar.SetMaxHealth(maxHealth);
-                Debug.Log("Barra de vida do boss reiniciada.");
+                ChangeState("InAction");
             }
+            else if (distance <= chaseDistance)
+            {
+                ChangeState("Running");
+                ChaseTarget();
+
+                if (healthBar != null && !healthBar.gameObject.activeSelf)
+                {
+                    healthBar.Show();
+                    Debug.Log("Barra de vida do boss ativada.");
+                }
+            }
+            else
+            {
+                ChangeState("Idle");
+
+                if (healthBar != null && healthBar.gameObject.activeSelf)
+                {
+                    healthBar.Hide();
+                    currentHealth = maxHealth;
+                    healthBar.SetMaxHealth(maxHealth);
+                    Debug.Log("Barra de vida do boss reiniciada.");
+                }
+            }
+
+            yield return new WaitForSeconds(0.2f); // Mais leve que Update()
         }
+
+        ChangeState("Defeated");
     }
 
     void ChaseTarget()
     {
+        if (target == null) return;
+
         Vector3 direction = (target.position - transform.position).normalized;
         direction.y = 0f;
         transform.position = Vector3.MoveTowards(transform.position, target.position, moveSpeed * Time.deltaTime);
@@ -102,16 +109,12 @@ public class BossAI : MonoBehaviour
         if (currentHealth <= 0)
         {
             isDead = true;
-            SetTrigger("Defeated");
-
             if (healthBar != null)
                 healthBar.Hide();
 
             rb.isKinematic = true;
-
             Collider col = GetComponent<Collider>();
-            if (col != null)
-                col.enabled = false;
+            if (col != null) col.enabled = false;
 
             Destroy(gameObject, 3f);
             Debug.Log("Boss derrotado!");
@@ -144,13 +147,20 @@ public class BossAI : MonoBehaviour
         Debug.Log("Boss pode atacar novamente.");
     }
 
+    void ChangeState(string newState)
+    {
+        if (currentState == newState) return;
+
+        currentState = newState;
+        SetTrigger(newState);
+    }
+
     void SetTrigger(string triggerName)
     {
         animator.ResetTrigger("Idle");
         animator.ResetTrigger("Running");
         animator.ResetTrigger("InAction");
         animator.ResetTrigger("Defeated");
-
         animator.SetTrigger(triggerName);
     }
 
@@ -161,20 +171,17 @@ public class BossAI : MonoBehaviour
         if (other.gameObject.CompareTag("PlayerHitbox"))
         {
             Debug.Log("Boss colidiu com a hitbox do jogador (pré-impacto).");
-
-            // Guarda referência para depois aplicar dano
             StartCoroutine(AplicarDanoComDelay(2f));
             podeAtacar = false;
         }
     }
 
-    private System.Collections.IEnumerator AplicarDanoComDelay(float delay)
+    private IEnumerator AplicarDanoComDelay(float delay)
     {
         yield return new WaitForSeconds(delay);
 
-        if (isDead) yield break;
+        if (isDead || target == null) yield break;
 
-        // Verifica se o jogador ainda está vivo e perto
         float distance = Vector3.Distance(transform.position, target.position);
         if (distance <= attackDistance && GameManager.Instance.playerVivo)
         {
@@ -182,7 +189,6 @@ public class BossAI : MonoBehaviour
             GameManager.Instance.ReceberDanoBoss();
         }
 
-        // Reativa ataque depois do ciclo
         Invoke(nameof(ResetarAtaque), 0.1f);
     }
 
@@ -200,7 +206,4 @@ public class BossAI : MonoBehaviour
             Debug.LogWarning("Novo alvo não encontrado.");
         }
     }
-
-
-
 }

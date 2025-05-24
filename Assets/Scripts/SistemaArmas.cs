@@ -12,10 +12,6 @@ public class SistemaArmas : MonoBehaviour
         AtualizarArma();
     }
 
-
-
-
-
     public void MelhorarArma()
     {
         if (nivelAtual < armasPorNivel.Length - 1)

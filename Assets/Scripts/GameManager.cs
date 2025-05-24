@@ -1,5 +1,3 @@
-// GameManager.cs - Otimizado
-// Adicionada a função pública para obter o número de orbs
 using UnityEngine;
 using TMPro;
 using System.Collections.Generic;
@@ -29,11 +27,6 @@ public class GameManager : MonoBehaviour
     private bool jogoPausado = false;
     private Vector3 posicaoAntesDaPausa;
 
-
-
-
-
-
     [Header("Referência ao Player")]
     public Player player;
     public bool playerVivo = true;
@@ -56,7 +49,7 @@ public class GameManager : MonoBehaviour
 
         if (sistemaArmas == null)
         {
-            sistemaArmas = FindObjectOfType<SistemaArmas>();
+            sistemaArmas = FindFirstObjectByType<SistemaArmas>();
             if (sistemaArmas == null)
                 Debug.LogWarning("⚠️ SistemaArmas não encontrado no GameManager.");
         }
@@ -113,7 +106,7 @@ public class GameManager : MonoBehaviour
             UpdateOrbCountText();
 
         if (player == null)
-            player = FindObjectOfType<Player>();
+            player = FindFirstObjectByType<Player>();
 
         if (TempSaveData.Instance != null && TempSaveData.Instance.saveData != null)
         {
@@ -149,8 +142,9 @@ public class GameManager : MonoBehaviour
 
     private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
-        player = FindObjectOfType<Player>();
-        orbCountText = FindObjectOfType<TextMeshProUGUI>();
+        player = FindFirstObjectByType<Player>();
+        orbCountText = FindFirstObjectByType<TextMeshProUGUI>();
+
         if (orbCountText != null)
             UpdateOrbCountText();
 
@@ -368,7 +362,6 @@ public class GameManager : MonoBehaviour
         if (!caixasDestruidas.Contains(id))
         {
             caixasDestruidas.Add(id);
-            Debug.Log($"✅ Caixa/Baú destruído registado: {id}");
         }
     }
     public bool CaixaJaFoiDestruida(string id)
@@ -386,24 +379,14 @@ public class GameManager : MonoBehaviour
 
     private void RemoverCaixasDestruidas()
     {
-        Debug.Log($"🔍 Entrou em RemoverCaixasDestruidas()");
-
-        var all = FindObjectsOfType<IdentificadorPersistente>();
-        Debug.Log($"🔎 A verificar {all.Length} objetos com ID.");
+        var all = Object.FindObjectsByType<IdentificadorPersistente>(FindObjectsSortMode.None);
 
         foreach (var obj in all)
         {
-            Debug.Log($"📦 Encontrado: {obj.name} | ID = {obj.idUnico}");
-
             if ((obj.CompareTag("Box") || obj.CompareTag("Bau")) && CaixaJaFoiDestruida(obj.idUnico))
             {
-                Debug.Log($"🧹 A destruir: {obj.idUnico}");
                 Destroy(obj.gameObject);
             }
         }
     }
-
-
-
-
 }

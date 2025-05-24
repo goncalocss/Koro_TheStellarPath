@@ -10,7 +10,7 @@ public class HitboxMaoInimigo : MonoBehaviour
     {
         if (gameManager == null)
         {
-            gameManager = FindObjectOfType<GameManager>();
+            gameManager = FindAnyObjectByType<GameManager>();
         }
     }
 
