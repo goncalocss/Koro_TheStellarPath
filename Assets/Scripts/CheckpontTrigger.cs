@@ -28,6 +28,7 @@ public class CheckpointTrigger : MonoBehaviour
             GameManager.Instance.DefinirCheckpoint(posicaoCheckpoint);
             Debug.Log("✅ Checkpoint ativado em posição: " + posicaoCheckpoint);
 
+            SoundManager.Instance.PlaySFX("checkpoint");
             SaveData data = new SaveData();
             data.playerPosition = other.transform.position;
             data.playerHealth = GameManager.Instance.ObterVidaAtual();

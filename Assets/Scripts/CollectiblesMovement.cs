@@ -2,8 +2,8 @@ using UnityEngine;
 
 public class CollectiblesMovement : MonoBehaviour
 {
-    public float moveDuration = 1f;  
-    public float moveSpeed = 2f;     
+    public float moveDuration = 1f;
+    public float moveSpeed = 2f;
     public float verticalOffset = 1f;
 
     public enum TipoColetavel { Orb, Banana }
@@ -75,13 +75,16 @@ public class CollectiblesMovement : MonoBehaviour
         {
             case TipoColetavel.Orb:
                 GameManager.Instance?.IncrementOrbCount();
+                SoundManager.Instance.PlaySFX("orbs"); // ← som ao apanhar orbs
                 break;
 
             case TipoColetavel.Banana:
                 GameManager.Instance?.ColetarBanana();
+                SoundManager.Instance.PlaySFX("pick-item"); // ← som ao apanhar banana
                 break;
         }
 
         Destroy(gameObject);
     }
+
 }

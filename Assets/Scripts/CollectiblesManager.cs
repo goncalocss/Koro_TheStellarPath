@@ -20,6 +20,8 @@ public class CollectiblesManager : MonoBehaviour
                 if (!string.IsNullOrEmpty(id))
                     GameManager.Instance.RegistarCaixaDestruida(id);
 
+                SoundManager.Instance.PlaySFX("break-chest2");
+
                 DropOrbsAt(other.transform.position);
                 Destroy(other.gameObject);
                 break;
@@ -69,7 +71,6 @@ public class CollectiblesManager : MonoBehaviour
     {
         yield return new WaitForSeconds(delay);
 
-        float alturaExtra = 0.5f;
         
         GameObject banana = Instantiate(bananaPrefab, position, Quaternion.identity);
 

@@ -89,6 +89,8 @@ public class Player : MonoBehaviour
             float angle = Mathf.Atan2(input.x, input.z) * Mathf.Rad2Deg + cameraTransform.eulerAngles.y;
             Quaternion targetRotation = Quaternion.Euler(0, angle, 0);
             transform.rotation = Quaternion.RotateTowards(transform.rotation, targetRotation, rotationSpeed * Time.deltaTime);
+
+            
         }
 
         animator.SetFloat("speed", input.magnitude);
@@ -111,6 +113,8 @@ public class Player : MonoBehaviour
                 velocity.y = jumpForce;
                 isJumping = true;
                 animator.SetTrigger("Jump");
+
+                SoundManager.Instance.PlaySFX("jump");
             }
         }
         else
@@ -134,12 +138,15 @@ public class Player : MonoBehaviour
                 currentAttackTrigger = 0;
                 animator.SetTrigger("LightAttack");
                 isAttacking = true;
+
+                SoundManager.Instance.PlaySFX("swing2");
             }
             else if (Input.GetMouseButtonDown(1) && !inAttackAnim)
             {
                 currentAttackTrigger = 1;
                 animator.SetTrigger("HeavyAttack");
                 isAttacking = true;
+                SoundManager.Instance.PlaySFX("swing3");
             }
         }
 
@@ -156,6 +163,7 @@ public class Player : MonoBehaviour
 
         jaMorreu = true;
         estaVivo = false;
+        SoundManager.Instance.PlaySFX("player-death");
 
         Debug.Log("Player morreu!");
 
@@ -199,7 +207,6 @@ public class Player : MonoBehaviour
 
             animator.ResetTrigger("Died");
             animator.ResetTrigger("Jump");
-            animator.ResetTrigger("DoubleJump");
             animator.ResetTrigger("LightAttack");
             animator.ResetTrigger("HeavyAttack");
 

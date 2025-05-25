@@ -37,6 +37,8 @@ public class Chest : MonoBehaviour
             if (interactionUIInstance != null)
                 interactionUIInstance.SetActive(false);
 
+            SoundManager.Instance.PlaySFX("break-chest");
+
             Invoke(nameof(DestruirBau), 0.1f);
         }
     }
