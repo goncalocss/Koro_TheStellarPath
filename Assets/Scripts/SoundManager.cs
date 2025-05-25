@@ -20,6 +20,10 @@ public class SoundManager : MonoBehaviour
 
             sfxSource = gameObject.AddComponent<AudioSource>();
             sfxSource.loop = false;
+
+            // 🔉 Ajuste de volume inicial
+            musicSource.volume = 0.4f; // mais baixo
+            sfxSource.volume = 0.9f;   // quase no máximo
         }
         else
         {
@@ -36,7 +40,6 @@ public class SoundManager : MonoBehaviour
             return;
         }
 
-        // ⛔️ Evita reiniciar se a mesma música já estiver a tocar
         if (musicSource.clip == clip && musicSource.isPlaying)
             return;
 
