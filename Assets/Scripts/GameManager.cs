@@ -19,6 +19,7 @@ public class GameManager : MonoBehaviour
     private const int bananasPorVidaExtra = 1;
 
     private List<string> caixasDestruidas = new List<string>();
+    private List<string> lareirasUsadas = new List<string>();
 
     [Header("Sistema de Armas")]
     public SistemaArmas sistemaArmas;
@@ -30,6 +31,7 @@ public class GameManager : MonoBehaviour
     [Header("Referência ao Player")]
     public Player player;
     public bool playerVivo = true;
+
 
     private Vector3 ultimoCheckpoint;
     private bool temCheckpoint = false;
@@ -139,6 +141,13 @@ public class GameManager : MonoBehaviour
                 // 💥 CHAMADA ESSENCIAL
                 RemoverCaixasDestruidas();
             }
+
+            if (data.lareirasUsadas != null)
+            {
+                CarregarLareirasUsadas(data.lareirasUsadas);
+                Debug.Log($"🔥 Lareiras usadas carregadas: {string.Join(", ", lareirasUsadas)}");
+            }
+
 
             Destroy(TempSaveData.Instance.gameObject);
         }
@@ -399,4 +408,30 @@ public class GameManager : MonoBehaviour
             }
         }
     }
+
+
+
+    public void RegistarLareiraUsada(string id)
+    {
+        if (!lareirasUsadas.Contains(id))
+        {
+            lareirasUsadas.Add(id);
+        }
+    }
+
+    public bool LareiraJaFoiUsada(string id)
+    {
+        return lareirasUsadas.Contains(id);
+    }
+
+    public List<string> ObterLareirasUsadas()
+    {
+        return new List<string>(lareirasUsadas);
+    }
+
+    public void CarregarLareirasUsadas(List<string> lista)
+    {
+        lareirasUsadas = new List<string>(lista);
+    }
+
 }

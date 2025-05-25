@@ -12,7 +12,8 @@ public class SaveData
     public int vidaMaxima;
     public int bananaCount;
     public int nivelArma;
+    public List<string> lareirasUsadas = new List<string>();
 
-    //apenas Para caixas destruidas
+
     public List<string> caixasDestruidas = new List<string>();
 }

@@ -1913,6 +1913,87 @@ Transform:
   - {fileID: 1920096602}
   m_Father: {fileID: 1646557673}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1001 &866285401
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 3810703591956046664, guid: 5a7ba3a00e9cb2c4e9f5286f922c7297, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 890.075
+      objectReference: {fileID: 0}
+    - target: {fileID: 3810703591956046664, guid: 5a7ba3a00e9cb2c4e9f5286f922c7297, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 6.30091
+      objectReference: {fileID: 0}
+    - target: {fileID: 3810703591956046664, guid: 5a7ba3a00e9cb2c4e9f5286f922c7297, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 25.839
+      objectReference: {fileID: 0}
+    - target: {fileID: 3810703591956046664, guid: 5a7ba3a00e9cb2c4e9f5286f922c7297, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.69637644
+      objectReference: {fileID: 0}
+    - target: {fileID: 3810703591956046664, guid: 5a7ba3a00e9cb2c4e9f5286f922c7297, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3810703591956046664, guid: 5a7ba3a00e9cb2c4e9f5286f922c7297, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0.7176767
+      objectReference: {fileID: 0}
+    - target: {fileID: 3810703591956046664, guid: 5a7ba3a00e9cb2c4e9f5286f922c7297, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3810703591956046664, guid: 5a7ba3a00e9cb2c4e9f5286f922c7297, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3810703591956046664, guid: 5a7ba3a00e9cb2c4e9f5286f922c7297, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: -91.726
+      objectReference: {fileID: 0}
+    - target: {fileID: 3810703591956046664, guid: 5a7ba3a00e9cb2c4e9f5286f922c7297, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4587345126856604146, guid: 5a7ba3a00e9cb2c4e9f5286f922c7297, type: 3}
+      propertyPath: m_Name
+      value: Bonfire (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 4734349303575107925, guid: 5a7ba3a00e9cb2c4e9f5286f922c7297, type: 3}
+      propertyPath: canvasHUD
+      value: 
+      objectReference: {fileID: 803015495}
+    - target: {fileID: 4734349303575107925, guid: 5a7ba3a00e9cb2c4e9f5286f922c7297, type: 3}
+      propertyPath: checkpointID
+      value: lareira_2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4734349303575107925, guid: 5a7ba3a00e9cb2c4e9f5286f922c7297, type: 3}
+      propertyPath: lemonMilkFont
+      value: 
+      objectReference: {fileID: 11400000, guid: 170a2341d43a39748ad1cfd05c7dc1b3, type: 2}
+    - target: {fileID: 4734349303575107925, guid: 5a7ba3a00e9cb2c4e9f5286f922c7297, type: 3}
+      propertyPath: pontoDeRespawn
+      value: 
+      objectReference: {fileID: 2081969866}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects:
+    - targetCorrespondingSourceObject: {fileID: 3810703591956046664, guid: 5a7ba3a00e9cb2c4e9f5286f922c7297, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 2081969866}
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 5a7ba3a00e9cb2c4e9f5286f922c7297, type: 3}
+--- !u!4 &866285402 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 3810703591956046664, guid: 5a7ba3a00e9cb2c4e9f5286f922c7297, type: 3}
+  m_PrefabInstance: {fileID: 866285401}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &873662218 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 332a984d41baa9443a7e7a0a58d9f143, type: 3}
@@ -5076,6 +5157,37 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2056216795}
   m_CullTransparentMesh: 1
+--- !u!1 &2081969865
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2081969866}
+  m_Layer: 0
+  m_Name: pontorespawn
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2081969866
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2081969865}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -1.349, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 866285402}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2086019905
 GameObject:
   m_ObjectHideFlags: 0
@@ -5275,6 +5387,18 @@ PrefabInstance:
       value: Bonfire
       objectReference: {fileID: 0}
     - target: {fileID: 4734349303575107925, guid: 5a7ba3a00e9cb2c4e9f5286f922c7297, type: 3}
+      propertyPath: canvasHUD
+      value: 
+      objectReference: {fileID: 803015495}
+    - target: {fileID: 4734349303575107925, guid: 5a7ba3a00e9cb2c4e9f5286f922c7297, type: 3}
+      propertyPath: checkpointID
+      value: lareira_1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4734349303575107925, guid: 5a7ba3a00e9cb2c4e9f5286f922c7297, type: 3}
+      propertyPath: lemonMilkFont
+      value: 
+      objectReference: {fileID: 11400000, guid: 170a2341d43a39748ad1cfd05c7dc1b3, type: 2}
+    - target: {fileID: 4734349303575107925, guid: 5a7ba3a00e9cb2c4e9f5286f922c7297, type: 3}
       propertyPath: pontoDeRespawn
       value: 
       objectReference: {fileID: 2053874146}
@@ -5305,5 +5429,6 @@ SceneRoots:
   - {fileID: 238190011}
   - {fileID: 1762352065}
   - {fileID: 7098413985616623882}
+  - {fileID: 866285401}
   - {fileID: 253763506}
   - {fileID: 6347965569726970491}

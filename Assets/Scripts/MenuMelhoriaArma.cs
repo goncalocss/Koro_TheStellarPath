@@ -16,7 +16,7 @@ public class MenuMelhoriaArma : MonoBehaviour
     public SistemaArmas sistemaArmas; // Pode ser referenciado via Inspector ou automaticamente
 
     [Header("Configuração")]
-    public int custoMelhoria = 10;
+    public int custoMelhoria = 0; // Custo padrão para melhorar a arma
 
     private void Start()
     {
@@ -55,6 +55,7 @@ public class MenuMelhoriaArma : MonoBehaviour
             sistemaArmas.MelhorarArma();
             AtualizarUI();
             Debug.Log("🛠️ Arma melhorada via menu!");
+            SoundManager.Instance.PlaySFX("upgrade");
         }
         else
         {
