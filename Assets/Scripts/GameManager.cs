@@ -81,6 +81,8 @@ public class GameManager : MonoBehaviour
 
         Time.timeScale = 0f; // PAUSA TODAS AS ATUALIZAÇÕES DEPENDENTES DO TEMPO
         SceneManager.LoadScene("MenuPausa", LoadSceneMode.Additive);
+        SoundManager.Instance.StopMusic(); // para a música atual
+        SoundManager.Instance.PlayMusic("mainmenu-song");
     }
 
     private void AbrirMenuMelhorias()
@@ -92,6 +94,8 @@ public class GameManager : MonoBehaviour
 
         Time.timeScale = 0f; // PAUSA TODAS AS ATUALIZAÇÕES DEPENDENTES DO TEMPO
         SceneManager.LoadScene("MenuMelhorias", LoadSceneMode.Additive);
+        SoundManager.Instance.StopMusic(); // para a música atual
+        SoundManager.Instance.PlayMusic("mainmenu-song");
     }
 
 
@@ -175,6 +179,11 @@ public class GameManager : MonoBehaviour
 
 
         playerVivo = true;
+
+        if (scene.name == "Verdalya")
+        {
+            SoundManager.Instance.PlayMusic("World1");
+        }
     }
 
     public void IncrementOrbCount()
@@ -223,6 +232,7 @@ public class GameManager : MonoBehaviour
         {
             vidaAtual--;
             AtualizarVidaVisual();
+            SoundManager.Instance.PlaySFX("lost-live");
         }
 
         if (vidaAtual == 0 && player != null)

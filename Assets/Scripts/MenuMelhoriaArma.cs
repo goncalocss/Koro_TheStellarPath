@@ -100,5 +100,7 @@ public class MenuMelhoriaArma : MonoBehaviour
         GameManager.Instance.Respawn();
         Time.timeScale = 1f; // Garantir que o jogo não fique pausado
         Debug.Log("↩️ Voltou ao checkpoint e fechou o menu.");
+
+        SoundManager.Instance.PlayMusic("World1");
     }
 }

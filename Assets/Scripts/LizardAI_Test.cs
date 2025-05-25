@@ -114,6 +114,8 @@ public class LizardAI_Test : MonoBehaviour
             isDead = true;
             StopChase();
             ChangeState("Defeated");
+            
+            SoundManager.Instance.PlaySFX("mob-dying");
 
             if (rb != null) rb.isKinematic = true;
             if (col != null) col.enabled = false;

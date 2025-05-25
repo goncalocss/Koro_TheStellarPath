@@ -27,7 +27,7 @@ public class SoundManager : MonoBehaviour
         }
     }
 
-    public void PlayMusic(string musicName)
+    public void PlayMusic(string musicName, bool loop = true)
     {
         AudioClip clip = Resources.Load<AudioClip>($"Audio/Music/{musicName}");
         if (clip == null)
@@ -36,7 +36,12 @@ public class SoundManager : MonoBehaviour
             return;
         }
 
+        // ⛔️ Evita reiniciar se a mesma música já estiver a tocar
+        if (musicSource.clip == clip && musicSource.isPlaying)
+            return;
+
         musicSource.clip = clip;
+        musicSource.loop = loop;
         musicSource.Play();
     }
 

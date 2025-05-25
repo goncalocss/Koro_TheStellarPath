@@ -4,7 +4,7 @@ using System.Collections;
 public class BossAI : MonoBehaviour
 {
     public Transform target;
-    public float chaseDistance = 15f;
+    public float chaseDistance = 60f;
     public float attackDistance = 2f;
     public float moveSpeed = 3f;
     public int maxHealth = 300;
@@ -63,6 +63,8 @@ public class BossAI : MonoBehaviour
                 {
                     healthBar.Show();
                     Debug.Log("Barra de vida do boss ativada.");
+
+                    SoundManager.Instance.PlayMusic("boss-music1");
                 }
             }
             else
@@ -75,6 +77,9 @@ public class BossAI : MonoBehaviour
                     currentHealth = maxHealth;
                     healthBar.SetMaxHealth(maxHealth);
                     Debug.Log("Barra de vida do boss reiniciada.");
+
+                    SoundManager.Instance.StopMusic();
+                    SoundManager.Instance.PlayMusic("Wolrd1");
                 }
             }
 
@@ -115,6 +120,9 @@ public class BossAI : MonoBehaviour
             rb.isKinematic = true;
             Collider col = GetComponent<Collider>();
             if (col != null) col.enabled = false;
+
+            SoundManager.Instance.PlaySFX("boss-dying");
+            SoundManager.Instance.StopMusic();
 
             Destroy(gameObject, 3f);
             Debug.Log("Boss derrotado!");

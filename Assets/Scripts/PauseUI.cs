@@ -10,6 +10,8 @@ public class PauseUI : MonoBehaviour
         SceneManager.UnloadSceneAsync("MenuPausa");
         GameManager.Instance.Respawn();
         Time.timeScale = 1f; // DESPAUSA O JOGO
+
+        SoundManager.Instance.PlayMusic("World1");
     }
 
     public void MainMenu()
@@ -17,6 +19,7 @@ public class PauseUI : MonoBehaviour
         if (!string.IsNullOrEmpty(nomeCenaInicial))
         {
             Time.timeScale = 1f; // ✅ Garante que o tempo é restaurado
+            SoundManager.Instance.PlayMusic("mainmenu-song");
 
             // ✅ Destrói GameManager para que seja recriado corretamente no menu
             if (GameManager.Instance != null)

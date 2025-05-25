@@ -21,6 +21,8 @@ public class MenuPrincipal : MonoBehaviour
     {
         Debug.Log("📂 OnEnable(): a verificar save...");
         continuarButton.gameObject.SetActive(SaveSystem.SaveExists());
+        SoundManager.Instance.PlayMusic("mainmenu-song");
+
     }
 
     public void ContinuarJogo()
@@ -48,6 +50,8 @@ public class MenuPrincipal : MonoBehaviour
     {
         Debug.Log("🆕 NovoJogo() chamado.");
         StartCoroutine(NovoJogoComFadeECutscene());
+        SoundManager.Instance.StopMusic();
+        
     }
 
     private IEnumerator NovoJogoComFadeECutscene()
@@ -100,5 +104,6 @@ public class MenuPrincipal : MonoBehaviour
         // Carregar nova cena
         Debug.Log("🌍 A carregar cena Verdalya...");
         SceneManager.LoadScene("Verdalya");
+        
     }
 }
