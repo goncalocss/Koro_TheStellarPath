@@ -67,10 +67,8 @@ public class MenuPrincipal : MonoBehaviour
             yield return null;
         }
 
-        // Ativar e tocar cutscene
+      
         cutscenePlayer.SetActive(true);
         streamingVideoPlayer.PlayVideo();
-
-        // Não espera aqui pelo vídeo, o StreamingVideoPlayer troca a cena ao fim
     }
 }

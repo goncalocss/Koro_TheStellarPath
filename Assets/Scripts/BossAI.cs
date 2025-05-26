@@ -131,12 +131,12 @@ public class BossAI : MonoBehaviour
             SoundManager.Instance.PlaySFX("boss-dying");
             SoundManager.Instance.StopMusic();
 
-            Destroy(gameObject, 3f);
+
+            Invoke(nameof(MudarParaCenaCutscene), 3f); // Trocar cena após 3 segundos
             Debug.Log("Boss derrotado!");
 
 
-            //apos o boss desaparecer a cena muda 
-            Invoke(nameof(MudarParaCenaCutscene), 3f); // Trocar cena após 3 segundos
+           
         }
     }
 

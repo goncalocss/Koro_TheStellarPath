@@ -4014,7 +4014,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   videoPlayer: {fileID: 381221478}
   videoImage: {fileID: 285771642}
-  videoFileName: Cutsceneboss1Final
+  videoFileName: Cutsceneboss1
   hudUI: {fileID: 1596030369}
   fadePanel: {fileID: 822584368}
   fadeDuration: 1.5
