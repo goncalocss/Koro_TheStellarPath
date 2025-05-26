@@ -1,19 +1,21 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class ChangeScene : MonoBehaviour
 {
-    //Quero uma funçao para mudar de cena onde o parametro é o nome da cena
-    public void ChangeSceneByName(string sceneName)
+    [Header("Nome da cena a carregar")]
+    public string nomeCena;
+
+    // Método público que podes chamar por botão, trigger, etc.
+    public void MudarCena()
     {
-        // Verifica se o nome da cena não é nulo ou vazio
-        if (!string.IsNullOrEmpty(sceneName))
+        if (!string.IsNullOrEmpty(nomeCena))
         {
-            // Muda para a cena especificada
-            UnityEngine.SceneManagement.SceneManager.LoadScene(sceneName);
+            SceneManager.LoadScene(nomeCena);
         }
         else
         {
-            Debug.LogError("Nome da cena inválido.");
+            Debug.LogWarning("Nome da cena não definido no inspetor!");
         }
     }
 }
