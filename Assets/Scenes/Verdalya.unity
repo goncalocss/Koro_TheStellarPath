@@ -9143,6 +9143,7 @@ MonoBehaviour:
   maxHealth: 10
   healthBar: {fileID: 1959503936}
   ataqueArea: {fileID: 1943481777}
+  cenaCutscene: FinalNivel1
 --- !u!1001 &874493481
 PrefabInstance:
   m_ObjectHideFlags: 0

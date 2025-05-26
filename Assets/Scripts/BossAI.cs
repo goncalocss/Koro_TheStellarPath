@@ -1,5 +1,7 @@
 using UnityEngine;
 using System.Collections;
+using UnityEngine.SceneManagement;
+
 
 public class BossAI : MonoBehaviour
 {
@@ -18,6 +20,11 @@ public class BossAI : MonoBehaviour
 
     public GameObject ataqueArea;
     private bool podeAtacar = true;
+    
+    
+    [Header("Cena pós-boss")]
+    public string cenaCutscene;  // Define esta variável no Inspector
+
 
     void Start()
     {
@@ -126,6 +133,10 @@ public class BossAI : MonoBehaviour
 
             Destroy(gameObject, 3f);
             Debug.Log("Boss derrotado!");
+
+
+            //apos o boss desaparecer a cena muda 
+            Invoke(nameof(MudarParaCenaCutscene), 3f); // Trocar cena após 3 segundos
         }
     }
 
@@ -212,6 +223,19 @@ public class BossAI : MonoBehaviour
         else
         {
             Debug.LogWarning("Novo alvo não encontrado.");
+        }
+    }
+
+
+    void MudarParaCenaCutscene()
+    {
+        if (!string.IsNullOrEmpty(cenaCutscene))
+        {
+            SceneManager.LoadScene(cenaCutscene);
+        }
+        else
+        {
+            Debug.LogWarning("Cena de cutscene não definida!");
         }
     }
 }

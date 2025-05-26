@@ -1,72 +1,45 @@
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
-using UnityEngine.Video;
 using System.Collections;
 
 public class MenuPrincipal : MonoBehaviour
 {
     public Button continuarButton;
-    public AudioSource backgroundMusic;
+ 
 
     [Header("Fade")]
     public Image fadePanel;
     public float fadeDuration = 1.5f;
 
     [Header("Cutscene")]
-    public GameObject cutscenePlayer;
-    public VideoPlayer videoPlayer;
+    public GameObject cutscenePlayer;           // objeto com StreamingVideoPlayer (desativado inicialmente)
+    public StreamingVideoPlayer streamingVideoPlayer;
 
     private void Start()
     {
-        Debug.Log("📂 OnEnable(): a verificar save...");
         continuarButton.gameObject.SetActive(SaveSystem.SaveExists());
         SoundManager.Instance.PlayMusic("mainmenu-song");
-
-    }
-
-    public void ContinuarJogo()
-    {
-        
-        Debug.Log("🔁 ContinuarJogo() chamado.");
-
-        SaveData data = SaveSystem.LoadGame();
-        if (data != null)
-        {
-            GameObject temp = new GameObject("TempSaveData");
-            TempSaveData tsd = temp.AddComponent<TempSaveData>();
-            tsd.saveData = data;
-
-            Debug.Log("📂 Save carregado, a mudar para cena: " + data.currentScene);
-            SceneManager.LoadScene(data.currentScene);
-        }
-        else
-        {
-            Debug.LogWarning("⚠️ Nenhum save encontrado!");
-        }
     }
 
     public void NovoJogo()
     {
         Debug.Log("🆕 NovoJogo() chamado.");
-        StartCoroutine(NovoJogoComFadeECutscene());
+        StartCoroutine(NovoJogoComFade());
         SoundManager.Instance.StopMusic();
-        
     }
 
-    private IEnumerator NovoJogoComFadeECutscene()
+    private IEnumerator NovoJogoComFade()
     {
-        Debug.Log("🧹 Save antigo eliminado.");
         SaveSystem.DeleteSave();
 
         // Fade In
-        Debug.Log("🎞️ A iniciar fade in...");
-        float t = 0f;
+        fadePanel.gameObject.SetActive(true);
         Color color = fadePanel.color;
         color.a = 0f;
         fadePanel.color = color;
-        fadePanel.gameObject.SetActive(true);
 
+        float t = 0f;
         while (t < fadeDuration)
         {
             t += Time.deltaTime;
@@ -75,35 +48,12 @@ public class MenuPrincipal : MonoBehaviour
             yield return null;
         }
 
-        Debug.Log("✅ Fade in completo.");
+      
 
-        // Parar música
-        if (backgroundMusic != null)
-        {
-            backgroundMusic.Stop();
-            Debug.Log("🔇 Música de fundo parada.");
-        }
-
-        // Iniciar cutscene
-        Debug.Log("🎥 Ativando cutscenePlayer...");
+        // Ativar e tocar cutscene
         cutscenePlayer.SetActive(true);
-        videoPlayer.Play();
+        streamingVideoPlayer.PlayVideo();
 
-        // Espera até o vídeo começar (timeout de segurança)
-        float timeout = 5f;
-        while (!videoPlayer.isPlaying && timeout > 0f)
-        {
-            timeout -= Time.deltaTime;
-            yield return null;
-        }
-
-        // Esperar o vídeo terminar
-        yield return new WaitUntil(() => !videoPlayer.isPlaying);
-        Debug.Log("⏹️ Vídeo terminou.");
-
-        // Carregar nova cena
-        Debug.Log("🌍 A carregar cena Verdalya...");
-        SceneManager.LoadScene("Verdalya");
-        
+        // Não espera aqui pelo vídeo, o streamingVideoPlayer vai cuidar disso e trocar a cena sozinho
     }
 }
