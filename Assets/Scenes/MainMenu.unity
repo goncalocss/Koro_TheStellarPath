@@ -452,6 +452,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   continuarButton: {fileID: 394461044}
+  backgroundMusic: {fileID: 0}
   fadePanel: {fileID: 2020020196}
   fadeDuration: 1.5
   cutscenePlayer: {fileID: 492467903}
@@ -1016,7 +1017,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1532580673
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1165,9 +1166,9 @@ RectTransform:
   m_LocalScale: {x: 0, y: 0, z: 0}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 1532580675}
   - {fileID: 2011732123}
   - {fileID: 2020020194}
+  - {fileID: 1532580675}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}

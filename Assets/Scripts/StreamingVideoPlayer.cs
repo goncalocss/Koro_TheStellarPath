@@ -15,8 +15,12 @@ public class StreamingVideoPlayer : MonoBehaviour
 
     public UnityEvent<StreamingVideoPlayer> onVideoFinished;
 
+
     public void PlayVideo()
     {
+        if (videoImage != null)
+            videoImage.gameObject.SetActive(true);  // ativa a RawImage (ou o objeto onde está)
+
         StartCoroutine(PlayStreamingClip(videoFileName, looping));
     }
 
