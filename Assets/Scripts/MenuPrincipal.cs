@@ -6,7 +6,7 @@ using System.Collections;
 public class MenuPrincipal : MonoBehaviour
 {
     public Button continuarButton;
- 
+    public AudioSource backgroundMusic;
 
     [Header("Fade")]
     public Image fadePanel;
@@ -18,8 +18,27 @@ public class MenuPrincipal : MonoBehaviour
 
     private void Start()
     {
+        // Mostra o botão continuar só se houver save
         continuarButton.gameObject.SetActive(SaveSystem.SaveExists());
         SoundManager.Instance.PlayMusic("mainmenu-song");
+    }
+
+    public void ContinuarJogo()
+    {
+        SaveData data = SaveSystem.LoadGame();
+        if (data != null)
+        {
+            GameObject temp = new GameObject("TempSaveData");
+            TempSaveData tsd = temp.AddComponent<TempSaveData>();
+            tsd.saveData = data;
+
+            Debug.Log("📂 Save carregado, a mudar para cena: " + data.currentScene);
+            SceneManager.LoadScene(data.currentScene);
+        }
+        else
+        {
+            Debug.LogWarning("⚠️ Nenhum save encontrado!");
+        }
     }
 
     public void NovoJogo()
@@ -48,12 +67,10 @@ public class MenuPrincipal : MonoBehaviour
             yield return null;
         }
 
-      
-
         // Ativar e tocar cutscene
         cutscenePlayer.SetActive(true);
         streamingVideoPlayer.PlayVideo();
 
-        // Não espera aqui pelo vídeo, o streamingVideoPlayer vai cuidar disso e trocar a cena sozinho
+        // Não espera aqui pelo vídeo, o StreamingVideoPlayer troca a cena ao fim
     }
 }
