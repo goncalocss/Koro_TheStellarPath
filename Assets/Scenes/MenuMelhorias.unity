@@ -236,7 +236,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 21, y: 0}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &209718201
@@ -546,7 +546,7 @@ MonoBehaviour:
   textoFaltaOrbs: {fileID: 286103211}
   botaoMelhorar: {fileID: 1592774262}
   sistemaArmas: {fileID: 0}
-  custoMelhoria: 10
+  custoMelhoria: 200
 --- !u!4 &419408193
 Transform:
   m_ObjectHideFlags: 0
