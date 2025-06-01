@@ -1495,7 +1495,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 802.00024, y: 448.00003}
+  m_AnchoredPosition: {x: 759.1, y: 435.2}
   m_SizeDelta: {x: 163.5254, y: 86.2846}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1001 &129082980
@@ -4151,7 +4151,7 @@ Transform:
   m_GameObject: {fileID: 381221474}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: -0.3542094, z: 0, w: 0.9351662}
-  m_LocalPosition: {x: 726.16, y: 11.52, z: 586.97}
+  m_LocalPosition: {x: 726.16, y: 4.8, z: 586.97}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -5368,7 +5368,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 332a984d41baa9443a7e7a0a58d9f143, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 7.3
+      value: 0.01
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 332a984d41baa9443a7e7a0a58d9f143, type: 3}
       propertyPath: m_LocalPosition.z
@@ -14234,7 +14234,7 @@ Light:
   m_Enabled: 1
   serializedVersion: 11
   m_Type: 1
-  m_Color: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+  m_Color: {r: 0.5471698, g: 0.5471698, b: 0.5471698, a: 1}
   m_Intensity: 0.3
   m_Range: 10
   m_SpotAngle: 30
@@ -16535,7 +16535,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 864.3933, y: 444.39313}
+  m_AnchoredPosition: {x: 848.4, y: 437.2}
   m_SizeDelta: {x: 91.21387, y: 91.2137}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1856483625
@@ -17667,27 +17667,27 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 5915d053dbc076b47b2d6dbf96f8a9c5, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 6.52
+      value: 1.4
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 5915d053dbc076b47b2d6dbf96f8a9c5, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 505.54
+      value: 518.5
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 5915d053dbc076b47b2d6dbf96f8a9c5, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.31505623
+      value: 0.2588191
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 5915d053dbc076b47b2d6dbf96f8a9c5, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0.031961337
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 5915d053dbc076b47b2d6dbf96f8a9c5, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0.9484753
+      value: 0.9659258
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 5915d053dbc076b47b2d6dbf96f8a9c5, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0.010616637
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 5915d053dbc076b47b2d6dbf96f8a9c5, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -17695,11 +17695,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 5915d053dbc076b47b2d6dbf96f8a9c5, type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
-      value: 143.25
+      value: 150
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 5915d053dbc076b47b2d6dbf96f8a9c5, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
-      value: 3.86
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 5915d053dbc076b47b2d6dbf96f8a9c5, type: 3}
       propertyPath: m_Name
@@ -18805,7 +18805,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: -749.99994, y: 436.56696}
+  m_AnchoredPosition: {x: -728.5, y: 423.1}
   m_SizeDelta: {x: 416.0856, y: 106.8658}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2023088003
@@ -21139,10 +21139,10 @@ SceneRoots:
   - {fileID: 1040832444}
   - {fileID: 918774924}
   - {fileID: 673433774}
+  - {fileID: 79909289}
   - {fileID: 1838462395}
   - {fileID: 238190011}
   - {fileID: 381221477}
   - {fileID: 253763506}
   - {fileID: 941952952}
   - {fileID: 1561099954}
-  - {fileID: 79909289}
