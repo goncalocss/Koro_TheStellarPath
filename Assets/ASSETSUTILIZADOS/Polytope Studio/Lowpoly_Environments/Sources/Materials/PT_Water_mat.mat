@@ -41,8 +41,8 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
-    - _Depth: 0.268
-    - _DepthStrength: 0.969
+    - _Depth: 0.116
+    - _DepthStrength: 0.795
     - _Float1: 0.1
     - _Float3: 1
     - _Float4: 10000
