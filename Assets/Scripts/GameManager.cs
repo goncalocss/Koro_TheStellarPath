@@ -12,7 +12,7 @@ public class GameManager : MonoBehaviour
     private int orbCount = 0;
 
     public List<Image> pontosDeVida;
-    private int vidaAtual = 3;
+    private int vidaAtual = 6;
     private int acertosRecebidos = 0;
 
     private int bananaCount = 0;

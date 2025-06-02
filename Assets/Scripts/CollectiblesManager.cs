@@ -26,10 +26,6 @@ public class CollectiblesManager : MonoBehaviour
                 Destroy(other.gameObject);
                 break;
 
-            case "Inimigo":
-                Invoke(nameof(DropOrbsAtSelf), 1.5f);
-                break;
-
             case "Bau":
                 if (!string.IsNullOrEmpty(id) && GameManager.Instance.CaixaJaFoiDestruida(id))
                     return;

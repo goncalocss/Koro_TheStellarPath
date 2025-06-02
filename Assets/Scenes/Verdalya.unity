@@ -1495,8 +1495,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 759.1, y: 435.2}
-  m_SizeDelta: {x: 163.5254, y: 86.2846}
+  m_AnchoredPosition: {x: 717.033, y: 435.2}
+  m_SizeDelta: {x: 171.524, y: 86.2846}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1001 &129082980
 PrefabInstance:
@@ -3852,6 +3852,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 2665906560637258822, guid: 5a08b20e9f1b08b43b51b4b0fa872b81, type: 3}
       insertIndex: -1
       addedObject: {fileID: 308292188}
+    - targetCorrespondingSourceObject: {fileID: 2665906560637258822, guid: 5a08b20e9f1b08b43b51b4b0fa872b81, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 308292190}
   m_SourcePrefab: {fileID: 100100000, guid: 5a08b20e9f1b08b43b51b4b0fa872b81, type: 3}
 --- !u!4 &308292186 stripped
 Transform:
@@ -3898,6 +3901,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   canvasHUD: {fileID: 803015495}
   lemonMilkFont: {fileID: 11400000, guid: 170a2341d43a39748ad1cfd05c7dc1b3, type: 2}
+--- !u!114 &308292190
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 308292187}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: db3eaeda8b139bd4b93c1f592aebf09e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  idUnico: caixa_57
 --- !u!1001 &338941137
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4084,6 +4100,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   canvasHUD: {fileID: 803015495}
   lemonMilkFont: {fileID: 11400000, guid: 170a2341d43a39748ad1cfd05c7dc1b3, type: 2}
+--- !u!114 &376287787
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 376287783}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: db3eaeda8b139bd4b93c1f592aebf09e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  idUnico: caixa_54
 --- !u!1 &381221474
 GameObject:
   m_ObjectHideFlags: 0
@@ -4612,6 +4641,19 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 3437622318088230652, guid: 5a08b20e9f1b08b43b51b4b0fa872b81, type: 3}
   m_PrefabInstance: {fileID: 6347965569726970491}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &427342415
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 427342408}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: db3eaeda8b139bd4b93c1f592aebf09e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  idUnico: caixa_53
 --- !u!1001 &456606171
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4942,6 +4984,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 2665906560637258822, guid: 5a08b20e9f1b08b43b51b4b0fa872b81, type: 3}
       insertIndex: -1
       addedObject: {fileID: 486597612}
+    - targetCorrespondingSourceObject: {fileID: 2665906560637258822, guid: 5a08b20e9f1b08b43b51b4b0fa872b81, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 486597614}
   m_SourcePrefab: {fileID: 100100000, guid: 5a08b20e9f1b08b43b51b4b0fa872b81, type: 3}
 --- !u!4 &486597610 stripped
 Transform:
@@ -4988,6 +5033,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   canvasHUD: {fileID: 803015495}
   lemonMilkFont: {fileID: 11400000, guid: 170a2341d43a39748ad1cfd05c7dc1b3, type: 2}
+--- !u!114 &486597614
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 486597611}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: db3eaeda8b139bd4b93c1f592aebf09e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  idUnico: caixa_59
 --- !u!1001 &501583126
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5368,7 +5426,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 332a984d41baa9443a7e7a0a58d9f143, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.01
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 332a984d41baa9443a7e7a0a58d9f143, type: 3}
       propertyPath: m_LocalPosition.z
@@ -5923,6 +5981,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 2665906560637258822, guid: 5a08b20e9f1b08b43b51b4b0fa872b81, type: 3}
       insertIndex: -1
       addedObject: {fileID: 520187066}
+    - targetCorrespondingSourceObject: {fileID: 2665906560637258822, guid: 5a08b20e9f1b08b43b51b4b0fa872b81, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 520187068}
   m_SourcePrefab: {fileID: 100100000, guid: 5a08b20e9f1b08b43b51b4b0fa872b81, type: 3}
 --- !u!4 &520187064 stripped
 Transform:
@@ -5969,6 +6030,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   canvasHUD: {fileID: 803015495}
   lemonMilkFont: {fileID: 11400000, guid: 170a2341d43a39748ad1cfd05c7dc1b3, type: 2}
+--- !u!114 &520187068
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 520187065}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: db3eaeda8b139bd4b93c1f592aebf09e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  idUnico: caixa_58
 --- !u!1001 &533073559
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -6039,6 +6113,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 2665906560637258822, guid: 5a08b20e9f1b08b43b51b4b0fa872b81, type: 3}
       insertIndex: -1
       addedObject: {fileID: 376287785}
+    - targetCorrespondingSourceObject: {fileID: 2665906560637258822, guid: 5a08b20e9f1b08b43b51b4b0fa872b81, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 376287787}
   m_SourcePrefab: {fileID: 100100000, guid: 5a08b20e9f1b08b43b51b4b0fa872b81, type: 3}
 --- !u!4 &580260579 stripped
 Transform:
@@ -9236,7 +9313,7 @@ CapsuleCollider:
   m_Radius: 0.776669
   m_Height: 4.71
   m_Direction: 1
-  m_Center: {x: -0.000000003231721, y: 2.05, z: -0.10333097}
+  m_Center: {x: -0.000000003231721, y: 2.27, z: -0.10333097}
 --- !u!1001 &874493481
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -9516,6 +9593,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 2665906560637258822, guid: 5a08b20e9f1b08b43b51b4b0fa872b81, type: 3}
       insertIndex: -1
       addedObject: {fileID: 876595238}
+    - targetCorrespondingSourceObject: {fileID: 2665906560637258822, guid: 5a08b20e9f1b08b43b51b4b0fa872b81, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 876595240}
   m_SourcePrefab: {fileID: 100100000, guid: 5a08b20e9f1b08b43b51b4b0fa872b81, type: 3}
 --- !u!4 &876595236 stripped
 Transform:
@@ -9562,6 +9642,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   canvasHUD: {fileID: 803015495}
   lemonMilkFont: {fileID: 11400000, guid: 170a2341d43a39748ad1cfd05c7dc1b3, type: 2}
+--- !u!114 &876595240
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 876595237}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: db3eaeda8b139bd4b93c1f592aebf09e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  idUnico: caixa_61
 --- !u!1001 &877282108
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -13245,6 +13338,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 2665906560637258822, guid: 5a08b20e9f1b08b43b51b4b0fa872b81, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1449826636}
+    - targetCorrespondingSourceObject: {fileID: 2665906560637258822, guid: 5a08b20e9f1b08b43b51b4b0fa872b81, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1449826638}
   m_SourcePrefab: {fileID: 100100000, guid: 5a08b20e9f1b08b43b51b4b0fa872b81, type: 3}
 --- !u!4 &1449826634 stripped
 Transform:
@@ -13291,6 +13387,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   canvasHUD: {fileID: 803015495}
   lemonMilkFont: {fileID: 11400000, guid: 170a2341d43a39748ad1cfd05c7dc1b3, type: 2}
+--- !u!114 &1449826638
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1449826635}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: db3eaeda8b139bd4b93c1f592aebf09e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  idUnico: caixa_60
 --- !u!1 &1460855730 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 757502e92830dd0418ab5fbdfb6e281f, type: 3}
@@ -14909,6 +15018,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 2665906560637258822, guid: 5a08b20e9f1b08b43b51b4b0fa872b81, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1591501052}
+    - targetCorrespondingSourceObject: {fileID: 2665906560637258822, guid: 5a08b20e9f1b08b43b51b4b0fa872b81, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1591501054}
   m_SourcePrefab: {fileID: 100100000, guid: 5a08b20e9f1b08b43b51b4b0fa872b81, type: 3}
 --- !u!4 &1591501050 stripped
 Transform:
@@ -14955,6 +15067,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   canvasHUD: {fileID: 803015495}
   lemonMilkFont: {fileID: 11400000, guid: 170a2341d43a39748ad1cfd05c7dc1b3, type: 2}
+--- !u!114 &1591501054
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1591501051}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: db3eaeda8b139bd4b93c1f592aebf09e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  idUnico: caixa_56
 --- !u!1 &1596030369
 GameObject:
   m_ObjectHideFlags: 0
@@ -19898,6 +20023,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 2665906560637258822, guid: 5a08b20e9f1b08b43b51b4b0fa872b81, type: 3}
       insertIndex: -1
       addedObject: {fileID: 2067411147}
+    - targetCorrespondingSourceObject: {fileID: 2665906560637258822, guid: 5a08b20e9f1b08b43b51b4b0fa872b81, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 2067411149}
   m_SourcePrefab: {fileID: 100100000, guid: 5a08b20e9f1b08b43b51b4b0fa872b81, type: 3}
 --- !u!4 &2067411145 stripped
 Transform:
@@ -19944,6 +20072,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   canvasHUD: {fileID: 803015495}
   lemonMilkFont: {fileID: 11400000, guid: 170a2341d43a39748ad1cfd05c7dc1b3, type: 2}
+--- !u!114 &2067411149
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2067411146}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: db3eaeda8b139bd4b93c1f592aebf09e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  idUnico: caixa_55
 --- !u!1 &2081969865
 GameObject:
   m_ObjectHideFlags: 0
@@ -21063,6 +21204,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 2665906560637258822, guid: 5a08b20e9f1b08b43b51b4b0fa872b81, type: 3}
       insertIndex: -1
       addedObject: {fileID: 427342413}
+    - targetCorrespondingSourceObject: {fileID: 2665906560637258822, guid: 5a08b20e9f1b08b43b51b4b0fa872b81, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 427342415}
   m_SourcePrefab: {fileID: 100100000, guid: 5a08b20e9f1b08b43b51b4b0fa872b81, type: 3}
 --- !u!1001 &7098413985616623882
 PrefabInstance:
