@@ -11,6 +11,9 @@ public class Player : MonoBehaviour
     public float gravity = -20f;
     public float rotationSpeed = 700f;
 
+    private float attackEndTime = 0f;
+    private float attackDurationBuffer = 0.1f;
+
     public Transform cameraTransform;
 
     private CharacterController controller;
@@ -90,7 +93,7 @@ public class Player : MonoBehaviour
             Quaternion targetRotation = Quaternion.Euler(0, angle, 0);
             transform.rotation = Quaternion.RotateTowards(transform.rotation, targetRotation, rotationSpeed * Time.deltaTime);
 
-            
+
         }
 
         animator.SetFloat("speed", input.magnitude);
@@ -139,6 +142,9 @@ public class Player : MonoBehaviour
                 animator.SetTrigger("LightAttack");
                 isAttacking = true;
 
+                // Atualiza o tempo em que o ataque termina (duração da animação + buffer)
+                attackEndTime = Time.time + stateInfo.length + attackDurationBuffer;
+
                 SoundManager.Instance.PlaySFX("swing2");
             }
             else if (Input.GetMouseButtonDown(1) && !inAttackAnim)
@@ -146,11 +152,15 @@ public class Player : MonoBehaviour
                 currentAttackTrigger = 1;
                 animator.SetTrigger("HeavyAttack");
                 isAttacking = true;
+
+                attackEndTime = Time.time + stateInfo.length + attackDurationBuffer;
+
                 SoundManager.Instance.PlaySFX("swing3");
             }
         }
 
-        if (stateInfo.normalizedTime >= 1.0f && currentAttackTrigger != -1)
+        // Desliga o isAttacking só quando o tempo atual ultrapassar o tempo final do ataque + buffer
+        if (currentAttackTrigger != -1 && Time.time >= attackEndTime)
         {
             currentAttackTrigger = -1;
             isAttacking = false;
