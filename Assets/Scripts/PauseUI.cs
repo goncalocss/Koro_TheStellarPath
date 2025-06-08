@@ -11,7 +11,23 @@ public class PauseUI : MonoBehaviour
         GameManager.Instance.Respawn();
         Time.timeScale = 1f; // DESPAUSA O JOGO
 
-        SoundManager.Instance.PlayMusic("World1");
+        string cenaAtual = SceneManager.GetActiveScene().name;
+        if (cenaAtual == "Verdalya")
+        {
+            SoundManager.Instance.PlayMusic("World1");
+        }
+        else if (cenaAtual == "Drexan")
+        {
+            SoundManager.Instance.PlayMusic("World2");
+        }
+        else if (cenaAtual == "Nebelya")
+        {
+            SoundManager.Instance.PlayMusic("World3");
+        }
+        else
+        {
+            Debug.LogWarning("❗ Música não definida para a cena atual: " + cenaAtual);
+        }
     }
 
     public void MainMenu()
