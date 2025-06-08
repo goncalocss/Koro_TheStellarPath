@@ -380,7 +380,7 @@ MonoBehaviour:
   videoImage: {fileID: 770688119}
   videoFileName: Cutscene3FinalPlusautocarro
   looping: 0
-  nextSceneName: MainMenu
+  nextSceneName: Drexan
   onVideoFinished:
     m_PersistentCalls:
       m_Calls: []

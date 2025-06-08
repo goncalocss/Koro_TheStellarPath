@@ -457,6 +457,7 @@ MonoBehaviour:
   fadeDuration: 1.5
   cutscenePlayer: {fileID: 492467903}
   streamingVideoPlayer: {fileID: 492467904}
+  gameManagerPrefab: {fileID: 5955120483222855059, guid: 2e85ef6107603824ebee918e26fc58b1, type: 3}
 --- !u!4 &243028052
 Transform:
   m_ObjectHideFlags: 0

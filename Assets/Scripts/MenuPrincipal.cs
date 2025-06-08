@@ -16,6 +16,8 @@ public class MenuPrincipal : MonoBehaviour
     public GameObject cutscenePlayer;           // objeto com StreamingVideoPlayer (desativado inicialmente)
     public StreamingVideoPlayer streamingVideoPlayer;
 
+    public GameObject gameManagerPrefab; // ✅ NOVO: arrasta o prefab no Inspector
+
     private void Start()
     {
         // Mostra o botão continuar só se houver save
@@ -28,6 +30,16 @@ public class MenuPrincipal : MonoBehaviour
         SaveData data = SaveSystem.LoadGame();
         if (data != null)
         {
+            // ✅ Instanciar GameManager se não existir
+            if (GameManager.Instance == null)
+            {
+                GameObject gm = Instantiate(gameManagerPrefab);
+                gm.name = "GameManager (Instanciado via Menu)";
+                DontDestroyOnLoad(gm);
+                Debug.Log("✅ GameManager criado no menu antes de carregar a cena.");
+            }
+
+            // Criar TempSaveData com os dados carregados
             GameObject temp = new GameObject("TempSaveData");
             TempSaveData tsd = temp.AddComponent<TempSaveData>();
             tsd.saveData = data;
@@ -40,6 +52,7 @@ public class MenuPrincipal : MonoBehaviour
             Debug.LogWarning("⚠️ Nenhum save encontrado!");
         }
     }
+
 
     public void NovoJogo()
     {
@@ -67,7 +80,7 @@ public class MenuPrincipal : MonoBehaviour
             yield return null;
         }
 
-      
+
         cutscenePlayer.SetActive(true);
         streamingVideoPlayer.PlayVideo();
     }

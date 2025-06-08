@@ -67,7 +67,7 @@ public class CheckpointTrigger : MonoBehaviour
             data.vidaMaxima = GameManager.Instance.ObterVidaMaxima();
             data.bananaCount = GameManager.Instance.ObterBananaCount();
             data.caixasDestruidas = GameManager.Instance.ObterCaixasDestruidas();
-            data.lareirasUsadas = GameManager.Instance.ObterLareirasUsadas(); // ✅ novo
+            data.lareirasUsadas = GameManager.Instance.ObterLareirasUsadas(); 
             data.nivelArma = GameManager.Instance.sistemaArmas.ObterNivelAtual();
 
             SaveSystem.SaveGame(data);

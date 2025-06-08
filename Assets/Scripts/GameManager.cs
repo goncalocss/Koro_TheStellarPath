@@ -106,61 +106,19 @@ public class GameManager : MonoBehaviour
         SceneManager.sceneLoaded -= OnSceneLoaded;
     }
 
-    private void Start()
-    {
-        if (orbCountText != null)
-            UpdateOrbCountText();
-
-        if (player == null)
-            player = FindFirstObjectByType<Player>();
-
-        if (TempSaveData.Instance != null && TempSaveData.Instance.saveData != null)
-        {
-            SaveData data = TempSaveData.Instance.saveData;
-
-            player.transform.position = data.playerPosition;
-            ultimoCheckpoint = data.checkpointPosition;
-            temCheckpoint = true;
-            DefinirNumeroOrbs(data.orbs);
-            DefinirBananaCount(data.bananaCount);
-            AplicarVidaMaxima(data.vidaMaxima);
-            DefinirVidaAtual(data.playerHealth);
-
-            if (sistemaArmas != null)
-            {
-                sistemaArmas.DefinirNivel(data.nivelArma);
-                Debug.Log($"🔫 Nível da arma carregado: {data.nivelArma}");
-            }
-            AtualizarVidaVisual();
-
-            if (data.caixasDestruidas != null)
-            {
-                CarregarCaixasDestruidas(data.caixasDestruidas);
-                Debug.Log($"Caixas destruídas carregadas: {string.Join(", ", caixasDestruidas)}");
-
-                // 💥 CHAMADA ESSENCIAL
-                RemoverCaixasDestruidas();
-            }
-
-            if (data.lareirasUsadas != null)
-            {
-                CarregarLareirasUsadas(data.lareirasUsadas);
-                Debug.Log($"🔥 Lareiras usadas carregadas: {string.Join(", ", lareirasUsadas)}");
-            }
-
-
-            Destroy(TempSaveData.Instance.gameObject);
-        }
-    }
+   
 
     private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
         player = FindFirstObjectByType<Player>();
         orbCountText = FindFirstObjectByType<TextMeshProUGUI>();
+        sistemaArmas = FindFirstObjectByType<SistemaArmas>();
 
+        // HUD - Orb count
         if (orbCountText != null)
             UpdateOrbCountText();
 
+        // Pontos de vida (corações)
         GameObject escolhido = null;
         int maxCount = 0;
         foreach (var candidato in GameObject.FindGameObjectsWithTag("PontosDeVida"))
@@ -181,19 +139,53 @@ public class GameManager : MonoBehaviour
                 if (img.gameObject != escolhido)
                     pontosDeVida.Add(img);
             }
-            vidaAtual = Mathf.Clamp(vidaAtual, 0, pontosDeVida.Count);
-            AtualizarVidaVisual();
         }
 
+        // 👉 CARREGAR SAVE DEPOIS da cena estar carregada
+        if (TempSaveData.Instance != null && TempSaveData.Instance.saveData != null)
+        {
+            SaveData data = TempSaveData.Instance.saveData;
 
+            if (player != null)
+                player.transform.position = data.playerPosition;
 
+            ultimoCheckpoint = data.checkpointPosition;
+            temCheckpoint = true;
+
+            DefinirNumeroOrbs(data.orbs);
+            DefinirBananaCount(data.bananaCount);
+            AplicarVidaMaxima(data.vidaMaxima);
+            DefinirVidaAtual(data.playerHealth);
+
+            if (sistemaArmas != null)
+            {
+                sistemaArmas.DefinirNivel(data.nivelArma);
+                Debug.Log($"🔫 Nível da arma carregado: {data.nivelArma}");
+            }
+
+            if (data.caixasDestruidas != null)
+            {
+                CarregarCaixasDestruidas(data.caixasDestruidas);
+                RemoverCaixasDestruidas();
+            }
+
+            if (data.lareirasUsadas != null)
+            {
+                CarregarLareirasUsadas(data.lareirasUsadas);
+            }
+
+            Destroy(TempSaveData.Instance.gameObject);
+        }
+
+        AtualizarVidaVisual();
         playerVivo = true;
 
         if (scene.name == "Verdalya")
-        {
             SoundManager.Instance.PlayMusic("World1");
-        }
+        if (scene.name == "Drexan")
+            SoundManager.Instance.PlayMusic("World2");
     }
+
 
     public void IncrementOrbCount()
     {
