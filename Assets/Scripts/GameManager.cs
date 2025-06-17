@@ -156,7 +156,7 @@ public class GameManager : MonoBehaviour
             DefinirBananaCount(data.bananaCount);
             DefinirVidaAtual(data.playerHealth);
             AplicarVidaMaxima(data.vidaMaxima);
-           
+
 
             if (sistemaArmas != null)
             {
@@ -284,7 +284,7 @@ public class GameManager : MonoBehaviour
         acertosRecebidos = 0;
         if (vidaAtual == 0)
         {
-            vidaAtual = 3;
+            vidaAtual = 6;
         }
         else
         {
@@ -360,16 +360,31 @@ public class GameManager : MonoBehaviour
 
     private void AtualizarVidaVisual()
     {
+        if (pontosDeVida == null)
+        {
+            Debug.LogWarning("⚠️ pontosDeVida está null — nada a atualizar.");
+            return;
+        }
+
         Debug.Log($"🔴 Atualizando vida visual: {vidaAtual}/{pontosDeVida.Count}");
-        if (pontosDeVida == null) return;
 
         for (int i = 0; i < pontosDeVida.Count; i++)
         {
+            var img = pontosDeVida[i];
+
+            if (img == null)
+            {
+                Debug.LogWarning($"⚠️ pontoDeVida[{i}] foi destruído ou está null — ignorado.");
+                continue;
+            }
+
             bool ativo = i < vidaAtual;
-            pontosDeVida[i].enabled = ativo;
-            pontosDeVida[i].gameObject.SetActive(true);
+
+            img.enabled = ativo;
+            img.gameObject.SetActive(true);
         }
     }
+
 
     public void RegistarCaixaDestruida(string id)
     {
