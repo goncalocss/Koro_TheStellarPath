@@ -65,6 +65,14 @@ public class MenuPrincipal : MonoBehaviour
     {
         SaveSystem.DeleteSave();
 
+        if (GameManager.Instance == null)
+        {
+            GameObject gm = Instantiate(gameManagerPrefab);
+            gm.name = "GameManager (Instanciado via NovoJogo)";
+            DontDestroyOnLoad(gm);
+            Debug.Log("✅ GameManager criado no Novo Jogo.");
+        }
+
         // Fade In
         fadePanel.gameObject.SetActive(true);
         Color color = fadePanel.color;

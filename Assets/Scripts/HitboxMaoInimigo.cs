@@ -2,17 +2,8 @@ using UnityEngine;
 
 public class HitboxMaoInimigo : MonoBehaviour
 {
-    public GameManager gameManager;
     public float tempoEntreAtaques = 1f;
     private float tempoUltimoAtaque;
-
-    private void Start()
-    {
-        if (gameManager == null)
-        {
-            gameManager = FindAnyObjectByType<GameManager>();
-        }
-    }
 
     private void OnTriggerEnter(Collider other)
     {
@@ -20,9 +11,17 @@ public class HitboxMaoInimigo : MonoBehaviour
         {
             tempoUltimoAtaque = Time.time + tempoEntreAtaques;
 
-            Debug.Log("A MÃO do lagarto acertou o jogador!");
-            gameManager.ReceberDano();
+            Debug.Log("👊 A MÃO do lagarto acertou o jogador!");
+
+            // Usa a instância global correta do GameManager
+            if (GameManager.Instance != null)
+            {
+                GameManager.Instance.ReceberDano();
+            }
+            else
+            {
+                Debug.LogWarning("⚠️ GameManager.Instance está null!");
+            }
         }
     }
-
 }

@@ -131,14 +131,12 @@ public class GameManager : MonoBehaviour
             }
         }
 
-        // ✅ Limpar e reconstruir a lista com segurança
-        pontosDeVida = new List<Image>();
-
         if (escolhido != null)
         {
+            pontosDeVida = new List<Image>();
             foreach (var img in escolhido.GetComponentsInChildren<Image>(true))
             {
-                if (img != null && img.gameObject != escolhido)
+                if (img.gameObject != escolhido)
                     pontosDeVida.Add(img);
             }
         }
@@ -156,8 +154,9 @@ public class GameManager : MonoBehaviour
 
             DefinirNumeroOrbs(data.orbs);
             DefinirBananaCount(data.bananaCount);
-            AplicarVidaMaxima(data.vidaMaxima);
             DefinirVidaAtual(data.playerHealth);
+            AplicarVidaMaxima(data.vidaMaxima);
+           
 
             if (sistemaArmas != null)
             {
@@ -184,7 +183,6 @@ public class GameManager : MonoBehaviour
 
         if (scene.name == "Verdalya")
             SoundManager.Instance.PlayMusic("World1");
-
         if (scene.name == "Drexan")
             SoundManager.Instance.PlayMusic("World2");
     }
@@ -362,12 +360,11 @@ public class GameManager : MonoBehaviour
 
     private void AtualizarVidaVisual()
     {
+        Debug.Log($"🔴 Atualizando vida visual: {vidaAtual}/{pontosDeVida.Count}");
         if (pontosDeVida == null) return;
 
         for (int i = 0; i < pontosDeVida.Count; i++)
         {
-            if (pontosDeVida[i] == null) continue;
-
             bool ativo = i < vidaAtual;
             pontosDeVida[i].enabled = ativo;
             pontosDeVida[i].gameObject.SetActive(true);

@@ -1514,7 +1514,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 79c206686f249c54899ec07ee4e4d6aa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gameManager: {fileID: 238190012}
+  gameManager: {fileID: 0}
   tempoEntreAtaques: 1
 --- !u!65 &129082985
 BoxCollider:
@@ -1813,7 +1813,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 79c206686f249c54899ec07ee4e4d6aa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gameManager: {fileID: 238190012}
+  gameManager: {fileID: 0}
   tempoEntreAtaques: 1
 --- !u!136 &180875229
 CapsuleCollider:
@@ -2424,7 +2424,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 79c206686f249c54899ec07ee4e4d6aa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gameManager: {fileID: 238190012}
+  gameManager: {fileID: 0}
   tempoEntreAtaques: 1
 --- !u!136 &219581831
 CapsuleCollider:
@@ -2814,17 +2814,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 1f08f2fd73804ac48ba23f9ab15e86e4, type: 3}
   m_PrefabInstance: {fileID: 1585652202}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &238190012 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 6562335175534562790, guid: 2e85ef6107603824ebee918e26fc58b1, type: 3}
-  m_PrefabInstance: {fileID: 7294418653850579185}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 55cf61e66e59a4a98a5fa88fcc85d984, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1001 &245936444
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3106,7 +3095,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 79c206686f249c54899ec07ee4e4d6aa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gameManager: {fileID: 238190012}
+  gameManager: {fileID: 0}
   tempoEntreAtaques: 1
 --- !u!136 &253371285
 CapsuleCollider:
@@ -3381,7 +3370,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 79c206686f249c54899ec07ee4e4d6aa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gameManager: {fileID: 238190012}
+  gameManager: {fileID: 0}
   tempoEntreAtaques: 1
 --- !u!136 &281168275
 CapsuleCollider:
@@ -5371,7 +5360,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 79c206686f249c54899ec07ee4e4d6aa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gameManager: {fileID: 238190012}
+  gameManager: {fileID: 0}
   tempoEntreAtaques: 1
 --- !u!65 &507691426
 BoxCollider:
@@ -5690,7 +5679,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 79c206686f249c54899ec07ee4e4d6aa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gameManager: {fileID: 238190012}
+  gameManager: {fileID: 0}
   tempoEntreAtaques: 1
 --- !u!136 &515329778
 CapsuleCollider:
@@ -5882,7 +5871,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 79c206686f249c54899ec07ee4e4d6aa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gameManager: {fileID: 238190012}
+  gameManager: {fileID: 0}
   tempoEntreAtaques: 1
 --- !u!65 &519189873
 BoxCollider:
@@ -6447,7 +6436,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 79c206686f249c54899ec07ee4e4d6aa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gameManager: {fileID: 238190012}
+  gameManager: {fileID: 0}
   tempoEntreAtaques: 1
 --- !u!65 &640221928
 BoxCollider:
@@ -6660,7 +6649,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 79c206686f249c54899ec07ee4e4d6aa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gameManager: {fileID: 238190012}
+  gameManager: {fileID: 0}
   tempoEntreAtaques: 1
 --- !u!65 &647317746
 BoxCollider:
@@ -6869,7 +6858,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 79c206686f249c54899ec07ee4e4d6aa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gameManager: {fileID: 238190012}
+  gameManager: {fileID: 0}
   tempoEntreAtaques: 1
 --- !u!65 &654056816
 BoxCollider:
@@ -7082,7 +7071,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 79c206686f249c54899ec07ee4e4d6aa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gameManager: {fileID: 238190012}
+  gameManager: {fileID: 0}
   tempoEntreAtaques: 1
 --- !u!65 &657574331
 BoxCollider:
@@ -7721,7 +7710,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 79c206686f249c54899ec07ee4e4d6aa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gameManager: {fileID: 238190012}
+  gameManager: {fileID: 0}
   tempoEntreAtaques: 1
 --- !u!65 &715331345
 BoxCollider:
@@ -8675,7 +8664,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 79c206686f249c54899ec07ee4e4d6aa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gameManager: {fileID: 238190012}
+  gameManager: {fileID: 0}
   tempoEntreAtaques: 1
 --- !u!65 &831948424
 BoxCollider:
@@ -9058,7 +9047,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 79c206686f249c54899ec07ee4e4d6aa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gameManager: {fileID: 238190012}
+  gameManager: {fileID: 0}
   tempoEntreAtaques: 1
 --- !u!136 &856586087
 CapsuleCollider:
@@ -9493,7 +9482,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 79c206686f249c54899ec07ee4e4d6aa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gameManager: {fileID: 238190012}
+  gameManager: {fileID: 0}
   tempoEntreAtaques: 1
 --- !u!65 &874493486
 BoxCollider:
@@ -10113,7 +10102,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 79c206686f249c54899ec07ee4e4d6aa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gameManager: {fileID: 238190012}
+  gameManager: {fileID: 0}
   tempoEntreAtaques: 1
 --- !u!1001 &891259017
 PrefabInstance:
@@ -10234,7 +10223,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 79c206686f249c54899ec07ee4e4d6aa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gameManager: {fileID: 238190012}
+  gameManager: {fileID: 0}
   tempoEntreAtaques: 1
 --- !u!65 &891259022
 BoxCollider:
@@ -10686,7 +10675,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 79c206686f249c54899ec07ee4e4d6aa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gameManager: {fileID: 238190012}
+  gameManager: {fileID: 0}
   tempoEntreAtaques: 1
 --- !u!65 &974576881
 BoxCollider:
@@ -12046,7 +12035,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 79c206686f249c54899ec07ee4e4d6aa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gameManager: {fileID: 238190012}
+  gameManager: {fileID: 0}
   tempoEntreAtaques: 1
 --- !u!65 &1169763601
 BoxCollider:
@@ -12244,7 +12233,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 79c206686f249c54899ec07ee4e4d6aa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gameManager: {fileID: 238190012}
+  gameManager: {fileID: 6562335175534562790, guid: 2e85ef6107603824ebee918e26fc58b1, type: 3}
   tempoEntreAtaques: 1
 --- !u!65 &1283471889
 BoxCollider:
@@ -13031,7 +13020,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 79c206686f249c54899ec07ee4e4d6aa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gameManager: {fileID: 238190012}
+  gameManager: {fileID: 0}
   tempoEntreAtaques: 1
 --- !u!65 &1402456826
 BoxCollider:
@@ -13822,7 +13811,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 79c206686f249c54899ec07ee4e4d6aa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gameManager: {fileID: 238190012}
+  gameManager: {fileID: 0}
   tempoEntreAtaques: 1
 --- !u!65 &1504845709
 BoxCollider:
@@ -14036,7 +14025,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 79c206686f249c54899ec07ee4e4d6aa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gameManager: {fileID: 238190012}
+  gameManager: {fileID: 0}
   tempoEntreAtaques: 1
 --- !u!1001 &1557377195
 PrefabInstance:
@@ -15259,7 +15248,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 79c206686f249c54899ec07ee4e4d6aa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gameManager: {fileID: 238190012}
+  gameManager: {fileID: 0}
   tempoEntreAtaques: 1
 --- !u!136 &1615883988
 CapsuleCollider:
@@ -15366,7 +15355,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 79c206686f249c54899ec07ee4e4d6aa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gameManager: {fileID: 238190012}
+  gameManager: {fileID: 0}
   tempoEntreAtaques: 1
 --- !u!1 &1646557671
 GameObject:
@@ -15792,7 +15781,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 79c206686f249c54899ec07ee4e4d6aa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gameManager: {fileID: 238190012}
+  gameManager: {fileID: 0}
   tempoEntreAtaques: 1
 --- !u!65 &1716460968
 BoxCollider:
@@ -16022,7 +16011,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 79c206686f249c54899ec07ee4e4d6aa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gameManager: {fileID: 238190012}
+  gameManager: {fileID: 0}
   tempoEntreAtaques: 1
 --- !u!136 &1721367516
 CapsuleCollider:
@@ -16195,7 +16184,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 79c206686f249c54899ec07ee4e4d6aa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gameManager: {fileID: 238190012}
+  gameManager: {fileID: 0}
   tempoEntreAtaques: 1
 --- !u!65 &1807858745
 BoxCollider:
@@ -17568,7 +17557,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 79c206686f249c54899ec07ee4e4d6aa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gameManager: {fileID: 238190012}
+  gameManager: {fileID: 0}
   tempoEntreAtaques: 1
 --- !u!65 &1964299006
 BoxCollider:
@@ -18160,7 +18149,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 79c206686f249c54899ec07ee4e4d6aa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gameManager: {fileID: 238190012}
+  gameManager: {fileID: 0}
   tempoEntreAtaques: 1
 --- !u!65 &2010432567
 BoxCollider:
@@ -18531,7 +18520,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 79c206686f249c54899ec07ee4e4d6aa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gameManager: {fileID: 238190012}
+  gameManager: {fileID: 0}
   tempoEntreAtaques: 1
 --- !u!136 &2015401205
 CapsuleCollider:
@@ -18723,7 +18712,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 79c206686f249c54899ec07ee4e4d6aa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gameManager: {fileID: 238190012}
+  gameManager: {fileID: 0}
   tempoEntreAtaques: 1
 --- !u!65 &2019512667
 BoxCollider:
@@ -19427,7 +19416,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 79c206686f249c54899ec07ee4e4d6aa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gameManager: {fileID: 238190012}
+  gameManager: {fileID: 0}
   tempoEntreAtaques: 1
 --- !u!65 &2036957321
 BoxCollider:
@@ -19786,7 +19775,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 79c206686f249c54899ec07ee4e4d6aa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gameManager: {fileID: 238190012}
+  gameManager: {fileID: 0}
   tempoEntreAtaques: 1
 --- !u!65 &2059587687
 BoxCollider:
@@ -21253,99 +21242,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5a7ba3a00e9cb2c4e9f5286f922c7297, type: 3}
---- !u!1001 &7294418653850579185
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 1690662002260107909, guid: 2e85ef6107603824ebee918e26fc58b1, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 508.49997
-      objectReference: {fileID: 0}
-    - target: {fileID: 1690662002260107909, guid: 2e85ef6107603824ebee918e26fc58b1, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 285.99994
-      objectReference: {fileID: 0}
-    - target: {fileID: 1690662002260107909, guid: 2e85ef6107603824ebee918e26fc58b1, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: -0.000022888184
-      objectReference: {fileID: 0}
-    - target: {fileID: 1690662002260107909, guid: 2e85ef6107603824ebee918e26fc58b1, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1690662002260107909, guid: 2e85ef6107603824ebee918e26fc58b1, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1690662002260107909, guid: 2e85ef6107603824ebee918e26fc58b1, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1690662002260107909, guid: 2e85ef6107603824ebee918e26fc58b1, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1690662002260107909, guid: 2e85ef6107603824ebee918e26fc58b1, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1690662002260107909, guid: 2e85ef6107603824ebee918e26fc58b1, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1690662002260107909, guid: 2e85ef6107603824ebee918e26fc58b1, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5955120483222855059, guid: 2e85ef6107603824ebee918e26fc58b1, type: 3}
-      propertyPath: m_Name
-      value: GAMEMANAGER
-      objectReference: {fileID: 0}
-    - target: {fileID: 6562335175534562790, guid: 2e85ef6107603824ebee918e26fc58b1, type: 3}
-      propertyPath: player
-      value: 
-      objectReference: {fileID: 1460855731}
-    - target: {fileID: 6562335175534562790, guid: 2e85ef6107603824ebee918e26fc58b1, type: 3}
-      propertyPath: orbCountText
-      value: 
-      objectReference: {fileID: 114285613}
-    - target: {fileID: 6562335175534562790, guid: 2e85ef6107603824ebee918e26fc58b1, type: 3}
-      propertyPath: sistemaArmas
-      value: 
-      objectReference: {fileID: 1068064751}
-    - target: {fileID: 6562335175534562790, guid: 2e85ef6107603824ebee918e26fc58b1, type: 3}
-      propertyPath: 'pontosDeVida.Array.data[0]'
-      value: 
-      objectReference: {fileID: 2086019907}
-    - target: {fileID: 6562335175534562790, guid: 2e85ef6107603824ebee918e26fc58b1, type: 3}
-      propertyPath: 'pontosDeVida.Array.data[1]'
-      value: 
-      objectReference: {fileID: 2040393739}
-    - target: {fileID: 6562335175534562790, guid: 2e85ef6107603824ebee918e26fc58b1, type: 3}
-      propertyPath: 'pontosDeVida.Array.data[2]'
-      value: 
-      objectReference: {fileID: 2056216797}
-    - target: {fileID: 6562335175534562790, guid: 2e85ef6107603824ebee918e26fc58b1, type: 3}
-      propertyPath: 'pontosDeVida.Array.data[3]'
-      value: 
-      objectReference: {fileID: 1119919859}
-    - target: {fileID: 6562335175534562790, guid: 2e85ef6107603824ebee918e26fc58b1, type: 3}
-      propertyPath: 'pontosDeVida.Array.data[4]'
-      value: 
-      objectReference: {fileID: 1323362173}
-    - target: {fileID: 6562335175534562790, guid: 2e85ef6107603824ebee918e26fc58b1, type: 3}
-      propertyPath: 'pontosDeVida.Array.data[5]'
-      value: 
-      objectReference: {fileID: 681928335}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 2e85ef6107603824ebee918e26fc58b1, type: 3}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
@@ -21362,7 +21258,6 @@ SceneRoots:
   - {fileID: 673433774}
   - {fileID: 1838462395}
   - {fileID: 222055865}
-  - {fileID: 7294418653850579185}
   - {fileID: 381221477}
   - {fileID: 253763506}
   - {fileID: 941952952}
