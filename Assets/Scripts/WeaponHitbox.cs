@@ -38,6 +38,11 @@ public class WeaponHitbox : MonoBehaviour
                 boss.ReceberDano(damage);
             }
 
+            if (other.TryGetComponent(out BossMundo1AI bossMundo1))
+            {
+                bossMundo1.ReceberDano(damage);
+            }
+
             TentarAcionarColetavel(other);
             return;
         }

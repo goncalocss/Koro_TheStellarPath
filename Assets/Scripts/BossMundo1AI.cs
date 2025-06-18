@@ -2,7 +2,8 @@ using UnityEngine;
 using System.Collections;
 using UnityEngine.SceneManagement;
 
-public class BossAI : MonoBehaviour
+
+public class BossMundo1AI : MonoBehaviour
 {
     public Transform target;
     public float chaseDistance = 60f;
@@ -20,14 +21,10 @@ public class BossAI : MonoBehaviour
     public GameObject ataqueArea;
     private bool podeAtacar = true;
 
-    [Header("Delay de ataque")]
-    public float tempoAntesDoAtaque = 0.5f;
-    public float duracaoAnimacaoAtaque = 1.2f;
-    private bool aPrepararAtaque = false;
-    private bool emAtaque = false;
 
     [Header("Cena pós-boss")]
-    public string cenaCutscene;
+    public string cenaCutscene;  // Define esta variável no Inspector
+
 
     void Start()
     {
@@ -60,11 +57,11 @@ public class BossAI : MonoBehaviour
 
             float distance = Vector3.Distance(transform.position, target.position);
 
-            if (distance <= attackDistance && !aPrepararAtaque && !emAtaque)
+            if (distance <= attackDistance)
             {
-                StartCoroutine(DelayAntesDoAtaque());
+                ChangeState("InAction");
             }
-            else if (distance <= chaseDistance && !emAtaque)
+            else if (distance <= chaseDistance)
             {
                 ChangeState("Running");
                 ChaseTarget();
@@ -76,16 +73,24 @@ public class BossAI : MonoBehaviour
 
                     string cenaAtual = SceneManager.GetActiveScene().name;
                     if (cenaAtual == "Verdalya")
+                    {
                         SoundManager.Instance.PlayMusic("boss-music1");
+                    }
                     else if (cenaAtual == "Drexan")
+                    {
                         SoundManager.Instance.PlayMusic("boss-music2");
+                    }
                     else if (cenaAtual == "Nebelya")
+                    {
                         SoundManager.Instance.PlayMusic("boss-music3");
+                    }
                     else
+                    {
                         Debug.LogWarning("Música não definida para a cena atual: " + cenaAtual);
+                    }
                 }
             }
-            else if (!emAtaque)
+            else
             {
                 ChangeState("Idle");
 
@@ -99,17 +104,25 @@ public class BossAI : MonoBehaviour
                     SoundManager.Instance.StopMusic();
                     string cenaAtual = SceneManager.GetActiveScene().name;
                     if (cenaAtual == "Verdalya")
+                    {
                         SoundManager.Instance.PlayMusic("World1");
+                    }
                     else if (cenaAtual == "Drexan")
+                    {
                         SoundManager.Instance.PlayMusic("World2");
+                    }
                     else if (cenaAtual == "Nebelya")
+                    {
                         SoundManager.Instance.PlayMusic("World3");
+                    }
                     else
+                    {
                         Debug.LogWarning("Música não definida para a cena atual: " + cenaAtual);
+                    }
                 }
             }
 
-            yield return new WaitForSeconds(0.2f);
+            yield return new WaitForSeconds(0.2f); // Mais leve que Update()
         }
 
         ChangeState("Defeated");
@@ -133,7 +146,9 @@ public class BossAI : MonoBehaviour
         Debug.Log("Boss recebeu dano: " + damage);
 
         if (healthBar != null)
+        {
             healthBar.SetHealth(currentHealth, maxHealth);
+        }
 
         if (currentHealth <= 0)
         {
@@ -148,8 +163,12 @@ public class BossAI : MonoBehaviour
             SoundManager.Instance.PlaySFX("boss-dying");
             SoundManager.Instance.StopMusic();
 
-            Invoke(nameof(MudarParaCenaCutscene), 3f);
+
+            Invoke(nameof(MudarParaCenaCutscene), 3f); // Trocar cena após 3 segundos
             Debug.Log("Boss derrotado!");
+
+
+
         }
     }
 
@@ -221,7 +240,7 @@ public class BossAI : MonoBehaviour
             GameManager.Instance.ReceberDanoBoss();
         }
 
-        Invoke(nameof(ResetarAtaque), 0.5f);
+        Invoke(nameof(ResetarAtaque), 0.1f);
     }
 
     public void ReeniciarDetatacaoBoos()
@@ -239,6 +258,7 @@ public class BossAI : MonoBehaviour
         }
     }
 
+
     void MudarParaCenaCutscene()
     {
         if (!string.IsNullOrEmpty(cenaCutscene))
@@ -249,23 +269,5 @@ public class BossAI : MonoBehaviour
         {
             Debug.LogWarning("Cena de cutscene não definida!");
         }
-    }
-
-    private IEnumerator DelayAntesDoAtaque()
-    {
-        aPrepararAtaque = true;
-        ChangeState("Idle");
-        yield return new WaitForSeconds(tempoAntesDoAtaque);
-
-        if (!isDead && target != null && Vector3.Distance(transform.position, target.position) <= attackDistance)
-        {
-            emAtaque = true;
-            ChangeState("InAction");
-
-            yield return new WaitForSeconds(duracaoAnimacaoAtaque);
-            emAtaque = false;
-        }
-
-        aPrepararAtaque = false;
     }
 }

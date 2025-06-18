@@ -5528,10 +5528,10 @@ PrefabInstance:
       addedObject: {fileID: 873662222}
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 332a984d41baa9443a7e7a0a58d9f143, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 873662227}
+      addedObject: {fileID: 873662228}
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 332a984d41baa9443a7e7a0a58d9f143, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 873662228}
+      addedObject: {fileID: 873662229}
   m_SourcePrefab: {fileID: 100100000, guid: 332a984d41baa9443a7e7a0a58d9f143, type: 3}
 --- !u!1001 &515329772
 PrefabInstance:
@@ -9305,26 +9305,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 332a984d41baa9443a7e7a0a58d9f143, type: 3}
   m_PrefabInstance: {fileID: 514192073}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &873662227
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 873662218}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2a367b7a1517cf04489ee89d5378f430, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  target: {fileID: 1460855734}
-  chaseDistance: 60
-  attackDistance: 2
-  moveSpeed: 3
-  maxHealth: 10
-  healthBar: {fileID: 1959503936}
-  ataqueArea: {fileID: 1943481777}
-  cenaCutscene: FinalNivel1
 --- !u!136 &873662228
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -9344,10 +9324,30 @@ CapsuleCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.776669
+  m_Radius: 1.14
   m_Height: 4.71
   m_Direction: 1
   m_Center: {x: -0.000000003231721, y: 2.27, z: -0.10333097}
+--- !u!114 &873662229
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 873662218}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5727e3b8d467acb4d8403d736326ef1d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  target: {fileID: 1460855734}
+  chaseDistance: 60
+  attackDistance: 3
+  moveSpeed: 20
+  maxHealth: 10
+  healthBar: {fileID: 1959503936}
+  ataqueArea: {fileID: 1943481777}
+  cenaCutscene: FinalNivel1
 --- !u!1001 &874493481
 PrefabInstance:
   m_ObjectHideFlags: 0
