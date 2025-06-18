@@ -3,6 +3,7 @@ using TMPro;
 using System.Collections.Generic;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using System.Collections;
 
 public class GameManager : MonoBehaviour
 {
@@ -235,6 +236,16 @@ public class GameManager : MonoBehaviour
             vidaAtual--;
             AtualizarVidaVisual();
             SoundManager.Instance.PlaySFX("lost-live");
+
+            if (player != null)
+            {
+                Debug.Log("Player levou dano. Iniciando piscar vermelho.");
+                StartCoroutine(PiscarVermelho(player));
+            }
+            else
+            {
+                Debug.LogWarning("Referência ao player está nula!");
+            }
         }
 
         if (vidaAtual == 0 && player != null)
@@ -243,6 +254,54 @@ public class GameManager : MonoBehaviour
             player.Morrer();
         }
     }
+
+    IEnumerator PiscarVermelho(Player jogador)
+    {
+        Debug.Log("Coroutine PiscarVermelho iniciada.");
+
+        // Procura o primeiro SkinnedMeshRenderer nos filhos do jogador
+        SkinnedMeshRenderer renderizador = jogador.GetComponentInChildren<SkinnedMeshRenderer>();
+
+        if (renderizador == null)
+        {
+            Debug.LogError("SkinnedMeshRenderer não encontrado em nenhum filho do jogador.");
+            yield break;
+        }
+
+        Material material = renderizador.material;
+
+        // Verifica se o material tem a propriedade certa (compatível com URP e Standard)
+        string corPropriedade = material.HasProperty("_BaseColor") ? "_BaseColor" :
+                                material.HasProperty("_Color") ? "_Color" : null;
+
+        if (corPropriedade == null)
+        {
+            Debug.LogError("O material não tem _BaseColor nem _Color.");
+            yield break;
+        }
+
+        Color corOriginal = material.GetColor(corPropriedade);
+
+        float tempoTotal = 2f;
+        float intervalo = 0.1f;
+        float tempo = 0f;
+
+        while (tempo < tempoTotal)
+        {
+            material.SetColor(corPropriedade, Color.red);
+            yield return new WaitForSeconds(intervalo);
+            material.SetColor(corPropriedade, corOriginal);
+            yield return new WaitForSeconds(intervalo);
+            tempo += intervalo * 2;
+        }
+
+        Debug.Log("Piscar vermelho terminado.");
+    }
+
+
+
+
+
 
     public void DefinirCheckpoint(Vector3 posicao)
     {
