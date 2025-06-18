@@ -1,29 +1,64 @@
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
+using UnityEngine.SceneManagement;
 
 public class BossHealthBar : MonoBehaviour
 {
-    public Image fillImage; // Associa aqui a imagem interna da barra
+    public Image fillImage;
+    public TextMeshProUGUI bossNameText;
 
-    // Define o valor inicial (vida cheia)
+    private string nomeOriginalBoss;
+
+    void Awake()
+    {
+        string cenaAtual = SceneManager.GetActiveScene().name;
+
+        if (cenaAtual == "Verdalya")
+        {
+            nomeOriginalBoss = "MOLGRIN";
+        }
+        else if (cenaAtual == "Drexan")
+        {
+            nomeOriginalBoss = "SKORVAL";
+        }
+        else
+        {
+            nomeOriginalBoss = bossNameText != null ? bossNameText.text : "???";
+            Debug.LogWarning("Cena não reconhecida, nome do boss não definido explicitamente.");
+        }
+
+        if (bossNameText != null)
+        {
+            bossNameText.text = nomeOriginalBoss;
+        }
+    }
+
     public void SetMaxHealth(int maxHealth)
     {
         fillImage.fillAmount = 1f;
+
+        if (bossNameText != null)
+        {
+            bossNameText.text = nomeOriginalBoss;
+        }
     }
 
-    // Atualiza o valor da barra com base na vida atual
     public void SetHealth(int currentHealth, int maxHealth)
     {
         fillImage.fillAmount = (float)currentHealth / maxHealth;
     }
 
-    // Mostra a barra na UI
     public void Show()
     {
         gameObject.SetActive(true);
+
+        if (bossNameText != null)
+        {
+            bossNameText.text = nomeOriginalBoss;
+        }
     }
 
-    // Esconde a barra da UI
     public void Hide()
     {
         gameObject.SetActive(false);

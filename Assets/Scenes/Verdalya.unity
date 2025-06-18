@@ -9324,7 +9324,7 @@ CapsuleCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 1.14
+  m_Radius: 0.79
   m_Height: 4.71
   m_Direction: 1
   m_Center: {x: -0.000000003231721, y: 2.27, z: -0.10333097}
@@ -11416,7 +11416,7 @@ GameObject:
   - component: {fileID: 1077110510}
   - component: {fileID: 1077110509}
   m_Layer: 0
-  m_Name: Text (TMP)
+  m_Name: NOMEBOSS
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -17405,6 +17405,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   fillImage: {fileID: 275731}
+  bossNameText: {fileID: 1077110509}
 --- !u!1001 &1964299001
 PrefabInstance:
   m_ObjectHideFlags: 0

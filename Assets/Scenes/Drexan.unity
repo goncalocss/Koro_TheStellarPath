@@ -5700,6 +5700,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   fillImage: {fileID: 1140940810}
+  bossNameText: {fileID: 1970577394}
 --- !u!114 &827957084
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -14343,7 +14344,7 @@ GameObject:
   - component: {fileID: 1970577395}
   - component: {fileID: 1970577394}
   m_Layer: 0
-  m_Name: Text (TMP)
+  m_Name: NOMEBOSS
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -14547,7 +14548,7 @@ GameObject:
   - component: {fileID: 1990574299}
   - component: {fileID: 1990574300}
   m_Layer: 0
-  m_Name: Text (TMP)
+  m_Name: ORBES
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

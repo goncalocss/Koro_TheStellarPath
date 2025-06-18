@@ -282,7 +282,7 @@ public class GameManager : MonoBehaviour
 
         Color corOriginal = material.GetColor(corPropriedade);
 
-        float tempoTotal = 2f;
+        float tempoTotal = 1f;
         float intervalo = 0.1f;
         float tempo = 0f;
 
