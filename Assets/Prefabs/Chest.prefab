@@ -10,19 +10,19 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: -8679921383154817045, guid: 7e2ee2589efba294994da0d74ad0df70, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 890.0042
+      value: -361.75
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 7e2ee2589efba294994da0d74ad0df70, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 6.3009095
+      value: -1.231
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 7e2ee2589efba294994da0d74ad0df70, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 28.183838
+      value: -192.68
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 7e2ee2589efba294994da0d74ad0df70, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 1
+      value: 0.9944303
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 7e2ee2589efba294994da0d74ad0df70, type: 3}
       propertyPath: m_LocalRotation.x
@@ -30,7 +30,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 7e2ee2589efba294994da0d74ad0df70, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0
+      value: 0.10539634
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 7e2ee2589efba294994da0d74ad0df70, type: 3}
       propertyPath: m_LocalRotation.z
@@ -42,7 +42,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 7e2ee2589efba294994da0d74ad0df70, type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
+      value: 12.1
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 7e2ee2589efba294994da0d74ad0df70, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
@@ -66,6 +66,15 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 7e2ee2589efba294994da0d74ad0df70, type: 3}
       insertIndex: -1
       addedObject: {fileID: 2946384309783096101}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 7e2ee2589efba294994da0d74ad0df70, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 2823808159217126634}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 7e2ee2589efba294994da0d74ad0df70, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 4117235421686055705}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 7e2ee2589efba294994da0d74ad0df70, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 7539826256378757674}
   m_SourcePrefab: {fileID: 100100000, guid: 7e2ee2589efba294994da0d74ad0df70, type: 3}
 --- !u!1 &2665906560637258822 stripped
 GameObject:
@@ -108,3 +117,51 @@ MonoBehaviour:
   orbPrefab: {fileID: 720172721942108117, guid: 72b89e61875a8164082009b77924c2a7, type: 3}
   bananaPrefab: {fileID: 3940760709425202201, guid: a0809b8090e968a4298ff2614e507b52, type: 3}
   player: {fileID: 0}
+--- !u!114 &2823808159217126634
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2665906560637258822}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 30e14f4bcce9ada45ba95e3cfb6644f6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  canvasHUD: {fileID: 0}
+  lemonMilkFont: {fileID: 11400000, guid: 170a2341d43a39748ad1cfd05c7dc1b3, type: 2}
+--- !u!65 &4117235421686055705
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2665906560637258822}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 3, y: 1, z: 3}
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &7539826256378757674
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2665906560637258822}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: db3eaeda8b139bd4b93c1f592aebf09e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  idUnico: caixa_134

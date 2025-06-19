@@ -3939,6 +3939,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Chest
       objectReference: {fileID: 0}
+    - target: {fileID: 2823808159217126634, guid: 5a08b20e9f1b08b43b51b4b0fa872b81, type: 3}
+      propertyPath: canvasHUD
+      value: 
+      objectReference: {fileID: 803015495}
     - target: {fileID: 2946384309783096101, guid: 5a08b20e9f1b08b43b51b4b0fa872b81, type: 3}
       propertyPath: player
       value: 
@@ -3987,16 +3991,11 @@ PrefabInstance:
       propertyPath: m_Enabled
       value: 1
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 7539826256378757674, guid: 5a08b20e9f1b08b43b51b4b0fa872b81, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 2665906560637258822, guid: 5a08b20e9f1b08b43b51b4b0fa872b81, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 308292189}
-    - targetCorrespondingSourceObject: {fileID: 2665906560637258822, guid: 5a08b20e9f1b08b43b51b4b0fa872b81, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 308292188}
     - targetCorrespondingSourceObject: {fileID: 2665906560637258822, guid: 5a08b20e9f1b08b43b51b4b0fa872b81, type: 3}
       insertIndex: -1
       addedObject: {fileID: 308292190}
@@ -4011,41 +4010,6 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 2665906560637258822, guid: 5a08b20e9f1b08b43b51b4b0fa872b81, type: 3}
   m_PrefabInstance: {fileID: 308292185}
   m_PrefabAsset: {fileID: 0}
---- !u!65 &308292188
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 308292187}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 1
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 3, y: 1, z: 3}
-  m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &308292189
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 308292187}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 30e14f4bcce9ada45ba95e3cfb6644f6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  canvasHUD: {fileID: 803015495}
-  lemonMilkFont: {fileID: 11400000, guid: 170a2341d43a39748ad1cfd05c7dc1b3, type: 2}
 --- !u!114 &308292190
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4231,20 +4195,6 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 3, y: 1, z: 3}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &376287786
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 376287783}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 30e14f4bcce9ada45ba95e3cfb6644f6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  canvasHUD: {fileID: 803015495}
-  lemonMilkFont: {fileID: 11400000, guid: 170a2341d43a39748ad1cfd05c7dc1b3, type: 2}
 --- !u!114 &376287787
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4746,41 +4696,6 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 2665906560637258822, guid: 5a08b20e9f1b08b43b51b4b0fa872b81, type: 3}
   m_PrefabInstance: {fileID: 6347965569726970491}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &427342409
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 427342408}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 30e14f4bcce9ada45ba95e3cfb6644f6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  canvasHUD: {fileID: 803015495}
-  lemonMilkFont: {fileID: 11400000, guid: 170a2341d43a39748ad1cfd05c7dc1b3, type: 2}
---- !u!65 &427342413
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 427342408}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 1
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 3, y: 1, z: 3}
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!4 &427342414 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3437622318088230652, guid: 5a08b20e9f1b08b43b51b4b0fa872b81, type: 3}
@@ -4991,6 +4906,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Chest (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 2823808159217126634, guid: 5a08b20e9f1b08b43b51b4b0fa872b81, type: 3}
+      propertyPath: canvasHUD
+      value: 
+      objectReference: {fileID: 803015495}
     - target: {fileID: 2946384309783096101, guid: 5a08b20e9f1b08b43b51b4b0fa872b81, type: 3}
       propertyPath: player
       value: 
@@ -5039,13 +4958,12 @@ PrefabInstance:
       propertyPath: m_Enabled
       value: 1
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 4117235421686055705, guid: 5a08b20e9f1b08b43b51b4b0fa872b81, type: 3}
+    - {fileID: 7539826256378757674, guid: 5a08b20e9f1b08b43b51b4b0fa872b81, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 2665906560637258822, guid: 5a08b20e9f1b08b43b51b4b0fa872b81, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 475099227}
     - targetCorrespondingSourceObject: {fileID: 2665906560637258822, guid: 5a08b20e9f1b08b43b51b4b0fa872b81, type: 3}
       insertIndex: -1
       addedObject: {fileID: 475099226}
@@ -5097,20 +5015,6 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 3, y: 1, z: 3}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &475099227
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 475099224}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 30e14f4bcce9ada45ba95e3cfb6644f6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  canvasHUD: {fileID: 803015495}
-  lemonMilkFont: {fileID: 11400000, guid: 170a2341d43a39748ad1cfd05c7dc1b3, type: 2}
 --- !u!1 &485358616
 GameObject:
   m_ObjectHideFlags: 0
@@ -5224,7 +5128,10 @@ PrefabInstance:
       propertyPath: m_Enabled
       value: 1
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 4117235421686055705, guid: 5a08b20e9f1b08b43b51b4b0fa872b81, type: 3}
+    - {fileID: 7539826256378757674, guid: 5a08b20e9f1b08b43b51b4b0fa872b81, type: 3}
+    - {fileID: 2823808159217126634, guid: 5a08b20e9f1b08b43b51b4b0fa872b81, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents:
@@ -6170,6 +6077,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Chest
       objectReference: {fileID: 0}
+    - target: {fileID: 2823808159217126634, guid: 5a08b20e9f1b08b43b51b4b0fa872b81, type: 3}
+      propertyPath: canvasHUD
+      value: 
+      objectReference: {fileID: 803015495}
     - target: {fileID: 2946384309783096101, guid: 5a08b20e9f1b08b43b51b4b0fa872b81, type: 3}
       propertyPath: player
       value: 
@@ -6218,16 +6129,11 @@ PrefabInstance:
       propertyPath: m_Enabled
       value: 1
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 7539826256378757674, guid: 5a08b20e9f1b08b43b51b4b0fa872b81, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 2665906560637258822, guid: 5a08b20e9f1b08b43b51b4b0fa872b81, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 520187067}
-    - targetCorrespondingSourceObject: {fileID: 2665906560637258822, guid: 5a08b20e9f1b08b43b51b4b0fa872b81, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 520187066}
     - targetCorrespondingSourceObject: {fileID: 2665906560637258822, guid: 5a08b20e9f1b08b43b51b4b0fa872b81, type: 3}
       insertIndex: -1
       addedObject: {fileID: 520187068}
@@ -6242,41 +6148,6 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 2665906560637258822, guid: 5a08b20e9f1b08b43b51b4b0fa872b81, type: 3}
   m_PrefabInstance: {fileID: 520187063}
   m_PrefabAsset: {fileID: 0}
---- !u!65 &520187066
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 520187065}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 1
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 3, y: 1, z: 3}
-  m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &520187067
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 520187065}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 30e14f4bcce9ada45ba95e3cfb6644f6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  canvasHUD: {fileID: 803015495}
-  lemonMilkFont: {fileID: 11400000, guid: 170a2341d43a39748ad1cfd05c7dc1b3, type: 2}
 --- !u!114 &520187068
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6302,6 +6173,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Chest
       objectReference: {fileID: 0}
+    - target: {fileID: 2823808159217126634, guid: 5a08b20e9f1b08b43b51b4b0fa872b81, type: 3}
+      propertyPath: canvasHUD
+      value: 
+      objectReference: {fileID: 803015495}
     - target: {fileID: 2946384309783096101, guid: 5a08b20e9f1b08b43b51b4b0fa872b81, type: 3}
       propertyPath: player
       value: 
@@ -6350,13 +6225,12 @@ PrefabInstance:
       propertyPath: m_Enabled
       value: 1
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 4117235421686055705, guid: 5a08b20e9f1b08b43b51b4b0fa872b81, type: 3}
+    - {fileID: 7539826256378757674, guid: 5a08b20e9f1b08b43b51b4b0fa872b81, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 2665906560637258822, guid: 5a08b20e9f1b08b43b51b4b0fa872b81, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 376287786}
     - targetCorrespondingSourceObject: {fileID: 2665906560637258822, guid: 5a08b20e9f1b08b43b51b4b0fa872b81, type: 3}
       insertIndex: -1
       addedObject: {fileID: 376287785}
@@ -9691,6 +9565,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Chest
       objectReference: {fileID: 0}
+    - target: {fileID: 2823808159217126634, guid: 5a08b20e9f1b08b43b51b4b0fa872b81, type: 3}
+      propertyPath: canvasHUD
+      value: 
+      objectReference: {fileID: 803015495}
     - target: {fileID: 2946384309783096101, guid: 5a08b20e9f1b08b43b51b4b0fa872b81, type: 3}
       propertyPath: player
       value: 
@@ -9739,16 +9617,11 @@ PrefabInstance:
       propertyPath: m_Enabled
       value: 1
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 7539826256378757674, guid: 5a08b20e9f1b08b43b51b4b0fa872b81, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 2665906560637258822, guid: 5a08b20e9f1b08b43b51b4b0fa872b81, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 876595239}
-    - targetCorrespondingSourceObject: {fileID: 2665906560637258822, guid: 5a08b20e9f1b08b43b51b4b0fa872b81, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 876595238}
     - targetCorrespondingSourceObject: {fileID: 2665906560637258822, guid: 5a08b20e9f1b08b43b51b4b0fa872b81, type: 3}
       insertIndex: -1
       addedObject: {fileID: 876595240}
@@ -9763,41 +9636,6 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 2665906560637258822, guid: 5a08b20e9f1b08b43b51b4b0fa872b81, type: 3}
   m_PrefabInstance: {fileID: 876595235}
   m_PrefabAsset: {fileID: 0}
---- !u!65 &876595238
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 876595237}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 1
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 3, y: 1, z: 3}
-  m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &876595239
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 876595237}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 30e14f4bcce9ada45ba95e3cfb6644f6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  canvasHUD: {fileID: 803015495}
-  lemonMilkFont: {fileID: 11400000, guid: 170a2341d43a39748ad1cfd05c7dc1b3, type: 2}
 --- !u!114 &876595240
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -13361,6 +13199,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Chest
       objectReference: {fileID: 0}
+    - target: {fileID: 2823808159217126634, guid: 5a08b20e9f1b08b43b51b4b0fa872b81, type: 3}
+      propertyPath: canvasHUD
+      value: 
+      objectReference: {fileID: 803015495}
     - target: {fileID: 2946384309783096101, guid: 5a08b20e9f1b08b43b51b4b0fa872b81, type: 3}
       propertyPath: player
       value: 
@@ -13409,16 +13251,11 @@ PrefabInstance:
       propertyPath: m_Enabled
       value: 1
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 7539826256378757674, guid: 5a08b20e9f1b08b43b51b4b0fa872b81, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 2665906560637258822, guid: 5a08b20e9f1b08b43b51b4b0fa872b81, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1449826637}
-    - targetCorrespondingSourceObject: {fileID: 2665906560637258822, guid: 5a08b20e9f1b08b43b51b4b0fa872b81, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1449826636}
     - targetCorrespondingSourceObject: {fileID: 2665906560637258822, guid: 5a08b20e9f1b08b43b51b4b0fa872b81, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1449826638}
@@ -13433,41 +13270,6 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 2665906560637258822, guid: 5a08b20e9f1b08b43b51b4b0fa872b81, type: 3}
   m_PrefabInstance: {fileID: 1449826633}
   m_PrefabAsset: {fileID: 0}
---- !u!65 &1449826636
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1449826635}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 1
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 3, y: 1, z: 3}
-  m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &1449826637
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1449826635}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 30e14f4bcce9ada45ba95e3cfb6644f6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  canvasHUD: {fileID: 803015495}
-  lemonMilkFont: {fileID: 11400000, guid: 170a2341d43a39748ad1cfd05c7dc1b3, type: 2}
 --- !u!114 &1449826638
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -14982,6 +14784,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Chest
       objectReference: {fileID: 0}
+    - target: {fileID: 2823808159217126634, guid: 5a08b20e9f1b08b43b51b4b0fa872b81, type: 3}
+      propertyPath: canvasHUD
+      value: 
+      objectReference: {fileID: 803015495}
     - target: {fileID: 2946384309783096101, guid: 5a08b20e9f1b08b43b51b4b0fa872b81, type: 3}
       propertyPath: player
       value: 
@@ -15030,16 +14836,11 @@ PrefabInstance:
       propertyPath: m_Enabled
       value: 1
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 7539826256378757674, guid: 5a08b20e9f1b08b43b51b4b0fa872b81, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 2665906560637258822, guid: 5a08b20e9f1b08b43b51b4b0fa872b81, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1591501053}
-    - targetCorrespondingSourceObject: {fileID: 2665906560637258822, guid: 5a08b20e9f1b08b43b51b4b0fa872b81, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1591501052}
     - targetCorrespondingSourceObject: {fileID: 2665906560637258822, guid: 5a08b20e9f1b08b43b51b4b0fa872b81, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1591501054}
@@ -15054,41 +14855,6 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 2665906560637258822, guid: 5a08b20e9f1b08b43b51b4b0fa872b81, type: 3}
   m_PrefabInstance: {fileID: 1591501049}
   m_PrefabAsset: {fileID: 0}
---- !u!65 &1591501052
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1591501051}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 1
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 3, y: 1, z: 3}
-  m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &1591501053
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1591501051}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 30e14f4bcce9ada45ba95e3cfb6644f6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  canvasHUD: {fileID: 803015495}
-  lemonMilkFont: {fileID: 11400000, guid: 170a2341d43a39748ad1cfd05c7dc1b3, type: 2}
 --- !u!114 &1591501054
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -19899,6 +19665,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Chest
       objectReference: {fileID: 0}
+    - target: {fileID: 2823808159217126634, guid: 5a08b20e9f1b08b43b51b4b0fa872b81, type: 3}
+      propertyPath: canvasHUD
+      value: 
+      objectReference: {fileID: 803015495}
     - target: {fileID: 2946384309783096101, guid: 5a08b20e9f1b08b43b51b4b0fa872b81, type: 3}
       propertyPath: player
       value: 
@@ -19947,16 +19717,11 @@ PrefabInstance:
       propertyPath: m_Enabled
       value: 1
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 7539826256378757674, guid: 5a08b20e9f1b08b43b51b4b0fa872b81, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 2665906560637258822, guid: 5a08b20e9f1b08b43b51b4b0fa872b81, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 2067411148}
-    - targetCorrespondingSourceObject: {fileID: 2665906560637258822, guid: 5a08b20e9f1b08b43b51b4b0fa872b81, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 2067411147}
     - targetCorrespondingSourceObject: {fileID: 2665906560637258822, guid: 5a08b20e9f1b08b43b51b4b0fa872b81, type: 3}
       insertIndex: -1
       addedObject: {fileID: 2067411149}
@@ -19971,41 +19736,6 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 2665906560637258822, guid: 5a08b20e9f1b08b43b51b4b0fa872b81, type: 3}
   m_PrefabInstance: {fileID: 2067411144}
   m_PrefabAsset: {fileID: 0}
---- !u!65 &2067411147
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2067411146}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 1
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 3, y: 1, z: 3}
-  m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &2067411148
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2067411146}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 30e14f4bcce9ada45ba95e3cfb6644f6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  canvasHUD: {fileID: 803015495}
-  lemonMilkFont: {fileID: 11400000, guid: 170a2341d43a39748ad1cfd05c7dc1b3, type: 2}
 --- !u!114 &2067411149
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -21141,6 +20871,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Chest
       objectReference: {fileID: 0}
+    - target: {fileID: 2823808159217126634, guid: 5a08b20e9f1b08b43b51b4b0fa872b81, type: 3}
+      propertyPath: canvasHUD
+      value: 
+      objectReference: {fileID: 803015495}
     - target: {fileID: 2946384309783096101, guid: 5a08b20e9f1b08b43b51b4b0fa872b81, type: 3}
       propertyPath: player
       value: 
@@ -21189,16 +20923,11 @@ PrefabInstance:
       propertyPath: m_Enabled
       value: 1
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 7539826256378757674, guid: 5a08b20e9f1b08b43b51b4b0fa872b81, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 2665906560637258822, guid: 5a08b20e9f1b08b43b51b4b0fa872b81, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 427342409}
-    - targetCorrespondingSourceObject: {fileID: 2665906560637258822, guid: 5a08b20e9f1b08b43b51b4b0fa872b81, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 427342413}
     - targetCorrespondingSourceObject: {fileID: 2665906560637258822, guid: 5a08b20e9f1b08b43b51b4b0fa872b81, type: 3}
       insertIndex: -1
       addedObject: {fileID: 427342415}
