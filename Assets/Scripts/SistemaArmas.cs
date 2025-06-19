@@ -7,16 +7,12 @@ public class SistemaArmas : MonoBehaviour
 
     public int NivelMaximo => armasPorNivel.Length - 1;
 
-    private void Start()
-    {
-        AtualizarArma();
-    }
-
     public void MelhorarArma()
     {
         if (nivelAtual < armasPorNivel.Length - 1)
         {
             nivelAtual++;
+            GameManager.Instance?.AtualizarNivelArma(nivelAtual);
             AtualizarArma();
             Debug.Log($"🛠️ Arma melhorada para nível {nivelAtual + 1}");
         }

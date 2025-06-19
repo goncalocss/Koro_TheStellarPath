@@ -4182,7 +4182,7 @@ MonoBehaviour:
   armasPorNivel:
   - {fileID: 717555692}
   - {fileID: 323457241}
-  - {fileID: 0}
+  - {fileID: 821682418}
 --- !u!4 &634177898
 Transform:
   m_ObjectHideFlags: 0
@@ -9137,7 +9137,7 @@ MonoBehaviour:
   ataqueArea: {fileID: 419556576}
   tempoAntesDoAtaque: 0.5
   duracaoAnimacaoAtaque: 1.2
-  cenaCutscene: FinalNivel2
+  cenaCutscene: Nebelya
 --- !u!65 &1205629337
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -14641,7 +14641,7 @@ GameObject:
   - component: {fileID: 1990574300}
   m_Layer: 0
   m_Name: ORBES
-  m_TagString: Untagged
+  m_TagString: OrbCount
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

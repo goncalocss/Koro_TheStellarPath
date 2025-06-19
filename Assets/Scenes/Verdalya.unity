@@ -1477,7 +1477,7 @@ GameObject:
   - component: {fileID: 114285613}
   m_Layer: 0
   m_Name: Text (TMP)
-  m_TagString: Untagged
+  m_TagString: OrbCount
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1808,6 +1808,54 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 112
   m_CollisionDetection: 0
+--- !u!1 &138337513
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 138337514}
+  - component: {fileID: 138337515}
+  m_Layer: 0
+  m_Name: Sistema de armas
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &138337514
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 138337513}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0.77055025, y: 0.00085432956, z: -0.0023303041, w: 0.63737434}
+  m_LocalPosition: {x: -0.010936905, y: 0.28037924, z: 9.310432}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1570638376}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &138337515
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 138337513}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b93ac4d44822cba4a96b40da72d3f6c3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  armasPorNivel:
+  - {fileID: 464450335}
+  - {fileID: 850004294}
+  - {fileID: 95742810}
 --- !u!1001 &150413451
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -14525,6 +14573,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 1555696224395559373, guid: 757502e92830dd0418ab5fbdfb6e281f, type: 3}
       insertIndex: -1
       addedObject: {fileID: 95742811}
+    - targetCorrespondingSourceObject: {fileID: 847295964941253430, guid: 757502e92830dd0418ab5fbdfb6e281f, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 138337514}
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 757502e92830dd0418ab5fbdfb6e281f, type: 3}
       insertIndex: -1
@@ -14539,6 +14590,11 @@ PrefabInstance:
       insertIndex: -1
       addedObject: {fileID: 1460855736}
   m_SourcePrefab: {fileID: 100100000, guid: 757502e92830dd0418ab5fbdfb6e281f, type: 3}
+--- !u!4 &1570638376 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 847295964941253430, guid: 757502e92830dd0418ab5fbdfb6e281f, type: 3}
+  m_PrefabInstance: {fileID: 1570638375}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1571105332
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -14,6 +14,7 @@ TagManager:
   - PontosDeVida
   - Banana
   - Bau
+  - OrbCount
   layers:
   - Default
   - TransparentFX

@@ -25,6 +25,8 @@ public class GameManager : MonoBehaviour
     [Header("Sistema de Armas")]
     public SistemaArmas sistemaArmas;
 
+    private int nivelArmaAtual = 0;
+
     //PAUSAR JOGO
     private bool jogoPausado = false;
     private Vector3 posicaoAntesDaPausa;
@@ -50,12 +52,6 @@ public class GameManager : MonoBehaviour
             return;
         }
 
-        if (sistemaArmas == null)
-        {
-            sistemaArmas = FindFirstObjectByType<SistemaArmas>();
-            if (sistemaArmas == null)
-                Debug.LogWarning("⚠️ SistemaArmas não encontrado no GameManager.");
-        }
 
         SceneManager.sceneLoaded += OnSceneLoaded;
     }
@@ -112,7 +108,10 @@ public class GameManager : MonoBehaviour
     private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
         player = FindFirstObjectByType<Player>();
-        orbCountText = FindFirstObjectByType<TextMeshProUGUI>();
+        var orbObj = GameObject.FindWithTag("OrbCount");
+        if (orbObj != null)
+            orbCountText = orbObj.GetComponent<TextMeshProUGUI>();
+
         sistemaArmas = FindFirstObjectByType<SistemaArmas>();
 
         // HUD - Orb count
@@ -143,7 +142,9 @@ public class GameManager : MonoBehaviour
         }
 
         // 👉 CARREGAR SAVE DEPOIS da cena estar carregada
-        if (TempSaveData.Instance != null && TempSaveData.Instance.saveData != null)
+        bool temSave = TempSaveData.Instance != null && TempSaveData.Instance.saveData != null;
+
+        if (temSave)
         {
             SaveData data = TempSaveData.Instance.saveData;
 
@@ -158,11 +159,11 @@ public class GameManager : MonoBehaviour
             DefinirVidaAtual(data.playerHealth);
             AplicarVidaMaxima(data.vidaMaxima);
 
-
             if (sistemaArmas != null)
             {
                 sistemaArmas.DefinirNivel(data.nivelArma);
-                Debug.Log($"🔫 Nível da arma carregado: {data.nivelArma}");
+                AtualizarNivelArma(data.nivelArma);
+                Debug.Log($"🔫 Nível da arma carregado do save: {data.nivelArma}");
             }
 
             if (data.caixasDestruidas != null)
@@ -178,14 +179,27 @@ public class GameManager : MonoBehaviour
 
             Destroy(TempSaveData.Instance.gameObject);
         }
+        else if (sistemaArmas != null)
+        {
+            sistemaArmas.DefinirNivel(nivelArmaAtual);
+            Debug.Log($"🧠 Nível da arma restaurado sem save: {nivelArmaAtual}");
+        }
 
         AtualizarVidaVisual();
         playerVivo = true;
 
         if (scene.name == "Verdalya")
             SoundManager.Instance.PlayMusic("World1");
-        if (scene.name == "Drexan")
+        else if (scene.name == "Drexan")
             SoundManager.Instance.PlayMusic("World2");
+        else if (scene.name == "Nebelya")
+            SoundManager.Instance.PlayMusic("World3");
+    }
+
+
+    public void AtualizarNivelArma(int novoNivel)
+    {
+        nivelArmaAtual = novoNivel;
     }
 
 

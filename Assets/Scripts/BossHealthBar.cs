@@ -10,7 +10,7 @@ public class BossHealthBar : MonoBehaviour
 
     private string nomeOriginalBoss;
 
-    void Awake()
+    void OnEnable()
     {
         string cenaAtual = SceneManager.GetActiveScene().name;
 
@@ -33,6 +33,7 @@ public class BossHealthBar : MonoBehaviour
             bossNameText.text = nomeOriginalBoss;
         }
     }
+
 
     public void SetMaxHealth(int maxHealth)
     {
