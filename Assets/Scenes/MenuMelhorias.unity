@@ -546,7 +546,7 @@ MonoBehaviour:
   textoFaltaOrbs: {fileID: 286103211}
   botaoMelhorar: {fileID: 1592774262}
   sistemaArmas: {fileID: 0}
-  custoMelhoria: 200
+  custoMelhoria: 1
 --- !u!4 &419408193
 Transform:
   m_ObjectHideFlags: 0
