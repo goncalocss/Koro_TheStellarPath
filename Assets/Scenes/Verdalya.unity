@@ -16,15 +16,15 @@ RenderSettings:
   serializedVersion: 10
   m_Fog: 1
   m_FogColor: {r: 0.1981132, g: 0.1981132, b: 0.1981132, a: 1}
-  m_FogMode: 2
+  m_FogMode: 1
   m_FogDensity: 0.005
   m_LinearFogStart: 0
   m_LinearFogEnd: 300
   m_AmbientSkyColor: {r: 0.0067750975, g: 0.010330117, b: 0.068396226, a: 1}
   m_AmbientEquatorColor: {r: 0.092253365, g: 0.024563907, b: 0.2264151, a: 1}
   m_AmbientGroundColor: {r: 0, g: 0, b: 0, a: 1}
-  m_AmbientIntensity: 1
-  m_AmbientMode: 1
+  m_AmbientIntensity: 0.95
+  m_AmbientMode: 0
   m_SubtractiveShadowColor: {r: 0, g: 0, b: 0, a: 1}
   m_SkyboxMaterial: {fileID: 2100000, guid: c82a334cf5a5e47978749c210cee72a7, type: 2}
   m_HaloStrength: 0.5
@@ -14011,19 +14011,19 @@ Light:
   serializedVersion: 11
   m_Type: 1
   m_Color: {r: 0.5471698, g: 0.5471698, b: 0.5471698, a: 1}
-  m_Intensity: 0.6
+  m_Intensity: 0.5
   m_Range: 10
   m_SpotAngle: 30
   m_InnerSpotAngle: 21.80208
   m_CookieSize: 10
   m_Shadows:
-    m_Type: 0
-    m_Resolution: -1
+    m_Type: 1
+    m_Resolution: 0
     m_CustomResolution: -1
-    m_Strength: 1
+    m_Strength: 0.3
     m_Bias: 0.05
-    m_NormalBias: 0.4
-    m_NearPlane: 0.2
+    m_NormalBias: 0
+    m_NearPlane: 0.29
     m_CullingMatrixOverride:
       e00: 1
       e01: 0
