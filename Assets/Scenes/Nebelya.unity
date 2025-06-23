@@ -17,7 +17,7 @@ RenderSettings:
   m_Fog: 1
   m_FogColor: {r: 0.2738519, g: 0.27747616, b: 0.3207547, a: 1}
   m_FogMode: 3
-  m_FogDensity: 0.015
+  m_FogDensity: 0.008
   m_LinearFogStart: 0
   m_LinearFogEnd: 300
   m_AmbientSkyColor: {r: 0.212, g: 0.227, b: 0.259, a: 1}
@@ -10624,7 +10624,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 88ac8a548bae3db44860838e3e1bb18b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 10
+  moveSpeed: 8
   jumpForce: 8
   gravity: -20
   rotationSpeed: 700
@@ -12325,7 +12325,7 @@ MonoBehaviour:
   ataqueArea: {fileID: 1473725010}
   tempoAntesDoAtaque: 0.5
   duracaoAnimacaoAtaque: 1.2
-  cenaCutscene: 
+  cenaCutscene: FinalNivel3
 --- !u!54 &2098943144
 Rigidbody:
   m_ObjectHideFlags: 0
