@@ -22,6 +22,10 @@ public class BossHealthBar : MonoBehaviour
         {
             nomeOriginalBoss = "SKORVAL";
         }
+        else if (cenaAtual == "Nebelya")
+        {
+            nomeOriginalBoss = "NYXORA";
+        }
         else
         {
             nomeOriginalBoss = bossNameText != null ? bossNameText.text : "???";

@@ -203,21 +203,21 @@ public class BossAI : MonoBehaviour
         if (other.gameObject.CompareTag("PlayerHitbox"))
         {
             Debug.Log("Boss colidiu com a hitbox do jogador (pré-impacto).");
-            StartCoroutine(AplicarDanoComDelay(2f));
+            StartCoroutine(AplicarDanoDireto());
             podeAtacar = false;
         }
     }
 
-    private IEnumerator AplicarDanoComDelay(float delay)
+    private IEnumerator AplicarDanoDireto()
     {
-        yield return new WaitForSeconds(delay);
+        yield return null; // Espera 1 frame (ou nem isso, se quiseres aplicar imediatamente, podes remover até o yield)
 
         if (isDead || target == null) yield break;
 
         float distance = Vector3.Distance(transform.position, target.position);
         if (distance <= attackDistance && GameManager.Instance.playerVivo)
         {
-            Debug.Log("Boss causou dano ao jogador (no momento certo).");
+            Debug.Log("Boss causou dano ao jogador (imediato).");
             GameManager.Instance.ReceberDanoBoss();
         }
 
