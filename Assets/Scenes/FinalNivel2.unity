@@ -378,9 +378,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   videoPlayer: {fileID: 452937191}
   videoImage: {fileID: 770688119}
-  videoFileName: Cutscene3 Final Plusautocarro_1cutscene2nivel
+  videoFileName: "Cutscene2para3n\xEDvel"
   looping: 0
-  nextSceneName: Drexan
+  nextSceneName: Nebelya
   onVideoFinished:
     m_PersistentCalls:
       m_Calls: []

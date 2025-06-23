@@ -9441,7 +9441,7 @@ MonoBehaviour:
   ataqueArea: {fileID: 419556576}
   tempoAntesDoAtaque: 0.5
   duracaoAnimacaoAtaque: 1.2
-  cenaCutscene: Nebelya
+  cenaCutscene: FinalNivel2
 --- !u!65 &1205629337
 BoxCollider:
   m_ObjectHideFlags: 0

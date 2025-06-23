@@ -38,6 +38,9 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Nebelya.unity
     guid: 7f4fc26b490d82d418ba62e47b282392
+  - enabled: 1
+    path: Assets/Scenes/FinalNivel2.unity
+    guid: 8fb3286ade08aa04183a75f63aafb70f
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 289c1b55c9541489481df5cc06664110, type: 3}
   m_UseUCBPForAssetBundles: 0
