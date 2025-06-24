@@ -3998,7 +3998,7 @@ PrefabInstance:
     - target: {fileID: 2946384309783096101, guid: 5a08b20e9f1b08b43b51b4b0fa872b81, type: 3}
       propertyPath: player
       value: 
-      objectReference: {fileID: 1460855734}
+      objectReference: {fileID: 0}
     - target: {fileID: 3437622318088230652, guid: 5a08b20e9f1b08b43b51b4b0fa872b81, type: 3}
       propertyPath: m_LocalPosition.x
       value: -449.39
@@ -4965,7 +4965,7 @@ PrefabInstance:
     - target: {fileID: 2946384309783096101, guid: 5a08b20e9f1b08b43b51b4b0fa872b81, type: 3}
       propertyPath: player
       value: 
-      objectReference: {fileID: 1460855734}
+      objectReference: {fileID: 0}
     - target: {fileID: 3437622318088230652, guid: 5a08b20e9f1b08b43b51b4b0fa872b81, type: 3}
       propertyPath: m_LocalPosition.x
       value: -335.22
@@ -5135,7 +5135,7 @@ PrefabInstance:
     - target: {fileID: 2946384309783096101, guid: 5a08b20e9f1b08b43b51b4b0fa872b81, type: 3}
       propertyPath: player
       value: 
-      objectReference: {fileID: 1460855734}
+      objectReference: {fileID: 0}
     - target: {fileID: 3437622318088230652, guid: 5a08b20e9f1b08b43b51b4b0fa872b81, type: 3}
       propertyPath: m_LocalPosition.x
       value: -368.15
@@ -6136,7 +6136,7 @@ PrefabInstance:
     - target: {fileID: 2946384309783096101, guid: 5a08b20e9f1b08b43b51b4b0fa872b81, type: 3}
       propertyPath: player
       value: 
-      objectReference: {fileID: 1460855734}
+      objectReference: {fileID: 0}
     - target: {fileID: 3437622318088230652, guid: 5a08b20e9f1b08b43b51b4b0fa872b81, type: 3}
       propertyPath: m_LocalPosition.x
       value: -366
@@ -6232,7 +6232,7 @@ PrefabInstance:
     - target: {fileID: 2946384309783096101, guid: 5a08b20e9f1b08b43b51b4b0fa872b81, type: 3}
       propertyPath: player
       value: 
-      objectReference: {fileID: 1460855734}
+      objectReference: {fileID: 0}
     - target: {fileID: 3437622318088230652, guid: 5a08b20e9f1b08b43b51b4b0fa872b81, type: 3}
       propertyPath: m_LocalPosition.x
       value: -71.23
@@ -9765,7 +9765,7 @@ PrefabInstance:
     - target: {fileID: 2946384309783096101, guid: 5a08b20e9f1b08b43b51b4b0fa872b81, type: 3}
       propertyPath: player
       value: 
-      objectReference: {fileID: 1460855734}
+      objectReference: {fileID: 0}
     - target: {fileID: 3437622318088230652, guid: 5a08b20e9f1b08b43b51b4b0fa872b81, type: 3}
       propertyPath: m_LocalPosition.x
       value: -287.26
@@ -13381,7 +13381,7 @@ PrefabInstance:
     - target: {fileID: 2946384309783096101, guid: 5a08b20e9f1b08b43b51b4b0fa872b81, type: 3}
       propertyPath: player
       value: 
-      objectReference: {fileID: 1460855734}
+      objectReference: {fileID: 0}
     - target: {fileID: 3437622318088230652, guid: 5a08b20e9f1b08b43b51b4b0fa872b81, type: 3}
       propertyPath: m_LocalPosition.x
       value: -363.94
@@ -14978,7 +14978,7 @@ PrefabInstance:
     - target: {fileID: 2946384309783096101, guid: 5a08b20e9f1b08b43b51b4b0fa872b81, type: 3}
       propertyPath: player
       value: 
-      objectReference: {fileID: 1460855734}
+      objectReference: {fileID: 0}
     - target: {fileID: 3437622318088230652, guid: 5a08b20e9f1b08b43b51b4b0fa872b81, type: 3}
       propertyPath: m_LocalPosition.x
       value: -190.53
@@ -20000,7 +20000,7 @@ PrefabInstance:
     - target: {fileID: 2946384309783096101, guid: 5a08b20e9f1b08b43b51b4b0fa872b81, type: 3}
       propertyPath: player
       value: 
-      objectReference: {fileID: 1460855734}
+      objectReference: {fileID: 0}
     - target: {fileID: 3437622318088230652, guid: 5a08b20e9f1b08b43b51b4b0fa872b81, type: 3}
       propertyPath: m_LocalPosition.x
       value: -149.1
@@ -21206,7 +21206,7 @@ PrefabInstance:
     - target: {fileID: 2946384309783096101, guid: 5a08b20e9f1b08b43b51b4b0fa872b81, type: 3}
       propertyPath: player
       value: 
-      objectReference: {fileID: 1460855734}
+      objectReference: {fileID: 0}
     - target: {fileID: 3437622318088230652, guid: 5a08b20e9f1b08b43b51b4b0fa872b81, type: 3}
       propertyPath: m_LocalPosition.x
       value: -11.354431
