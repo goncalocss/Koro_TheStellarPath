@@ -189,12 +189,25 @@ public class BossMundo2AI : MonoBehaviour
         animator.SetTrigger(triggerName);
     }
 
+    private void OnTriggerEnter(Collider other)
+    {
+        if (isDead || !podeAtacar) return;
+
+        if (other.gameObject.CompareTag("PlayerHitbox") && ataqueArea != null && ataqueArea.activeSelf)
+        {
+            Debug.Log(">> ENTER: Boss colidiu com a hitbox do jogador.");
+            StartCoroutine(ImpactoJogador());
+            podeAtacar = false;
+        }
+    }
+
     private void OnTriggerStay(Collider other)
     {
         if (isDead || !podeAtacar) return;
 
         if (other.gameObject.CompareTag("PlayerHitbox") && ataqueArea != null && ataqueArea.activeSelf)
         {
+            Debug.Log(">> STAY: Boss continua colidindo com a hitbox do jogador.");
             StartCoroutine(ImpactoJogador());
             podeAtacar = false;
         }
@@ -202,7 +215,7 @@ public class BossMundo2AI : MonoBehaviour
 
     private IEnumerator ImpactoJogador()
     {
-         yield return null;
+        yield return null;
 
         if (isDead || target == null) yield break;
 

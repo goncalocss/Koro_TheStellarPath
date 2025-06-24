@@ -53,6 +53,13 @@ public class MenuPrincipal : MonoBehaviour
         }
     }
 
+    //função para fechar o executável
+    public void SairJogo()
+    {
+        Debug.Log("❌ SairJogo() chamado.");
+        Application.Quit();
+    }
+
 
     public void NovoJogo()
     {
