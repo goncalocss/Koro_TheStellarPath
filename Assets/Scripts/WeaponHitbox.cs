@@ -33,14 +33,21 @@ public class WeaponHitbox : MonoBehaviour
         // 🧠 Lógica para bosses
         if (other.CompareTag("Boss"))
         {
-            if (other.TryGetComponent(out BossAI boss))
-            {
-                boss.ReceberDano(damage);
-            }
 
+            //MOLGRIN
             if (other.TryGetComponent(out BossMundo1AI bossMundo1))
             {
                 bossMundo1.ReceberDano(damage);
+            }
+            //SKORVAL
+            if (other.TryGetComponent(out BossMundo2AI bossMundo2))
+            {
+                bossMundo2.ReceberDano(damage);
+            }
+            //NYXORA
+            if (other.TryGetComponent(out BossAI boss))
+            {
+                boss.ReceberDano(damage);
             }
 
             TentarAcionarColetavel(other);

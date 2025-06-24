@@ -18,7 +18,9 @@ public class Player : MonoBehaviour
 
     private CharacterController controller;
     private Animator animator;
+
     private Vector3 velocity;
+    private Vector3 horizontalMove;
 
     private bool isJumping = false;
     private bool doubleJumpUsed = false;
@@ -48,7 +50,6 @@ public class Player : MonoBehaviour
         StopAllCoroutines();
     }
 
-    // Loop de input otimizado rodando em coroutine para evitar Update pesado
     private IEnumerator InputLoop()
     {
         while (true)
@@ -58,19 +59,21 @@ public class Player : MonoBehaviour
                 HandleMovement();
                 HandleJump();
                 HandleAttacks();
-            }
-            else
-            {
-                yield return null; // pausa execução quando morto
+                ApplyMovement();
             }
 
-            yield return null; // espera próximo frame
+            yield return null;
         }
     }
 
     private void HandleMovement()
     {
-        if (isAttacking) return;
+        if (isAttacking)
+        {
+            horizontalMove = Vector3.zero;
+            animator.SetFloat("speed", 0f);
+            return;
+        }
 
         float h = Input.GetAxisRaw("Horizontal");
         float v = Input.GetAxisRaw("Vertical");
@@ -86,14 +89,15 @@ public class Player : MonoBehaviour
             camRight.Normalize();
 
             Vector3 moveDir = (camForward * input.z + camRight * input.x).normalized;
-
-            controller.Move(moveDir * moveSpeed * Time.deltaTime);
+            horizontalMove = moveDir * moveSpeed;
 
             float angle = Mathf.Atan2(input.x, input.z) * Mathf.Rad2Deg + cameraTransform.eulerAngles.y;
             Quaternion targetRotation = Quaternion.Euler(0, angle, 0);
             transform.rotation = Quaternion.RotateTowards(transform.rotation, targetRotation, rotationSpeed * Time.deltaTime);
-
-
+        }
+        else
+        {
+            horizontalMove = Vector3.zero;
         }
 
         animator.SetFloat("speed", input.magnitude);
@@ -103,7 +107,7 @@ public class Player : MonoBehaviour
     {
         if (controller.isGrounded)
         {
-            velocity.y = -2f;
+            velocity.y = -0.5f;
 
             if (isJumping || doubleJumpUsed)
             {
@@ -124,14 +128,19 @@ public class Player : MonoBehaviour
         {
             velocity.y += gravity * Time.deltaTime;
         }
+    }
 
-        controller.Move(velocity * Time.deltaTime);
+    private void ApplyMovement()
+    {
+        Vector3 finalMove = horizontalMove;
+        finalMove.y = velocity.y;
+
+        controller.Move(finalMove * Time.deltaTime);
     }
 
     private void HandleAttacks()
     {
         AnimatorStateInfo stateInfo = animator.GetCurrentAnimatorStateInfo(0);
-
         bool inAttackAnim = stateInfo.IsName("LightAttack") || stateInfo.IsName("HeavyAttack") || stateInfo.IsName("Capoeira");
 
         if (currentAttackTrigger == -1 && controller.isGrounded)
@@ -141,10 +150,7 @@ public class Player : MonoBehaviour
                 currentAttackTrigger = 0;
                 animator.SetTrigger("LightAttack");
                 isAttacking = true;
-
-                // Atualiza o tempo em que o ataque termina (duração da animação + buffer)
                 attackEndTime = Time.time + stateInfo.length + attackDurationBuffer;
-
                 SoundManager.Instance.PlaySFX("swing2");
             }
             else if (Input.GetMouseButtonDown(1) && !inAttackAnim)
@@ -152,14 +158,11 @@ public class Player : MonoBehaviour
                 currentAttackTrigger = 1;
                 animator.SetTrigger("HeavyAttack");
                 isAttacking = true;
-
                 attackEndTime = Time.time + stateInfo.length + attackDurationBuffer;
-
                 SoundManager.Instance.PlaySFX("swing3");
             }
         }
 
-        // Desliga o isAttacking só quando o tempo atual ultrapassar o tempo final do ataque + buffer
         if (currentAttackTrigger != -1 && Time.time >= attackEndTime)
         {
             currentAttackTrigger = -1;
@@ -176,7 +179,6 @@ public class Player : MonoBehaviour
         SoundManager.Instance.PlaySFX("player-death");
 
         Debug.Log("Player morreu!");
-
         GameManager.Instance.playerVivo = false;
 
         animator?.SetTrigger("Died");
@@ -197,7 +199,6 @@ public class Player : MonoBehaviour
     private IEnumerator EsperarEReiniciar()
     {
         yield return new WaitForSeconds(3f);
-
         SceneManager.LoadScene("GameOver", LoadSceneMode.Additive);
     }
 
