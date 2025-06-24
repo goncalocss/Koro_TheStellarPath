@@ -1633,7 +1633,7 @@ VideoPlayer:
   m_TargetCameraAlpha: 1
   m_TargetCamera3DLayout: 0
   m_TargetCamera: {fileID: 0}
-  m_TargetTexture: {fileID: 8400000, guid: 1e770f78f23d840458462222d3199645, type: 2}
+  m_TargetTexture: {fileID: 8400000, guid: d039c0b6225b89d449d6b653b6b88ece, type: 2}
   m_TimeReference: 0
   m_TargetMaterialRenderer: {fileID: 0}
   m_TargetMaterialProperty: <noninit>
@@ -10246,7 +10246,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Texture: {fileID: 8400000, guid: 1e770f78f23d840458462222d3199645, type: 2}
+  m_Texture: {fileID: 8400000, guid: d039c0b6225b89d449d6b653b6b88ece, type: 2}
   m_UVRect:
     serializedVersion: 2
     x: 0
